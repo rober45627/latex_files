@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Formulae}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+\section*{Discrete}
+
+\subsection*{Uniform}
+\begin{itemize}
+    \item \textbf{Mean:} \(\frac{a+b}{2}\)
+    \item \textbf{Variance:} \(\frac{1}{12}(b-a)(b-a+2)\)
+\end{itemize}
+\subsection*{Bernouli}
+\begin{itemize}
+    \item \textbf{Mean:} \(p\)
+    \item \textbf{Variance:} \(p(1-p)\)
+\end{itemize}
+\subsection*{Binomial}
+\begin{itemize}
+    \item \textbf{Mean:} \(np\) 
+    \item \textbf{Variance:} \(np(1-p)\)
+\end{itemize}
+\subsection*{Geometric}
+\begin{itemize}
+    \item \textbf{Mean:} \(\frac{1}{p}\)
+    \item \textbf{Variance:} \(\frac{1-p}{p^2}\)
+\end{itemize}
+
+
+
+\section*{Continuous}
+\subsection*{Uniform}
+\begin{itemize}
+    \item \textbf{Mean:} \(\frac{a+b}{2}\)
+    \item \textbf{Variance:} \(\frac{(b-a)^2}{12}\)
+\end{itemize}
+\subsection*{Exponential}
+\begin{itemize}
+    \item \textbf{Mean:} \(\frac{1}{\lambda}\)
+    \item \textbf{Variance:} \(\frac{1}{\lambda^2}\)
+    \item \textbf{PDF:} \(\lambda e^{-\lambda x}\)
+    \item \textbf{CDF:} \(1- e^{-\lambda x}\)
+\end{itemize}
+\subsection*{Normal}
+\begin{itemize}
+    \item \textbf{Mean:} \(\mu\)
+    \item \textbf{Variance:} \(\sigma^2\)
+\end{itemize}
+\end{document}

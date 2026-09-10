@@ -1,0 +1,630 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Linear Algebra HW 5}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+
+
+\subsection*{Question 1}
+
+\[
+D: \mathbb{P}_3[x] \rightarrow \mathbb{P}_2[x]
+\]
+\[
+D(p(x)) = p  '(x) \quad \forall \ p(x) \in \mathbb{P}_3[x]
+\]
+
+Let \(p(x) \in \mathbb{P}_3[x]\)
+
+Then \(\ \ p(x) = ax^3 + bx^2 + cx +d, \quad p'(x) = 3ax^2 + 2bx + c\)
+\\
+
+The matrix we see is defined from the coordinate mappings of \(\mathbb{P}_3[x]\) to the 
+coordinate mapping of \(\mathbb{P}_2[x]\). We need to find the bases of these spaces such 
+that the matrix representation from one coordinate mapping to the other has the listed form.
+\\
+
+We see that in the differentiation that all coeffiecents are taken down a degree and multiplied
+by their previous degree.
+\\
+If we choose a standard basis for \(\mathbb{P}_3[x]\), \(\{x^3, x^2, x, 1\}\), it's coordinates are
+\(\begin{bmatrix}
+    a \\ b \\ c \\ d
+\end{bmatrix}\)
+\\
+
+We then need the coordinate representation of \(p'(x) = 3ax^2 + 2bx + c\) with respect to the basis 
+of \(\mathbb{P}_2[x]\) to be \(\begin{bmatrix}
+    a \\ b \\ c
+\end{bmatrix}\), since the given matrix does not scale any component, it only shifts each component 
+down a degree
+
+The basis \(\{3x^2, 2x , 1\}\) will achieve this, since this represents \(p'(x)\) as 
+\(\begin{bmatrix}
+    a \\ b \\ c
+\end{bmatrix}\)
+
+
+
+
+\subsection*{Question 2}
+
+If we consider the coordinate mapping of the polynomials in \(\mathbb{P}_2[x]\) with respect to 
+the basis \(\{x^2,x,1\}\), this now allows us to consider this problem as a mapping from 
+\(\mathbb{R}^2 \rightarrow \mathbb{R}^3\).
+\\
+
+
+Every \(\begin{bmatrix}
+     a \\ b
+\end{bmatrix}\) can be written as a linear combination of \(\begin{bmatrix}
+-3 \\ 1
+\end{bmatrix}, \begin{bmatrix}
+8 \\ -3
+\end{bmatrix}\) (two linearly independent vectors in \(\mathbb{R}^2\)).
+
+\begin{align*}
+    \begin{bmatrix}
+        a \\ b
+    \end{bmatrix} &= 
+    c_1 \begin{bmatrix}
+        -3 \\ 1
+    \end{bmatrix} + c_2 \begin{bmatrix}
+        8 \\ -3
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        -3 & 8 \\
+        1 & -3
+    \end{bmatrix} 
+    \begin{bmatrix}
+        c_1 \\ c_2
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        -3 & -8 \\
+        -1 & -3
+    \end{bmatrix}
+    \begin{bmatrix}
+        a \\ b
+    \end{bmatrix} &= \begin{bmatrix}
+        c_1 \\ c_2
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        c_1 \\ c_2
+    \end{bmatrix} &= 
+    \begin{bmatrix}
+        -3a - 8b \\
+        -a -3b
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+    \Rightarrow T\begin{bmatrix}
+    a \\ b
+    \end{bmatrix} &= c_1 T \begin{bmatrix}
+        -3 \\ 1
+    \end{bmatrix} + c_2 T \begin{bmatrix}
+        8 \\ -3
+    \end{bmatrix} \\
+    &= (-3a -8b)\begin{bmatrix}
+        5 \\ -2 \\ 1
+    \end{bmatrix} + (-a -3b)\begin{bmatrix}
+        -3 \\ 8 \\ -2
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        -12a -31b \\
+        -2a -8b \\
+        -5a -10b
+    \end{bmatrix}
+\end{align*}
+
+Putting this result back into polynomial form, which is easy since our basis is a simple one, we get
+\[
+T \begin{bmatrix}
+    a \\ b
+\end{bmatrix} = (-12a-31b)x^2 + (-2a -8b)x + (-5a -10b)
+\]
+
+\subsection*{Question 3}
+
+Recall that the columns of the matrix \([T]_{\mathcal{B}, \mathcal{C}}\) has as its columns the images
+of the basis vectors \(\mathcal{B}\) written with respect to \(\mathcal{C}\)
+
+\[
+[T]_{\mathcal{B}, \mathcal{C}} = \begin{bmatrix}
+    [T(1)]_\mathcal{C} & [T(1 + x)]_\mathcal{C} & [T(1+x+x^2)]_\mathcal{C} & [T(1+x+x^2+x^3)]_\mathcal{C}
+\end{bmatrix}
+\]
+
+We then calculate this images using the definition of the transformation
+
+\[
+T(1) = 0
+\]
+\[
+T(1+x) = x
+\]
+\begin{align*}
+    T(1+x+x^2) &= x + 2x^2 -10 \\
+    &= 2x^2 + x -10
+\end{align*}
+\begin{align*}
+    T(1+x+x^2+x^3) &= x + 2x^2 - 10 + 3x^3-30 x \\
+    &= 3x^3 + 2x^2 -29x -10
+\end{align*}
+
+Representing these images with respect to the basis \(\mathcal{C}\) is simple
+
+Thus,
+\[
+[T]_{\mathcal{B}, \mathcal{C}} = \begin{bmatrix}
+    0 & 0 & -10 & -10 \\
+    0 & 1 & 1 & -29 \\
+    0 & 0 & 2 & 2 \\
+    0 & 0 & 0 & 3
+\end{bmatrix}
+\]
+
+
+\subsection*{Question 4}
+\subsubsection*{(a)}
+In asking what is the coordinate vector of \(\vec{w}\) with respect to \(\mathcal{F}\), we are 
+asking for what scalar multiplied by \(\mathcal{F}\) give \(\vec{w}\)
+
+Thus, we are looking for the constants \(c_1,c_2\) such that
+\begin{align*}
+    \begin{bmatrix}
+        29 \\ -66
+    \end{bmatrix} &= c_1\begin{bmatrix}
+        -1 \\ 2
+    \end{bmatrix} + c_2 \begin{bmatrix}
+        -4 \\ 9
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        29 \\ -66
+    \end{bmatrix} &= \begin{bmatrix}
+        -1 & -4 \\
+        2 & 9 \\
+    \end{bmatrix} \begin{bmatrix}
+        c_1 \\ c_2
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        -9 & -4 \\
+        2 & 1
+    \end{bmatrix} \begin{bmatrix}
+        29 \\ -66
+    \end{bmatrix} &= \begin{bmatrix}
+        c_1 \\ c_2
+    \end{bmatrix} \\
+    \begin{bmatrix}
+        c_1 \\ c_2
+    \end{bmatrix} &= \begin{bmatrix}
+        3 \\-8
+    \end{bmatrix}
+\end{align*}
+Thus, \([w]_\mathcal{F} = \begin{bmatrix}
+    3 \\ -8
+\end{bmatrix}\)
+
+
+\subsubsection*{(b)}
+
+We know that the columns of \(P_{\mathcal{F}\rightarrow \mathcal{E}}\) are the vectors of 
+\(\mathcal{F}\) writen with respect to \(\mathcal{E}\)
+
+Thus,
+\[
+P_{\mathcal{F}\rightarrow \mathcal{C}} = \begin{bmatrix}
+    -1 & -4 \\
+    2 & 9
+\end{bmatrix}
+\]
+
+To verify we compute \(P_{\mathcal{F}\rightarrow 
+\mathcal{E}}[\vec{w}]_\mathcal{F} = [\vec{w}]_\mathcal{E}\), which should give 
+\(\begin{bmatrix}
+    29 \\ -66
+\end{bmatrix}\)
+
+\[
+\begin{bmatrix}
+    -1 & -4 \\
+    2 & 9 
+\end{bmatrix} \begin{bmatrix}
+    3 \\ -8
+\end{bmatrix} = \begin{bmatrix}
+    29 \\ -66
+\end{bmatrix}
+\]
+which it does.
+
+\subsubsection*{(c)}
+
+For this we will use the change of basis matrix \(P_{\mathcal{E}\rightarrow \mathcal{F}}\),
+which we computed earlier in (a), note this is the inverse of the matrix 
+\(P_{\mathcal{E}\rightarrow \mathcal{F}}\).
+\[
+P_{\mathcal{E}\rightarrow \mathcal{F}} = \begin{bmatrix}
+        -9 & -4 \\
+        2 & 1
+    \end{bmatrix}
+\]
+
+We can now multiply the vectors \(\vec{e}_1, \vec{e}_2\) by this matrix to get the result.
+
+\[
+[\vec{e}_1]_\mathcal{F} = \begin{bmatrix}
+        -9 & -4 \\
+        2 & 1
+    \end{bmatrix} \begin{bmatrix}
+        1 \\ 0
+    \end{bmatrix} = \begin{bmatrix}
+        -9 \\ 2
+    \end{bmatrix}
+\]
+\[
+[\vec{e}_2]_\mathcal{F} = \begin{bmatrix}
+        -9 & -4 \\
+        2 & 1
+    \end{bmatrix} \begin{bmatrix}
+        0 \\ 1
+    \end{bmatrix} = \begin{bmatrix}
+        -4 \\ 1
+    \end{bmatrix}
+\]
+
+\subsubsection*{(d)}
+We have already found this to be
+\[
+P_{\mathcal{E}\rightarrow \mathcal{F}} = \begin{bmatrix}
+        -9 & -4 \\ 
+        2 & 1
+    \end{bmatrix}
+\]
+
+To verify we compute 
+\[
+\begin{bmatrix}
+        -9 & -4 \\
+        2 & 1
+    \end{bmatrix} \begin{bmatrix}
+        -1 & -4 \\
+        2 & 9
+    \end{bmatrix} = \begin{bmatrix}
+        1 & 0 \\
+        0 & 1
+    \end{bmatrix}
+\]
+which holds.
+
+
+\subsubsection*{(e)}
+We have that 
+\(
+[T]_{\mathcal{F}, \mathcal{E}} = \begin{bmatrix}
+    6 & -2 \\
+    -3 & -9
+\end{bmatrix}
+\)
+since we are given the images of \(\mathcal{F}\) 
+under \(T\) with respect to \(\mathcal{E}\), which form the columns of this matrix
+
+Since our linear transformation takes in vectors with basis \(\mathcal{E}\) to find the matrix
+\([T]_{\mathcal{E}, \mathcal{E}}\), we need to find where the basis vectors of \(\mathcal{E}\)
+go under the transformation \(T\), i.e. \(T(\vec{e}_1), T{(\vec{e}_2)}\), and these will
+make up the columns of the matrix \([T]_{\mathcal{E},\mathcal{E}}\)
+\\
+
+At the moment our transformation only takes in vectors with basis \(\mathcal{F}\), so what we can 
+do is use what was calculated in (c), the basis vectors of \(\mathcal{E}\) with respect to 
+\(\mathcal{F}\), and put them through \(T\), giving us what we wanted.
+
+\[
+T(\vec{e}_1) = \begin{bmatrix}
+    6 & -2 \\
+    -3 & -9
+\end{bmatrix} \begin{bmatrix}
+    -9 \\2
+\end{bmatrix} = \begin{bmatrix}
+    -58 \\ 9
+\end{bmatrix}
+\]
+\[
+T(\vec{e}_2) = \begin{bmatrix}
+    6 & -2 \\
+    -3 & -9
+\end{bmatrix} \begin{bmatrix}
+    -4 \\ 1
+\end{bmatrix} = \begin{bmatrix}
+    -26 \\ 3
+\end{bmatrix} 
+\]
+
+Thus,
+\[
+[T]_{\mathcal{E},\mathcal{E}} = \begin{bmatrix}
+        -58 & -26 \\
+        9 & 3
+    \end{bmatrix}
+\]
+
+
+
+\subsubsection*{(f)}
+
+We have that 
+\(
+[T]_{\mathcal{F}, \mathcal{E}} = \begin{bmatrix}
+    6 & -2 \\
+    -3 & -9
+\end{bmatrix}
+\)
+\\
+
+We are checking whether \([T]_{\mathcal{E},\mathcal{E}} = 
+[T]_{\mathcal{F},\mathcal{E}}P_{\mathcal{E} \rightarrow \mathcal{F}}\)
+
+\begin{align*}
+    [T]_{\mathcal{E},\mathcal{E}} &= \begin{bmatrix}
+        6 & -2 \\
+        -3 & -9
+    \end{bmatrix} \begin{bmatrix}
+            -9 & -4 \\
+            2 & 1
+        \end{bmatrix} \\
+    &= \begin{bmatrix}
+        -58 & -26 \\
+        9 & 3
+    \end{bmatrix}
+\end{align*}
+which holds.
+
+
+\subsection*{Question 5}
+\subsubsection*{(a)}
+To show that \(T\) is a linear transformation we must show that it preserves addition
+and scalar multiplication.
+\\
+
+Let \(p_1(x), p_2(x) \in \mathbb{P}_2[x]\) and let \(\lambda \in \mathbb{R}\)
+\begin{itemize}
+    \item \(T(p_1(x) + p_2(x)) = \begin{bmatrix}
+        p_1(-1) + p_2(-1) \\
+        p_1(0) + p_2(0) \\
+        p_1(1) + p_2(1) 
+    \end{bmatrix} = \begin{bmatrix}
+        p_1(-1)\\
+        p_1(0) \\
+        p_1(1)
+    \end{bmatrix} + \begin{bmatrix}
+        p_2(-1)\\
+        p_2(0) \\
+        p_2(1)
+    \end{bmatrix} = T(p_1(x)) + T(p_2(x))\)
+
+    \item \(T(\lambda p_1(x)) = \begin{bmatrix}
+        \lambda p_1(-1)\\
+        \lambda p_1(0) \\
+        \lambda p_1(1)
+    \end{bmatrix} = \lambda \begin{bmatrix}
+        p_1(-1)\\
+        p_1(0) \\
+        p_1(1)
+    \end{bmatrix} = \lambda T(p_1(x)) \)
+\end{itemize}
+
+Thus \(T\) is a linear transformation
+
+\subsubsection*{(b)}
+Let \(p(x) \in \mathbb{P}_2[x]\), \(p(x) = ax^2 + bx +c\)
+\\
+
+\(T(p(x)) = \begin{bmatrix}
+    a -b + c \\
+    c \\
+    a + b +c
+\end{bmatrix}\)
+\\
+
+Also, \([p(x)]_\mathcal{E} = \begin{bmatrix}
+    c \\ 
+    b \\ 
+    a
+\end{bmatrix}\) and \(T(p(x)) = \begin{bmatrix}
+    a -b + c \\
+    c \\
+    a + b +c
+\end{bmatrix}\)
+\\
+
+So now we need the matrix which maps these together, which we can get via construction
+\[
+[T]_{\mathcal{E},\mathcal{F}} = \begin{bmatrix}
+    1 & -1 & 1 \\
+    1 & 0 & 0 \\
+    1 & 1 & 1
+\end{bmatrix}
+\]
+
+
+\subsection*{Question 6}
+
+For this question we can use the Rank-Nullity Theorem, 
+\[
+\dim(\ker T) + \dim(\mathrm{Im} \ T) = \dim(V)
+\]
+
+Let \(n = \dim(v)\) and \(m = \dim(W)\), we know \(n < m\)
+
+For a linear transformation to be surjective, we need \(\dim(\mathrm{Im} \ T) = m\)
+
+But
+\[
+\dim(\ker T) + \dim(\mathrm{Im} \ T) = n \\
+\]
+and since \(\dim(\ker T) \geq 0 \), we have that \(\dim(\mathrm{Im} \ T) \leq n\)
+\\
+
+Thus \(\dim(\mathrm{Im} \ T) < m\)
+
+Hence \(T\) cannot be surjective.
+
+\subsection*{Question 7}
+Let \(T\) be defined as a linear transformation between the vector spaces \(\mathbb{R}^7\) and 
+\(\mathbb{R}^5\)
+\[
+T: \mathbb{R}^7 \rightarrow \mathbb{R}^5
+\]
+\(T\) can be represented using a \(5 \times 7\) matrix, \(A\), where 
+\(T(\vec{x}) = A\vec{x} \quad \vec{x} \in \mathbb{R}^7\)
+\\
+
+For the nullity and rank of \(T\) to be 2 and 5 respectively, we need there to be exactly 5 pivot
+columns in \(A\).
+\\
+
+One such matrix is 
+\[
+A = \begin{bmatrix}
+    1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 & 1 & 0 & 0
+\end{bmatrix}
+\]
+
+
+\subsection*{Question 8}
+(assuming that the question wants me to show that \(T\) is a linear transformation)
+\\
+
+To show that \(T\) is a linear transformation we must show that it preserves addition
+and scalar multiplication.
+\\
+
+Let \(p_1(x), p_2(x) \in \mathbb{P}[x]\) and let \(\lambda \in \mathbb{R}\)
+\begin{itemize}
+    \item \(T(p_1(x) + p_2(x)) = \int_{-2}^{1} (p_1(x) + p_2(x)) dx = \int_{-2}^{1} p_1(x) dx
+    + \int_{-2}^{1} p_2(x) dx = T(p_1(x)) + T(p_2(x)) \)
+
+    \item \(T(\lambda p_1(x)) = \int_{-2}^{1} (\lambda p_1(x)) dx = 
+    \lambda \int_{-2}^{1} p_1(x) dx = \lambda T(p_1(x))\)
+\end{itemize}
+
+Thus \(T\) is a linear transformation
+
+
+
+\subsection*{Question 9}
+
+\subsubsection*{(a)}
+To show that \(T\) is a linear transformation we must show that it preserves addition
+and scalar multiplication.
+\\
+
+Let \(p_1(x), p_2(x) \in \mathbb{P}_3[x]\) and let \(\lambda \in \mathbb{R}\)
+\begin{itemize}
+    \item \(T(p_1(x) + p_2(x)) = (3x^2 + x)(p_1 '(x) + p_2 '(x)) = (3x^2 + x)(p_1 '(x))
+    + (3x^2 + x)(p_2 '(x)) = T(p_1(x)) + T(p_2(x))\)
+
+    \item \(T(\lambda p_1(x)) = (3x^2 + x)(\lambda p_1 '(x)) = \lambda(3x^2 + x)(p_1 '(x))
+    = \lambda T(p_1(x))\)
+\end{itemize}
+
+Thus \(T\) is a linear transformation
+
+\subsubsection*{(b)}
+\[
+\ker T = \{p(x) \in \mathbb{P}_3[x] \mid T(p(x)) = \vec{0}\}
+\]
+
+Let \(p(x) \in \mathbb{P}_3[x]\), \(p(x) = ax^3 + bx^2 + cx +d\)
+
+\[T(p(x)) = (3x^2 + x)(3ax^2+2bx +c)\]
+\[T(p(x)) = \vec{0} \Rightarrow a = b = c = 0\]
+
+Thus,
+\[
+\ker T = \{d \in \mathbb{P}_3[x] \mid d \in \mathbb{R}\}
+\]
+
+Hence, \(\{1\}\) will for a basis for \(\ker T\)
+
+\subsubsection*{(c)}
+\[
+\mathrm{Im} \ T = \{ T(p(x)) \mid  p(x) \in \mathbb{P}_3[x]\}
+\]
+
+\[
+T(p(x)) = (3x^2 + x)(3ax^2+2bx +c) = a(3x^3 + 9x^4) +  b(2x^2 + 6x^3) + c(x + 3x^2)
+\]
+
+\[
+\Rightarrow \mathrm{Im} \ T = \{a(3x^3 + 9x^4) +  b(2x^2 + 6x^3) + c(x + 3x^2) \mid a,b,c \in \mathbb{R}\}
+\]
+\[
+\mathrm{Im} \ T = \text{span}\{3x^3 + 9x^4, 2x^2 + 6x^3, x + 3x^2\}
+\]
+
+This set of vectors forms a basis for the image of \(T\) since we know that the image of \(T\) will be 
+of dimension 3 from the rank-nullity theorem.
+\[
+\dim(\ker T) + \dim(\mathrm{Im} \ T) = \dim(V)
+\]
+\[
+1 + \dim(\mathrm{Im} \ T) = 4
+\]
+\[
+\dim(\mathrm{Im} \ T) = 3
+\]
+
+\subsubsection*{(d)}
+\[
+\dim(\ker T) + \dim(\mathrm{Im} \ T) = \dim(V)
+\]
+\[
+1 + 3 = 4 = 4
+\]
+
+
+\subsection*{Question 10}
+We know that the columns of the matrix will be the images of the standard basis vectors
+under \(T\), we just need to figure out where these get mapped to.
+\\
+
+Figuring this out isn't too hard, using the facts that \(\sin(\theta), \cos(\theta)\) correspond to the 
+\(x\) and \(y\) coordinate of a right triangle with unit hyotenuse, which is what you get when you overlay 
+the new rotated space over the old space.
+
+\[
+(1,0,0) \mapsto (\cos(\theta) ,\sin(\theta) , 0) 
+\]
+\[
+(0,1,0) \mapsto (-\sin(\theta) ,\cos(\theta) , 0)
+\]
+\[
+(0,0,1) \mapsto (0,0,1) 
+\]
+
+Thus,
+\[
+\begin{bmatrix}
+    \cos(\theta) & -\sin(\theta) & 0 \\
+    \sin(\theta) & \cos(\theta) & 0 \\
+    0 & 0 & 1
+\end{bmatrix}
+\]
+
+\end{document}

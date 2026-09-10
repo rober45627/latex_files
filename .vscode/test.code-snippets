@@ -1,0 +1,220 @@
+
+	// Place your LaTeX workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+
+{
+  "Fraction": {
+    "prefix": "ff",
+    "body": [
+      "\\frac{${1:numerator}}{${2:denominator}}"
+    ],
+    "description": "Insert a LaTeX fraction"
+  },
+
+  "Limit": {
+    "prefix": "lim",
+    "body": [
+      "\\lim_{${1:start}\\to${2:end}}{${3:body}}"
+    ],
+    "description": "Create a Limit"
+  },
+  "Beginning":{
+	"prefix": "beg",
+	"body": [
+		"\\documentclass{article}",
+		"\\usepackage[a4paper, total={6.5in, 10in}]{geometry}",
+		"\\setlength{\\parindent}{0pt}",
+		"\\usepackage{tcolorbox}",
+		"\\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}",
+		"\\newtcolorbox{boxs}[2][]{title= #2,#1}",
+		"\\usepackage{datetime2}",
+		"\\usepackage[british]{babel}",
+		"\\usepackage{amsfonts}",
+		"\\usepackage{amsmath}",
+		"",
+		"\\title{\\textbf{${1:title}}}",
+		"\\author{Robert O'Connell}",
+		"\\date{\\today}",
+		"\\begin{document}",
+		"\\maketitle",
+		"\\vspace{5mm}",
+		"$2",
+		"\\end{document}"
+	],
+	"description": "Insert preamble"
+  },
+  "Equation":{
+	"prefix": "eq",
+	"body": [
+		"begin{equation}",
+		"$1",
+		"\\end{equation}"
+	],
+	"description": "Create an equation"
+  },
+  "Maths":{
+	"prefix": "mat",
+	"body": [
+		"\\[",
+		"$1",
+		"\\]"
+	],
+	"description": "Create maths lines"
+  },
+  "Bullet Points":{
+	"prefix": "bp",
+	"body": [
+		"\\begin{itemize}",
+		"\t\\item $1",
+		"\\end{itemize}"
+	],
+	"description": "Create bullet points"
+  },
+  "Bold Text":{
+	"prefix": "bold",
+	"body": [
+		"\\textbf{${1:text}}"
+	],
+	"description": "Create bold text"
+  },
+  "Boxes":{
+	"prefix": "box",
+	"body": [
+		"\\begin{boxs}{${1:title}}",
+			"$2",
+		"\\end{boxs}"
+	],
+	"description": "Create a box for definitions etc."
+  },
+  "Vertical Spacing":{
+	"prefix": "vsp",
+	"body": [
+		"\\vspace{${1:amount}mm}"
+	],
+	"description": "Easily space out text etc."
+  },
+    "Function Graph": {
+    "prefix": "graph",
+    "body": [
+		"\\usepackage{pgfplots}%move to top",
+		"\\begin{center}",
+		"\\begin{tikzpicture}",
+		"\\begin{axis}[",
+		"    axis lines = middle,",
+		"    xlabel = \\$x$,",
+		"    ylabel = \\$y$,",
+		"    grid = both,",
+		"    width=10cm,",
+		"    height=6cm,",
+		"    xmin=0, xmax=10,",
+		"    ymin=0, ymax=30",
+		"]",
+		"\\addplot [domain=0:10, samples=100, black, thick] {2*x + 6};",
+		"\\end{axis}",
+		"\\end{tikzpicture}",
+		"\\end{center}"
+    ],
+    "description": "Insert a pgfplots function graph"
+  },
+	  "Blackboard R":{
+	"prefix": "bbr",
+	"body": [
+		"\\mathbb{R}$1"
+	],
+	"description": "Create blackboard R"
+	},
+	  "Vector symbol":{
+	"prefix": "van",
+	"body": [
+		"\\langle $1 \\rangle"
+	],
+	"description": "Create vector symbols"
+	},
+  "Right Arrow": {
+	"prefix": "ra",
+	"body": [
+		"\\Rightarrow"	
+	],
+	"description": "Create a right arrow"
+  },
+  "Vectors": {
+	"prefix": "ve",
+	"body": [
+		"\\vec{$1}"	
+	],
+	"description": "Create a vector symbol"
+  },
+  "Blackboard N": {
+	"prefix": "bbn",
+	"body": [
+		"\\mathbb{N}"	
+	],
+	"description": "Create a blackboard N"
+  },
+  "Subsections": {
+	"prefix": "sbs",
+	"body": [
+		"\\subsection*{$1}"	
+	],
+	"description": "Create a subsection"
+  },
+  "Subsubsection": {
+	"prefix": "sbbs",
+	"body": [
+		"\\subsubsection*{$1}"	
+	],
+	"description": "Create a subsubsection"
+  },
+  "Align Environment": {
+	"prefix": "ali",
+	"body": [
+		"\\begin{align*}",
+			"$1",
+		"\\end{align*}"
+	],
+	"description": "Create an align enviromnment"
+  },
+  "For all": {
+	"prefix": "fa",
+	"body": [
+		"\\forall \\ $1",
+	],
+	"description": "Create a for all symbol"
+  },
+  "There exists": {
+	"prefix": "te",
+	"body": [
+		"\\exists \\ $1",
+	],
+	"description": "Create a there exists symbol"
+  },
+  "Epsilon": {
+	"prefix": "ep",
+	"body": [
+		"\\epsilon ",
+	],
+	"description": "Create epsilon letter"
+  },
+  "Such that": {
+	"prefix": "st",
+	"body": [
+		"\\text{ such that }",
+	],
+	"description": "Enter such that in maths mode"
+  }
+}

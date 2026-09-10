@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Move Latest PDF",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "other/move_pdf.py"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Copy File to OneDrive",
+      "type": "shell",
+      "command": "copy",
+      "args": [
+        "${file}",
+        "C:\\users\\robro\\OneDrive\\Pushed\\"  
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Copy Folder to OneDrive",
+      "type": "shell",
+      "command": "copy",
+      "args": [
+        "C:\\users\\robro\\Vault\\Maths\\",
+        "C:\\users\\robro\\OneDrive\\Maths\\"  
+      ],
+      "problemMatcher": []
+    }
+  ]
+}

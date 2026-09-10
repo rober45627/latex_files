@@ -1,0 +1,257 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Linear Algebra HW 6}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+\subsection*{Question 1}
+If the image of a linear transformation is equal to the kernel of the same linear transformation, then by the
+rank-nullity theorem we can see that \(\dim(\mathrm{Im} \ T) = \dim(\ker T) = 2\)
+\\
+
+i.e. we need to send a two dimensional subspace to \(\vec{0}\) (\(\ker T\)) and then the remaining two dimensional needs to be mapped to 
+the the \(\ker T\)
+
+One such tranformation is \(T: \mathbb{R}^4 \rightarrow \mathbb{R}^4\), \(T(\vec{v}) = A \vec{v} \quad \forall \ \vec{v} \in \mathbb{R}^4\)
+\[
+A = \begin{bmatrix}
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1 \\
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 0 & 0 
+\end{bmatrix}
+\]
+As the first  two basis vectors get mapped to \(\vec{0}\) and the other two basis vectors get mapped to the first two basis vectors
+
+\subsection*{Question 2}
+Let \(\vec{v}_1, \vec{v}_2 \in V\) and \(\alpha \in \mathbb{R}\),
+\begin{itemize}
+    \item \((S+T)(\vec{v}_1+ \vec{v}_2) = S(\vec{v}_1+ \vec{v}_2) + T(\vec{v}_1+ \vec{v}_2) = S\vec{v}_1+ T\vec{v}_1+ S\vec{v}_2 + T\vec{v}_2 = (S+T)(\vec{v}_1) + (S+T)(\vec{v}_2)\)
+    \item \((S+T)(\alpha \vec{v}_1) = S(\alpha \vec{v}_1) + T(\alpha \vec{v}_1) = \alpha(S(\vec{v}_1) + T(\vec{v}_1))\)
+    \item Thus, \((S+T)\) is a linear transformation
+    \\
+    \item \((\lambda T)(\vec{v}_1 + \vec{v_2}) = \lambda((T)(\vec{v}_1+ \vec{v}_2)) =\lambda(T(\vec{v}_1)+ T(\vec{v}_2)) = \lambda T(\vec{v}_1)+ \lambda T(\vec{v}_2)\)
+    \item \((\lambda T)(\alpha\vec{v}_1) = \lambda(T(\alpha \vec{v}_1)) = \lambda\alpha T(\vec{v}_1) = \alpha(\lambda T(\vec{v}_1))\)
+    \item Thus \((\lambda T)\) is a linear transformation
+\end{itemize}
+
+\subsection*{Question 3}
+\(A\) diagonalizable \(\iff\) \(\exists\) a basis of \(\mathbb{R}^3\) consisting of eigenvectors of \(A\) \(\Leftarrow\) \(A\) has \(n\) distinct eigenvalues
+
+To first find the eigenvalues we solve the characteristic polynomial of \(A\) equal to zero
+
+\[
+\chi_A(\lambda) = \det(A-\lambda I) = 0
+\]
+\begin{align*}
+    \det(A-\lambda I) &= \begin{bmatrix}
+        6 - \lambda & -10 & 1 \\
+        1 & -11 -\lambda & 3 \\
+        4 & -40 & 11 - \lambda
+    \end{bmatrix}
+    \\
+    &= (6-\lambda)((-11-\lambda)(11 - \lambda) + 120) + (10)((11 - \lambda) -12) + (-40 + 4(11 + \lambda))
+    \\
+    &= (6 - \lambda)(\lambda^2 -1) -10(\lambda + 1) + 4 + 4\lambda
+    \\
+    &= (6- \lambda)(\lambda + 1)(\lambda -1) - 10(\lambda + 1) + 4(\lambda +1)
+    \\
+    &= (\lambda+1)(6\lambda - 6 - \lambda^2 + \lambda -10 +4)
+    \\
+    &= -(\lambda + 1)(\lambda -3)(\lambda -4)
+\end{align*}
+
+We have three distinct eigenvalues \(\lambda = -1, \lambda = 3\) and \(\lambda = 4\),
+
+Hence \(A\) is diagonalizable
+\\
+
+To find the diagonal matrix \(D\) to which is \(A\) is similar we note that in the basis of \(\mathbb{R}^3\) consisting 
+of eigenvectors, say \(\mathcal{B} = \{\vec{b}_1, \vec{b}_2, \vec{b_3}\}\), that each of them is only scaled, hence \([A]_{\mathcal{B},\mathcal{B}}\) is diagonal.
+\[
+[A]_{\mathcal{B}, \mathcal{B}} = \begin{bmatrix}
+    -1 & 0 & 0 \\
+    0 & 3 & 0 \\
+    0 & 0 & 4
+\end{bmatrix}
+\]
+
+Thus \(D = B^{-1} A B\) where \(D = [A]_{\mathcal{B}, \mathcal{B}}\) and \(B = \mathcal{P}_{\mathcal{B}\to \mathcal{E}}\)
+\\
+
+To find the eigenvectors we look in \(\mathcal{N}(A-\lambda I)\),
+\begin{align*}
+    \mathcal{N}(A + I) &, \begin{bmatrix}
+        7 & -10 & 1 &| & 0 \\
+        1 & -10 & 3 &|& 0 \\
+        4 & -40 & 12& |&  0
+    \end{bmatrix}
+    \\
+    &= \begin{bmatrix}
+        3 & 0 & -1 &|&0 \\
+        0 & 3 & -1 &|&0 \\
+        0 & 0 & 0 &|&0
+    \end{bmatrix}
+\end{align*}
+One such eigenvector is \(\begin{bmatrix}
+    1 \\ 1 \\ 3
+\end{bmatrix}\)
+
+\begin{align*}
+    \mathcal{N}(A-3I) &, \begin{bmatrix}
+        3 & -10 & 1 &| & 0 \\
+        1 & -14 & 3 &|& 0 \\
+        4 & -40 & 8& |&  0
+    \end{bmatrix}
+    \\
+    &= \begin{bmatrix}
+        4 & 0 & -2 &|&0 \\
+        0 & 4 & -1 &|&0 \\
+        0 & 0 & 0 &|&0
+    \end{bmatrix}
+\end{align*}
+One such eigenvector is \(\begin{bmatrix}
+    2 \\ 1 \\ 4
+\end{bmatrix}\)
+
+\begin{align*}
+    \mathcal{N}(A-3I) &, \begin{bmatrix}
+        2 & -10 & 1 &| & 0 \\
+        1 & -15 & 3 &|& 0 \\
+        4 & -40 & 7& |&  0
+    \end{bmatrix}
+    \\
+    &= \begin{bmatrix}
+        4 & 0 & -3 &|&0 \\
+        0 & 4 & -1 &|&0 \\
+        0 & 0 & 0 &|&0
+    \end{bmatrix}
+\end{align*}
+One such eigenvector is \(\begin{bmatrix}
+    3 \\ 1 \\ 4
+\end{bmatrix}\)
+
+Thus,
+\[
+B = \begin{bmatrix}
+\ & \ & \ \\
+\vec{b}_1 & \vec{b}_2 & \vec{b}_3 \\
+\ & \ & \
+\end{bmatrix} = \begin{bmatrix}
+    1 & 2 & 3 \\
+    1 & 1 & 1 \\
+    3 & 4 & 4
+\end{bmatrix}
+\]
+
+\subsection*{Question 4}
+We repeat the process of the last question,
+
+\begin{align*}
+    \chi_A(\lambda) = \det \begin{bmatrix}
+        -5\lambda & 0 & 4 \\
+        -11 & 7 - \lambda & 12 \\
+        -1 & 0 & -1 - \lambda
+    \end{bmatrix} &= 0
+    \\
+    = (-5-\lambda)(7-\lambda)(-1-\lambda) + 4(7-\lambda) &= 0
+    \\
+    \Rightarrow (7-\lambda)(\lambda^2 + 6\lambda + 9) &= 0
+\end{align*}
+Thus the eigenvalues of \(A\) are \(\lambda = 7\) and \(\lambda = -3\)
+
+To check whether \(A\) is diagonalizable, we need to check the dimension of \(\mathcal{N}(A+3I)\)
+
+\begin{align*}
+    \mathcal{N}(A+3I) &, \begin{bmatrix}
+        -2 & 0 & 4 &| & 0 \\
+        -11 & 10 & 12 &|& 0 \\
+        -1 & 0 & 2& |&  0
+    \end{bmatrix}
+    \\
+    &= \begin{bmatrix}
+        1 & 0 & -2 &| & 0 \\
+        0 & 1 & -1 &|& 0 \\
+        0 & 0 & 0& |&  0
+    \end{bmatrix}
+\end{align*}
+Since there is only one linearly independent eigenvector, such as \(\begin{bmatrix}
+    2 \\ 1 \\ 1
+\end{bmatrix}\), associated with the eigenvalue of \(3\), we conclude that \(A\) is not diagonalizable.
+\\
+
+To find a basis of \(\mathbb{R}^3\) consisting of eigenvectors and generalised eigenvectors, we can look at the other eigenvectors 
+associated with \(\lambda = 7\) and pick a linearly independent vector from \(\mathcal{N}(A+3I)^2\)
+
+\begin{align*}
+    \mathcal{N}(A-7I) &, \begin{bmatrix}
+        12 & 0 & 4 &| & 0 \\
+        -11 & 0 & 12 &|& 0 \\
+        -1 & 0 & -8& |&  0
+    \end{bmatrix}
+    \\
+    &= \begin{bmatrix}
+        1 & 0 & 0 &| & 0 \\
+        0 & 0 & 1 &|& 0 \\
+        0 & 0 & 0& |&  0
+    \end{bmatrix}
+\end{align*}
+One such eigenvector is \(\begin{bmatrix}
+    0 \\ 1 \\0
+\end{bmatrix}\)
+
+\begin{align*}
+    \mathcal{N}(A+3I)^2 &, \begin{bmatrix}
+        0 & 0 & 0 &| & 0 \\
+        -100 & 100 & 100 &|& 0 \\
+        0 & 0 & 0& |&  0
+    \end{bmatrix}
+    \\
+    &= \begin{bmatrix}
+        0 & 0 & 0 &| & 0 \\
+        -1 & 1 & 1 &|& 0 \\
+        0 & 0 & 0& |&  0
+    \end{bmatrix}
+\end{align*}
+A linearly independent vector to the other two eigenvectors in this set is \(\begin{bmatrix}
+    3 \\ 1 \\ 2
+\end{bmatrix}\)
+\\
+
+Hence the set \(\left\{\begin{bmatrix}
+0 \\ 1 \\ 0
+\end{bmatrix}, \begin{bmatrix}
+2 \\ 1 \\1
+\end{bmatrix}, \begin{bmatrix}
+3 \\ 1 \\ 2
+\end{bmatrix}\right\}\) is a basis for \(\mathbb{R}^3\) made up of eigenvectors and a generalised eigenvector
+
+\subsection*{Question 5}
+Assume for the sake of contradiction that \(T- \lambda I\) is surjective, 
+
+Then \(\mathrm{Im}(T - \lambda I) = V\)
+
+Also, we know
+\begin{align*}
+    \dim(\ker(T - \lambda I)) + \dim(\mathrm{Im} \ (T - \lambda I)) &= \dim(V)
+    \\
+    \Rightarrow \dim(\ker (T - \lambda I)) + \dim(V) &= \dim(V)
+    \\
+    \Rightarrow \dim(\ker (T - \lambda I)) &= 0
+\end{align*}
+But since \(\lambda\) is an eigenvalue of \(T\), we know \(T - \lambda I\) has non-zero solutions, since eigenvectors are non-zero, 
+this is a contradiction since if the \(\dim(\ker T) = 0\) there exists a unique solution, the trivial one implying there are no non-zero eigenvectors.
+
+
+\end{document}

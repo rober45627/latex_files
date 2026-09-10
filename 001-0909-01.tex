@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{datetime2}
+\usepackage{template/cenvs}
+
+\title{\textbf{Analysis Summary}}
+\author{Robert O'Connell}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\subsection*{\emph{Source:} Keilthy}
+\subsubsection*{The Reals}
+\begin{fact}
+	The reals are the unique (up to isomorphism) Dedekind complete Archimedean
+	ordered field
+\end{fact}
+
+\emph{Skipped:} Definition of a field and an ordered field
+
+\begin{definition}
+	An ordered field is Archimedean if for every \( x \in F\) there exists \( n \in \mathbb{Z} \) such that the sum of \( n \) copies of the multiplicative identity is greater than \( x \)
+	\[
+		1 + 1 + \ldots + 1 > x
+	\]
+\end{definition}
+
+The field of rational functions fails to be Archimedean, as the function \( f(x) = x \) is greater than every integer \( n \). In order to distinguish between the rationals and the reals, however, we need to introduce the least upper bound
+
+\begin{definition}
+	Let \( S \subset F \) be a subset of an ordered field. We say \( S \) is bounded above if there exists \( b \in F \) such that \( x < b\) for every \(x \in S\), and call such a \( b \) an upper bound. We say \( S \) is bounded below if there exists \( a \in F \) such that \( a < x \) for evert \(  x \in S \), and call such an \( a \) a lower bound. We say \( S \) is bounded if it bounded both above and below.
+\end{definition}
+
+\begin{definition}
+	Let \(  S \subset  F \) be a subset of an ordered filed that is bounded above. We say that \( s \in F \) is the least upper bound, or supremum, of \( S \) is \( s \) is an upper bound for \( S \) and \( S \le b \) for every upper  bounded \( b \) of \( S \). We write \( s = \sup{S} \)
+
+	Similar for \( \inf{S} \)
+\end{definition}
+
+\begin{definition}
+	An ordered field \( F \) is called Dedekind complete, or is said to satisfy the Least Upper Bound Principle, if for any non-emoty \( S \subset  F \) that is bounded above \( \sup{S} \) exists in \( F \)
+\end{definition}
+
+\subsubsection*{Convergent Sequences in \( \mathbb{R} \)}
+\begin{definition}
+	A sequence of real numbers is a function \( f \colon  \R \to \R \colon  \), usually represents as \( x_{1}, x_{2}, \ldots \text{or} (x_n)_{n=1}^{\infty} \). We will often supress the range of the index and just write \( \left\{ x_{n} \right\}  \).
+\end{definition}
+
+\begin{definition}
+	A sequence \( \left\{ x_{n} \right\}  \) of real numvers is said to converge to limit \( L \in  \mathbb{R} \) if, for all \( \epsilon > 0 \), there exists an integer \( N > 0 \) such that \( \left| x_n - L \right|  < \epsilon \) for all \( n \ge N \). We call a sequence \( \left\{ x_n \right\}  \) convergent if it converges to a finite limit \( L \), and write \( x_{n} \to L \) or \( \lim_{n \to \infty} x_n = L \) to denote this.
+\end{definition}
+
+\begin{definition}
+	A sequence \( \left\{ x_n \right\}  \) is bounded above if there exists \( B \in  \mathbb{R} \) such that \( B\ge x_n \) for all \( n \ge 1 \). The sequence is bounded below if there exists \( A \in \mathbb{R} \) such that \( A \le x_{n} \) for \( n \ge 1 \). We say the sequence is bounded if it bounded both above and below.
+\end{definition}
+\end{document}
+

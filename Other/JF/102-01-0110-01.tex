@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Differentiating Vectors}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+
+The change in a vector $\vec{A}$ over a time interval $\Delta t$ is:
+\[
+\Delta \vec{A} = \vec{A}(t+ \Delta t) - \vec{A}(t)
+\]
+
+The derivative of a vector is defined as:
+\[
+\frac{d\vec{A}}{dt} = \lim_{\Delta t\to 0}\frac{\Delta\vec{A}}{\Delta t}
+\]
+
+\subsection*{Two Special Cases}
+
+\subsection*{Case 1: $\Delta \vec{A}$ is parallel to $\vec{A}$}
+
+When the change in $\vec{A}$ is parallel to itself, the magnitude changes but the direction remains constant:
+\[
+\lim_{\Delta t \to 0}\frac{|\vec{A}(t+\Delta t)| - |\vec{A}(t)|}{\Delta t} \neq 0
+\]
+\[
+\lim_{\Delta t \to 0}\frac{|\hat{A}(t+\Delta t)| - |\hat{A}(t)|}{\Delta t} = 0
+\]
+
+\subsection*{Case 2: $\Delta \vec{A}$ is orthogonal to $\vec{A}$}
+
+Consider $\Delta \vec{A} = \Delta t \, \beta \, \hat{k}$ where $\Delta \vec{A} \perp \vec{A}$.
+
+The change of magnitude at $t = 0$ is:
+\begin{align*}
+    \frac{d|\vec{A}(t)|}{dt} 
+    &= \lim_{\Delta t\to0}\frac{|\vec{A}(0) + \Delta \vec{A}| - |\vec{A}(0)|}{\Delta t} \\[0.5em]
+    &= \lim_{\Delta t \to0}\frac{\sqrt{|\vec{A}(0)|^2 + \beta^2(\Delta t)^2} - |\vec{A}(0)|}{\Delta t} \\[0.5em]
+    &= \left.\frac{d}{dt}\sqrt{|\vec{A}|^2 + \beta^2t^2}\right|_{t=0} \\[0.5em]
+    &= \left.\frac{\beta^2t}{\sqrt{|\vec{A}|^2 + \beta^2t^2}}\right|_{t=0} \\[0.5em]
+    &= 0
+\end{align*}
+
+\textbf{Conclusion:} For small $\Delta t$, the magnitude $|\vec{A}(t + \Delta t)|$ does not change if $\Delta \vec{A} \perp \vec{A}$.
+
+\vspace{1em}
+
+\subsubsection*{Magnitude of the Derivative (Orthogonal Case)}
+
+When $\Delta \vec{A} \perp \vec{A}$, we can express the magnitude of the derivative geometrically:
+\[
+\left|\frac{d\vec{A}(t)}{dt}\right| = \lim_{\Delta t\to0}\frac{|\vec{A}| \tan(\Delta\theta)}{\Delta t}
+\]
+
+To evaluate this limit:
+\begin{align*}
+    \lim_{\Delta t\to0}\frac{\tan(\Delta\theta)}{\Delta t} 
+    &= \lim_{\Delta t\to0}\frac{\tan(0 + \Delta\theta) - \tan(0)}{\Delta\theta} \cdot \frac{\Delta\theta}{\Delta t} \\[0.5em]
+    &= \left.\frac{d}{d\theta}[\tan(\theta)]\right|_{\theta = 0} \cdot \frac{d\theta}{dt} \\[0.5em]
+    &= \sec^2(\theta)\Big|_{\theta = 0} \cdot \frac{d\theta}{dt} \\[0.5em]
+    &= \frac{d\theta}{dt}
+\end{align*}
+
+Thus, we obtain the important result:
+\[
+\left|\frac{d\vec{A}(t)}{dt}\right| = |\vec{A}| \frac{d\theta}{dt}
+\]
+
+This shows that when $\vec{A}$ changes only in direction (not magnitude), the rate of change depends on the angular velocity $\frac{d\theta}{dt}$.
+
+\subsection*{Combining the two cases}
+For vectors whose rates of change are neither orthogonal nor parallel to the vector, we can decompose the changes into orthogonal and parallel components:
+\[
+\left|\frac{d\vec{A}{\perp}}{dt}\right| = |\vec{A}| \frac{d\theta}{dt} \quad \text{(changes direction)}
+\]
+\[
+\left|\frac{d\vec{A}{\parallel}}{dt}\right| = \frac{d|\vec{A}|}{dt} \quad \text{(changes magnitude)}
+\]
+where the perpendicular component controls direction change and the parallel component controls magnitude change.
+\end{document}

@@ -1,0 +1,115 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Kinematical Equations}}
+\author{Robert O'Connell}
+\date{29th September 2025}
+\begin{document}
+\maketitle
+
+\section*{Kinematic Vector Definitions}
+
+Each of the kinematic quantities (position, displacement, velocity, etc.) are defined as follows:
+
+\subsection*{Position Vector}
+
+The position vector at time $t$ is given by:
+\[
+\vec{r}(t) = \begin{bmatrix} x(t) \\ y(t) \end{bmatrix}
+\]
+
+\subsection*{Displacement Vector}
+
+The displacement vector from time $t_1$ to time $t_2$ is:
+\begin{align*}
+\vec{s}(t_1, t_2) &= \vec{r}(t_2) - \vec{r}(t_1) \\
+&= \begin{bmatrix} x(t_2) - x(t_1) \\ y(t_2) - y(t_1) \end{bmatrix}
+\end{align*}
+
+\subsection*{Velocity Vector}
+
+The instantaneous velocity at time $t$ is:
+\begin{align*}
+\vec{v}(t) &= \lim_{\Delta t\to0}\frac{\vec{r}(t + \Delta t) - \vec{r}(t)}{\Delta t} \\
+&= \frac{d\vec{r}}{dt}
+\end{align*}
+
+\subsection*{Acceleration Vector}
+
+The instantaneous acceleration at time $t$ is:
+\begin{align*}
+\vec{a}(t) &= \lim_{\Delta t\to0}\frac{\vec{v}(t + \Delta t) - \vec{v}(t)}{\Delta t} \\
+&= \frac{d\vec{v}}{dt}
+\end{align*}
+
+\subsection*{Component-wise Representation}
+
+The position vector can be written in component form as:
+\[
+\vec{r}(t) = x(t)\hat{i} + y(t)\hat{j}
+\]
+
+By differentiating with respect to time:
+\begin{align*}
+    \vec{v}(t) &= \frac{dx(t)}{dt}\hat{i} + x(t)\frac{d\hat{i}}{dt} + \frac{dy(t)}{dt}\hat{j} + y(t)\frac{d\hat{j}}{dt} \\
+    &= \frac{dx(t)}{dt}\hat{i} + \frac{dy(t)}{dt}\hat{j}
+\end{align*}
+
+\noindent
+Note that $\frac{d\hat{i}}{dt} = \frac{d\hat{j}}{dt} = 0$ since the Cartesian basis vectors are constant (independent of time).
+
+\noindent
+The acceleration can similarly be decomposed:
+\[
+\vec{a}(t) = \frac{d^2x(t)}{dt^2}\hat{i} + \frac{d^2y(t)}{dt^2}\hat{j}
+\]
+
+\noindent
+These equations can also be extended to three dimensions by adding a $z$-component with basis vector $\hat{k}$.
+
+\newpage
+
+\section*{Formal Solution of Kinematic Equations}
+
+Suppose $\vec{a}(t)$ is known. How do we determine $\vec{r}(t)$ and $\vec{v}(t)$?
+
+\noindent
+In three dimensions, the acceleration vector is:
+\begin{align*}
+    \vec{a}(t) &= \frac{dv_x(t)}{dt}\hat{i} + \frac{dv_y(t)}{dt}\hat{j} + \frac{dv_z(t)}{dt}\hat{k} \\ 
+    &= a_x(t)\hat{i} + a_y(t)\hat{j} + a_z(t)\hat{k}
+\end{align*}
+
+\noindent
+Focusing on the $x$-component:
+\begin{align*}
+    \frac{dv_x(t)}{dt} &= a_x(t) \\
+    \int_{v_x(t_0)}^{v_x(t)} dv_x &= \int_{t_0}^{t} a_x(t')\,dt' \\
+    v_x(t) - v_x(t_0) &= \int_{t_0}^{t} a_x(t')\,dt' \\
+    v_x(t) &= v_x(t_0) + \int_{t_0}^{t} a_x(t')\,dt'
+\end{align*}
+
+\noindent
+Returning to three dimensions, the velocity vector is:
+\[
+\vec{v}(t) = \vec{v}(t_0) + \int_{t_0}^{t} \vec{a}(t')\,dt'
+\]
+
+\noindent
+Similarly, we can determine the position vector. Starting from $\frac{d\vec{r}}{dt} = \vec{v}(t)$:
+\[
+\vec{r}(t) = \vec{r}(t_0) + \int_{t_0}^{t} \vec{v}(t')\,dt'
+\]
+
+\noindent
+These integral equations allow us to find the velocity and position given the acceleration and appropriate initial conditions $\vec{v}(t_0)$ and $\vec{r}(t_0)$.
+
+\end{document}

@@ -1,0 +1,313 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Real Analysis HW 4}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+
+\subsection*{BS - Page 67 Exercise 13}
+Use the Squeeze Theorem to determine the limits of 
+\begin{itemize}
+    \item \(\left(n^{\frac{1}{n^2}}\right)\)
+    \item \(\left( (n!)^{\frac{1}{n^2}}\right)\)
+\end{itemize}
+
+\subsubsection*{(a)}
+\[
+n^{\frac{1}{n^2}} = e^{\ln(n^{\frac{1}{n^2}})} = e^{\frac{\ln(n)}{n^2}}
+\]
+Now we only need to condsider \(\frac{\ln(n)}{n^2}\)
+\\
+
+Since \(\ln(n) \geq 0 \ \forall \ n\) and \(\ln(n) \leq n \ \forall \ n\), proofs at the end of this question, we have
+\[
+0 \leq \frac{\ln(n)}{n^2} \leq \frac{n}{n^2} = \frac{1}{n}
+\]
+
+Then by Squeeze Theorem, since \(\frac{1}{n} \rightarrow 0\), we have that \(\frac{\ln(n)}{n^2}\) converges to \(0\)
+\\
+
+Thus \(e^{\frac{\ln(n)}{n^2}} = n^{\frac{1}{n^2}}\) converges to \(e^0 = 1\)
+\\
+
+\subsubsection*{(b)}
+
+Similarly for the second limit we get,
+\[
+(n!)^\frac{1}{n^2} = e^{\frac{\ln(n!)}{n^2}}
+\]
+
+\[
+\frac{\ln(n!)}{n^2} = \frac{1}{n^2} (\ln(n) + \ln(n-1) + \dots + \ln(1))
+\]
+
+Then since \(\ln(n) \leq \ln(n+1) \ \forall \ n\) we get,
+\[
+0 \leq \frac{\ln(n!)}{n^2} \leq \frac{1}{n^2}(n\ln(n))
+\]
+\[
+0 \leq \frac{\ln(n!)}{n^2} \leq \frac{1}{n}(\ln(n)) 
+\]
+
+We have \(\ln(n) \leq n \Rightarrow \ln(\sqrt{n}) \leq \sqrt{n} \Rightarrow \ln(n) \leq 2\sqrt{n}\)
+\[
+0 \leq \frac{\ln(n!)}{n^2} \leq \frac{2\sqrt{n}}{n} = \frac{2}{\sqrt{n}}
+\]
+As \(n \rightarrow \infty, \sqrt{n} \rightarrow \infty\), since we know \(\frac{1}{n} \rightarrow 0\) 
+then \(\frac{2}{\sqrt{n}} \rightarrow 0\)
+
+Thus \(\frac{\ln(n!)}{n^2}\) too converges to \(0\), by Squeeze Theorem
+\\
+
+Thus \(e^{\frac{\ln(n!)}{n^2}} = (n!)^{\frac{1}{n^2}}\) converges to \(e^0 = 1\)
+\\
+
+\subsubsection*{Proofs of properties used}
+
+\begin{itemize}
+    \item I will prove \(\ln(n) \geq 0 \ \forall \ n\) by induction,
+
+    Base Case:
+    \[
+    \ln(1) = 0 \geq 0
+    \]
+
+    Induction Step:
+
+    Assume it holds for \(n = k\)
+    \begin{align*}
+        \ln(k) \geq 0 \\
+        k \geq e^0 = 1 \\
+        k + 1 \geq 2 \\
+        \ln(k+1) \geq \ln(2) \geq 0    
+    \end{align*}
+    Thus \(\ln(n) \geq 0 \ \forall \ n\) 
+    \\
+
+    \item \(\ln(n) \leq n \ \forall \ n\) will also be proven by induction
+
+    Base Case:
+    \[
+    \ln(1) = 0 \leq 1
+    \]
+
+    Induction Step:
+
+    Assume it holds for \(n=k\)
+    \begin{align*}
+        \ln(k) \leq k \\
+        k \leq e^k \\
+        ke \leq e^{k+1} \\
+    \end{align*}
+
+    Also \(k + 1 \leq ke \ \forall \ k\)
+    
+    \begin{itemize}
+        \item Base Case:
+    \[
+    2 \leq e
+    \]
+
+    Induction Step:
+
+    Assume it holds for \(k = m\)
+    \begin{align*}
+        m + 1 \leq me \\
+        m + 1 + e \leq e(m+1) \\
+        m+ 2 \leq m+ 1 + e \leq e(m+1)
+    \end{align*}
+    \end{itemize}
+
+    Then 
+    \begin{align*}
+        k + 1 \leq ke \leq e^{k +1 }\\
+        \ln(k+1) \leq k + 1
+    \end{align*}
+    Thus by induction, \(\ln(n) \leq n \ \forall \ n\)
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\subsection*{BS - Page 80 Exercise 5}
+Let \(X = \{x_n\}\) and \(Y = \{y_n\}\) be given sequences and let the "shuffled" 
+sequence \(Z= \{z_n\}\) be defined by \(z_1 = x_1, z_2 = y_1, \dots, z_{2n-1} = x_n, z_{2n} = y_n, \dots\) 
+
+Show that \(Z\) is convergent iff both \(X\) and \(Y\) are convergent and \(\lim X = \lim Y\)
+\\
+
+(\(\Leftarrow\))
+
+Assume \(\{x_n\}, \{y_n\}\) convergent, both with limit \(L\)
+\[
+\Rightarrow \forall \ \epsilon >0 \ \exists \ N_1, N_2 \in \mathbb{N} \text{ such that }
+\]
+\begin{itemize}
+    \item \(|x_n - L| < \epsilon  \ \forall \ n \geq N_1\)
+    \item \(|y_n - L| < \epsilon  \ \forall \ n \geq N_2\)
+\end{itemize}
+
+\(\{z_n\}\) convergent  with limit \(z\) if \(\forall \ \epsilon > 0 \ \exists \ N_3 \in \mathbb{N} 
+\text{ such that } |z_n -z| < \epsilon \ \forall \ n \geq N_3 \)
+
+There are two cases for each \(z_n\)
+\[
+z_n = \begin{cases}
+    x_{\frac{n+1}{2}}, \quad n \text{ odd} \\
+    y_{\frac{n}{2}}, \quad n \text{ even}
+\end{cases}
+\]
+
+\(\forall \ n \geq \max\{N_1, N_2\}\), we have \(|x_n - L| < \epsilon \) and \(|y_n -L| < \epsilon \)
+
+\(\Rightarrow \forall \ n \geq \max\{2N_1, 2N_2\}\), we have \(|x_{\frac{n+1}{2}} - L| < \epsilon \) if \(n\) is odd
+and \(|y_{\frac{n}{2}} -L| < \epsilon \) if \(n\) is even.
+
+\[
+\Rightarrow \forall \ \epsilon >0 \ \exists \ N_3 \in \mathbb{N} \text{ such that } |z_n - L| < \epsilon  \ \forall \ n \geq N_3
+\]
+
+\(\Rightarrow \{z_n\}\) convergent with limit \(L\)
+\\
+
+(\(\Rightarrow\))
+
+Assume \(\{z_n\}\) convergent with limit \(L\)
+\[
+\forall \ \epsilon >0 \ \exists \ N_1 \in \mathbb{N} \text{ such that } |z_n - L| < \epsilon  \ \forall \ n \geq N_1
+\]
+
+There are two cases for each \(z_n\)
+\[
+z_n = \begin{cases}
+    x_{\frac{n+1}{2}}, \quad n \text{ odd} \\
+    y_{\frac{n}{2}}, \quad n \text{ even}
+\end{cases}
+\]
+
+
+\(\forall \ n \geq N_1,\) of the form \(n = 2k + 1, k \in \mathbb{N}\) \(\Rightarrow |x_{k+1} - L| < \epsilon \) 
+\(\forall \ k \geq \frac{N_1 - 1}{2}\)
+\\
+
+\(\forall \ n \geq N_1,\) of the form \(n = 2k, k \in \mathbb{N}\) \(\Rightarrow |y_k - L| < \epsilon \) 
+\(\forall \ k \geq \frac{N_1}{2}\)
+
+
+\[
+\Rightarrow \forall \ \epsilon >0 \ \exists \ N_2 \in \mathbb{N} \text{ such that }
+\]
+\begin{itemize}
+    \item \(|x_n - L| < \epsilon  \ \forall \ n \geq N_2\)
+    \item \(|y_n - L| < \epsilon  \ \forall \ n \geq N_2\)
+\end{itemize}
+
+
+\subsection*{BS - Page 80 Exercise 7}
+Establish the convergence and find the limits of the following sequences
+\begin{itemize}
+    \item \(\left(\left(1+ \frac{1}{n^2}\right)^{n^2}\right)\)
+    \item \(\left(\left(1+ \frac{1}{2n}\right)^{n}\right)\)
+    \item \(\left(\left(1+ \frac{1}{n^2}\right)^{2n^2}\right)\)
+    \item \(\left(\left(1+ \frac{2}{n}\right)^{n}\right)\)
+\end{itemize}
+
+We know \((1+\frac{1}{k})^k\) converges to \(e\)
+\begin{itemize}
+    \item We have \(\{x_n\} = (1+\frac{1}{n^2})^{n^2}\)
+    \\
+    Let \(\{x_k\} = (1+ \frac{1}{k})^k\) \\
+    Then \(\{x_n\}\) is a subsequence of \(\{x_k\}\), with the indices being the perfect squares,
+    \\ 
+    Since we know \(\{x_k\}\) converges to \(e\), we also have that it's subsequence \(\{x_n\}\) converges to \(e\)
+
+    \item We have \(\{x_n\} = (1+ \frac{1}{2n})^n = ((1+ \frac{1}{2n})^{2n})^{\frac{1}{2}}\)
+    \\
+    Let \(\{x_m\} = (1+ \frac{1}{2n})^{2n}\)
+    \\
+    Similarly, we have \(\{x_m\}\) as a subsequence of \(\{x_k\}\), with the indices being
+    multiples of \(2\), thus \(\{x_m\}\) converges to \(e\)
+    \\
+    Since \(\{x_m\}\) converges to \(e\), we have that \(\{x_n\} = (\{x_m\})^{\frac{1}{2}}\) converges to \(\sqrt{e}\)
+
+    \item We have \(\{x_n\} = (1+ \frac{1}{n^2})^{2n^2} = ((1+ \frac{1}{n^2})^{n^2})^{2}\)
+    \\
+    Let \(\{x_m\} = (1+ \frac{1}{n^2})^{n^2}\)
+    \\
+    From earlier, we have \(\{x_m\}\) converges to \(e\)
+    \\
+    Since \(\{x_m\}\) converges to \(e\), we have that \(\{x_n\} = (\{x_m\})^2\) converges to \(e^2\)
+
+    \item We have \(\{x_n\} = (1+ \frac{2}{n})^n = ((1+ \frac{1}{\frac{n}{2}})^{\frac{n}{2}})^2\)
+    \\
+    Let \(\{x_m\} = (1+ \frac{1}{\frac{n}{2}})^{\frac{n}{2}}\)
+    \\
+    We have \(\{x_m\}\) converges to \(e\), as when \(k \rightarrow \infty\) in \(\{x_k\}\), 
+    \(m \rightarrow \infty\) in \(\{x_m\}\)
+    \\
+    Since \(\{x_m\}\) converges to \(e\), we have that \(\{x_n\} = (\{x_m\})^{2}\) converges to \(e^2\)
+\end{itemize}
+
+\subsection*{BS - Page 80 Exercise 11}
+Suppose that \(x_n \geq 0 \) for all \(n \in \mathbb{N}\) and that \(\lim((-1)^n x_n)\)
+exists. Show that \(\{x_n\}\) converges
+\\
+
+Let \(\lim((-1)^n x_n) = x\)
+\[
+\Rightarrow \forall \ \epsilon > 0 \ \exists \ N \in \mathbb{N} \text{ such that } |(-1)^nx_n - x| < \epsilon \ \forall \ n \geq N
+\]
+
+Then for any even \(k\), \(k\geq N\)
+\[
+\Rightarrow |(-1)^k x_k - x| < \epsilon 
+\]
+\[
+\Rightarrow |x_k - x| < \epsilon 
+\]
+
+
+Also for any odd \(p\), \(p \geq N\)
+\[
+\Rightarrow |(-1)^px_p - x| < \epsilon 
+\]
+\[
+\Rightarrow |x_p + x| < \epsilon 
+\]
+
+Since \(x_n \geq 0 \ \forall \ n\) and \(\epsilon  > 0\)
+\[
+\Rightarrow x \geq 0, \quad x \leq 0
+\]
+Because in the first equation if \(x < 0\) it implies \(x_k - x > 0\) meaning you could pick \(\epsilon  = \frac{-x}{2}\)
+to get a contradiction, and in the second if \(x > 0\) implies \(x_p + x > 0\) meaning you could pick \(\epsilon  = \frac{x}{2}\)
+to get a contradiction
+
+Thus \(x=0\)
+\\
+
+Then
+\[
+\Rightarrow \forall \ \epsilon > 0 \ \exists \ N \in \mathbb{N} \text{ such that } |(-1)^nx_n | < \epsilon \ \forall \ n \geq N
+\]
+\[
+\Rightarrow x_n < \epsilon 
+\]
+Hence \(\{x_n\}\) converges to \(0\)
+\end{document}

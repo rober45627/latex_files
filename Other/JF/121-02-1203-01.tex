@@ -1,0 +1,206 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Real Analysis HW 6}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+
+\subsection*{BS - Page 104 Exercise 1}
+Determine a condition on \(|x-1|\) that will assure that
+\begin{itemize}
+    \item \(|x^2 -1| < \frac{1}{2}\)
+    \item \(|x^2 -1| < \frac{1}{10^{-3}}\)
+    \item \(|x^2 -1| < \frac{1}{n}\) for a given \(n \in \mathbb{N}\)
+    \item \(|x^3 -1| < \frac{1}{n}\) for a given \(n \in \mathbb{N}\)
+\end{itemize}
+
+If we want \(|x^2 - 1|< \alpha\) for some \(\alpha \in \mathbb{R}\), we need
+\[
+|x+1||x-1| < \alpha
+\]
+First we restrict \(|x-1| < 1 \Rightarrow |x+1| < 3\)
+\[
+\Rightarrow |x-1| < \min\{1, \frac{\alpha}{3}\}
+\]
+
+Applying this to the first three parts, we get
+\begin{itemize}
+    \item \(|x-1| < \min\{1, \frac{1}{6}\} = \frac{1}{6}\)
+    \item \(|x-1| < \min\{1, \frac{100}{3}\} = 1\)
+    \item \(|x-1| < \min\{1, \frac{1}{3n}\} \)
+\end{itemize}
+
+For the last part, we need \(|x^3-1| < \frac{1}{n}\), then
+\[
+|x^3 -1| = |x-1|||x^2 + x + 1| < \frac{1}{n}
+\]
+Again if we restrict \(|x-1| < 1 \Rightarrow |x^2 + x + 1| < 4 + 2 + 1 = 7 \), since \(x \in (0,2)\)
+\[
+|x - 1| < \min\{1, \frac{1}{7n}\}
+\]
+
+\subsection*{BS - Page 104 Exercise 13}
+Let \(c \in \mathbb{R}\) and let \(f:\mathbb{R} \rightarrow \mathbb{R}\) be such that
+\(\lim_{x\to c}{(f(x))^2} = L\) 
+\begin{itemize}
+    \item Show that if \(L = 0\), then \(\lim_{x\to c}{f(x)} = 0\)
+    \item Show by example that if \(L \neq 0\), then \(f\) may not have a limit at \(c\)
+\end{itemize}
+
+
+\subsubsection*{(a)}
+We have \(\lim_{x\to c}{(f(x))^2} = 0\), thus
+\[
+\forall \ \epsilon > 0 \ \exists \ \delta \text{ such that } 0 < |x-c| < \delta \Rightarrow |f(x)^2| < \epsilon 
+\]
+\[
+\Rightarrow f(x)^2 < \epsilon 
+\]
+\[
+\Rightarrow |f(x)|^2 < \epsilon 
+\]
+Also, \(\sqrt{\epsilon} > 0\), \(\Rightarrow |f(x)| < \sqrt{\epsilon} \)
+
+Thus \(\lim_{x\to c}{f(x)} = 0\)
+
+\subsubsection*{(b)}
+Let \(f(x) = \begin{cases}
+    -1, \quad x \leq c \\
+    1, \quad x > c
+\end{cases}\)
+\\
+
+Firstly, \(f(x)^2 = 1 \ \forall \ x\), hence \(\lim_{x\to c}{(f(x))^2} = 1 \neq 0\)
+
+But,
+
+Assume FTSOC, \(\lim_{x\to c}{f(x)}\) exists
+\[
+\Rightarrow \forall \ \epsilon > 0 \ \exists \ \delta \text{ such that } 0 < |x - c| < \delta \Rightarrow |f(x) - L| < \epsilon 
+\]
+
+For \(\epsilon = 0.1\) there exists \(\delta_0\) so that
+
+If \(x = c - \frac{\delta_0}{2}\), \(f(x) = -1\) then
+\[
+|-1 - L| < 0.1
+\]
+
+If \( x = c + \frac{\delta_0}{2}\), \(f(x) = 1\) then
+\[
+|1- L| < 0.1
+\]
+
+Clearly no such \(L\) exists, a contradiction
+
+Thus \(\lim_{x\to c}{f(x)}\) does not exist
+
+
+
+\subsection*{BS - Page 111 Exercise 12}
+Let \(f: \mathbb{R} \rightarrow \mathbb{R}\) be such that \(f(x+y) = f(x) + f(y)\) forall
+\(x,y \in \mathbb{R}\). Assume that \(\lim_{x\to 0}{f}\) exists. Prove that \(L=0\) and 
+then prove that \(f\) has a limit at every point \(c \in \mathbb{R}\)
+
+\subsubsection*{(a)}
+
+Since \(\lim_{x\to 0}{f(x)}\) exists and say is equal to \(L\), we have
+\[
+\forall \ \epsilon > 0 \ \exists \ \delta \text{ such that } 0 < |x| < \delta \Rightarrow |f(x) - L| < \epsilon 
+\]
+
+Also, we have the property that \(f(x+y) = f(x) + f(y)\), thus \(f(0) = f(x) + f(-x)\) then \(-f(x) = f(-x)\)
+
+Then multiplying by \(-1\) in our absolute value, we get,
+\[
+|-f(x) + L| < \epsilon
+\]
+\[
+|f(-x) + L| < \epsilon 
+\]
+Thus for \(0 < |x| < \delta\), both of the inequalites hold
+\[
+|f(-x) + L| < \epsilon, \quad |f(x) - L| < \epsilon 
+\]
+
+Letting \(x = \frac{\delta}{2}\), we have \(|f(-\frac{\delta}{2}) + L| < \epsilon \) and \(|f(\frac{\delta}{2}) - L| < \epsilon \)
+
+Also letting \(x = - \frac{\delta}{2}\), we have \(|f(\frac{\delta}{2}) + L| < \epsilon \) and \(|f(-\frac{\delta}{2}) - L| < \epsilon \)
+\\
+
+Thus, we see that \(f(\frac{\delta}{2})\) is \(\epsilon\) close to \(-L\) and \(L\), for this to hold it for all \(\epsilon\) must be that \(L = 0\)
+
+\subsubsection*{(b)}
+
+\begin{align*}
+    f(c) &= f(0 + c) \\
+    &= f(0) + f(c) \\
+    &= 0 + f(c) \\
+    &= \lim_{\alpha \to 0}{f(\alpha)}  + f(c)\\
+    &= \lim_{x\to c}{f(x - c)} + f(c) \\
+    &= \lim_{x\to c}{[f(x- c) + f(c)]} \\
+    &= \lim_{x\to c}{f(x)}
+\end{align*}
+
+Hence \(\lim_{x\to c}{f(x)}\) does exist, given that \(\lim_{x\to 0}{f(x)}\) exists
+
+Moreover the limit is equal to \(f(c)\)
+
+
+
+\subsection*{BS - Page 111 Exercise 14}
+Let \(A \subseteq \mathbb{R}\), let \(f: A \rightarrow \mathbb{R}\) and let \(c \in \mathbb{R}\)
+be a cluster point of \(A\). In addition, suppose that \(f(x) \geq 0, \ \forall \ x \in A\)
+and let \(\sqrt{f}\) be the function defined for \(x \in A\) by \((\sqrt{f})(x) := \sqrt{f(x)}\).
+If \(\lim_{x\to c}{f}\) exists, prove that \(\lim_{x\to c}{\sqrt{f}} = \sqrt{\lim_{x\to c}{f}}\)
+
+\[
+L = \lim_{x\to c}{f(x)}
+\]
+
+\textbf{Case (i): \(L = 0\)}
+
+If \(\epsilon > 0 \Rightarrow \epsilon^2 > 0 \)
+
+If \(L=0\), we have \(\forall \ \epsilon > 0 \ \exists \ \delta \text{ such that } 0 < |x-c| < \delta \Rightarrow |f(x)| < \epsilon^2\)
+\[
+\Rightarrow \sqrt{|f(x)|} < \epsilon 
+\]
+\[
+\Rightarrow \sqrt{f(x)} < \epsilon 
+\]
+\[
+\lim_{x\to c}{\sqrt{f(x)}} = \sqrt{\lim_{x\to c}{f(x)}}
+\]
+\\
+
+\textbf{Case (ii): \(L > 0\)}
+
+If \(\epsilon > 0 \) \(\Rightarrow \epsilon \sqrt{L}  > 0\)
+
+Then, we have \(\forall \ \epsilon > 0 \ \exists \ \delta \text{ such that } 0 < |x-c| < \delta \Rightarrow |f(x)- L| < \epsilon \sqrt{L} \)
+
+
+\begin{align*}
+    |\sqrt{f(x)} - \sqrt{L}| &= \frac{|\sqrt{f(x)} - \sqrt{L}||\sqrt{f(x)} + \sqrt{L}|}{|\sqrt{f(x) + \sqrt{L}|}} \\
+    &= \frac{|f(x) - L|}{\sqrt{f(x)} + \sqrt{L}} \\
+    &\leq \frac{|f(x)-L|}{\sqrt{L}} \\
+    &< \frac{\sqrt{L} \epsilon }{\sqrt{L}} \\
+    &< \epsilon 
+\end{align*}
+
+Therefore \(\forall \ \epsilon > 0 \ \exists \ \delta \text{ such that } 0 < |x-c| < \delta \Rightarrow |\sqrt{f(x)}- \sqrt{L}| < \epsilon \)
+
+Thus \(\lim_{x\to c}{\sqrt{f(x)}} = \sqrt{\lim_{x\to c}{f(x)}}\)
+\end{document}

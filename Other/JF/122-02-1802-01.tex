@@ -1,0 +1,363 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Advanced Calculus HW 4}} 
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+
+
+\subsection*{Question 1}
+\subsubsection*{(a)}
+We have
+\[
+\vec{B}(t) = \frac{\vec{r}\ '(t) \times \vec{r}\ ''(t)}{|\vec{r}\ '(t) \times \vec{r}\ ''(t)|}
+\]
+Differentiating we get
+\[
+\frac{d}{dt}(\vec{r}\ ' \times \vec{r}\ '') = \vec{r}\ '' \times \vec{r}\ '' + \vec{r}\ ' \times \vec{r}\ ''' = \vec{r}\ ' \times \vec{r}\ ''',
+\]
+and $\frac{d}{dt}|\vec{u}| = \frac{\vec{u} \cdot \vec{u}'}{|\vec{u}|}$, then we get
+\[
+\vec{B}' = \frac{\vec{r}\ ' \times \vec{r}\ '''}{|\vec{r}\ ' \times \vec{r}\ ''|}
+- \frac{(\vec{r}\ ' \times \vec{r}\ '')}{|\vec{r}\ ' \times \vec{r}\ ''|^2}
+\cdot
+\frac{(\vec{r}\ ' \times \vec{r}\ '') \cdot (\vec{r}\ ' \times \vec{r}\ ''')}{|\vec{r}\ ' \times \vec{r}\ ''|}
+\]
+\[
+= \frac{\vec{r}\ ' \times \vec{r}\ '''}{|\vec{r}\ ' \times \vec{r}\ ''|}
+- \frac{\bigl[(\vec{r}\ ' \times \vec{r}\ '') \cdot (\vec{r}\ ' \times \vec{r}\ ''')\bigr](\vec{r}\ ' \times \vec{r}\ '')}{|\vec{r}\ ' \times \vec{r}\ ''|^3}.
+\]
+Calculating \(\vec{N}\) using  $\vec{N} = \vec{B} \times \vec{T}$, 
+\[
+\vec{N}
+= \frac{\vec{r}\ ' \times \vec{r}\ ''}{|\vec{r}\ ' \times \vec{r}\ ''|}
+\times \frac{\vec{r}\ '}{|\vec{r}\ '|}
+= \frac{(\vec{r}\ ' \times \vec{r}\ '') \times \vec{r}\ '}{|\vec{r}\ '||\vec{r}\ ' \times \vec{r}\ ''|}.
+\]
+Expanding using property $(\vec{a} \times \vec{b}) \times \vec{c} = (\vec{a} \cdot \vec{c})\vec{b} - (\vec{b} \cdot \vec{c})\vec{a}$:
+\[
+(\vec{r}\ ' \times \vec{r}\ '') \times \vec{r}\ '
+= (\vec{r}\ ' \cdot \vec{r}\ ')\vec{r}\ '' - (\vec{r}\ '' \cdot \vec{r}\ ')\vec{r}\ '
+= |\vec{r}\ '|^2 \vec{r}\ '' - (\vec{r}\ ' \cdot \vec{r}\ '')\vec{r}\ ',
+\]
+\[
+\vec{N} = \frac{|\vec{r}\ '|^2 \vec{r}\ '' - (\vec{r}\ ' \cdot \vec{r}\ '')\vec{r}\ '}{|\vec{r}\ '||\vec{r}\ ' \times \vec{r}\ ''|}.
+\]
+Now we compute $\vec{B}' \cdot \vec{N}$. The second term of $\vec{B}'$ involves
+$(\vec{r}\ ' \times \vec{r}\ '') \cdot \vec{N}$, which vanishes since
+$\vec{r}\ ' \times \vec{r}\ ''$ is parallel to $\vec{B}$ and $\vec{B}$ is perp to $\vec{N}$.
+Therefore
+\[
+\vec{B}' \cdot \vec{N}
+=
+\frac{\vec{r}\ ' \times \vec{r}\ '''}{|\vec{r}\ ' \times \vec{r}\ ''|}
+\cdot
+\frac{|\vec{r}\ '|^2 \vec{r}\ '' - (\vec{r}\ ' \cdot \vec{r}\ '')\vec{r}\ '}
+{|\vec{r}\ '||\vec{r}\ ' \times \vec{r}\ ''|}
+\]
+\[
+=
+\frac{1}{|\vec{r}\ '||\vec{r}\ ' \times \vec{r}\ ''|^2}
+\Big[
+(\vec{r}\ ' \times \vec{r}\ ''') \cdot
+\bigl(|\vec{r}\ '|^2 \vec{r}\ '' - (\vec{r}\ ' \cdot \vec{r}\ '')\vec{r}\ '\bigr)
+\Big].
+\]
+Since $(\vec{r}\ ' \times \vec{r}\ ''') \cdot \vec{r}\ ' = 0$ (perp)
+and $(\vec{r}\ ' \times \vec{r}\ ''') \cdot \vec{r}\ '' 
+= (\vec{r}\ ' \times \vec{r}\ '') \cdot \vec{r}\ '''$ (property of cross products),
+we get
+\[
+=
+-\frac{|\vec{r}\ '|^2 \, (\vec{r}\ ' \times \vec{r}\ ''') \cdot \vec{r}\ ''}
+{|\vec{r}\ '||\vec{r}\ ' \times \vec{r}\ ''|^2}
+=
+-\frac{|\vec{r}\ '| \, (\vec{r}\ ' \times \vec{r}\ '') \cdot \vec{r}\ '''}
+{|\vec{r}\ ' \times \vec{r}\ ''|^2}.
+\]
+We have, $\vec{B}' = -\tau|\vec{r}\ '|\vec{N}$,
+dotting both sides with the unit vector $\vec{N}$ gives
+$\vec{B}' \cdot \vec{N} = -\tau|\vec{r}\ '|$. 
+\[
+\Rightarrow \tau|\vec{r}\ '|
+=
+\frac{|\vec{r}\ '| \, (\vec{r}\ ' \times \vec{r}\ '') \cdot \vec{r}\ '''}
+{|\vec{r}\ ' \times \vec{r}\ ''|^2}
+\]
+\[
+\Rightarrow
+\tau
+=
+\frac{(\vec{r}\ ' \times \vec{r}\ '') \cdot \vec{r}\ '''}
+{|\vec{r}\ ' \times \vec{r}\ ''|^2}.
+\]
+
+
+\subsubsection*{(b)}
+
+First show $\vec{B}$ is constant, i.e.\ $\vec{B}' = 0$
+
+From we have (a),
+\[
+\vec{B}' = \frac{\vec{r}\ ' \times \vec{r}\ '''}{|\vec{r}\ ' \times \vec{r}\ ''|}
+- \frac{\bigl[(\vec{r}\ ' \times \vec{r}\ '') \cdot (\vec{r}\ ' \times \vec{r}\ ''')\bigr](\vec{r}\ ' \times \vec{r}\ '')}{|\vec{r}\ ' \times \vec{r}\ ''|^3}.
+\]
+
+We have $\vec{r}\ '' = \alpha(t)\vec{r}$, so
+\[
+\vec{r}\ ''' = \alpha'(t)\vec{r} + \alpha(t)\vec{r}\ '.
+\]
+
+We compute $\vec{r}\ ' \times \vec{r}\ '''$
+\[
+\vec{r}\ ' \times \vec{r}\ '''
+= \vec{r}\ ' \times \bigl(\alpha'(t)\vec{r} + \alpha(t)\vec{r}\ '\bigr)
+= \alpha'(t)(\vec{r}\ ' \times \vec{r}) + \alpha(t)(\vec{r}\ ' \times \vec{r}\ ')
+= \alpha'(t)(\vec{r}\ ' \times \vec{r}),
+\]
+and $\vec{r}\ ' \times \vec{r}\ ''$:
+\[
+\vec{r}\ ' \times \vec{r}\ ''
+= \vec{r}\ ' \times \alpha(t)\vec{r}
+= \alpha(t)(\vec{r}\ ' \times \vec{r}).
+\]
+Therefore $\vec{r}\ ' \times \vec{r}\ '''$ and $\vec{r}\ ' \times \vec{r}\ ''$ are both parallel
+to $\vec{r}\ ' \times \vec{r}$,
+
+with $\vec{w} = \vec{r}\ ' \times \vec{r}$ we have
+\[
+\vec{r}\ ' \times \vec{r}\ '' = \alpha(t)\vec{w}, \qquad \vec{r}\ ' \times \vec{r}\ ''' = \alpha'(t)\vec{w}.
+\]
+Then
+\[
+\vec{B}'
+= \frac{\alpha'(t)\vec{w}}{|\alpha(t)\vec{w}|}
+- \frac{\bigl(\alpha(t)\vec{w} \cdot \alpha'(t)\vec{w}\bigr)\,\alpha(t)\vec{w}}{|\alpha(t)\vec{w}|^3}
+= \frac{\alpha'(t)\vec{w}}{|\alpha(t)||\vec{w}|}
+- \frac{\alpha(t)\alpha'(t)|\vec{w}|^2 \cdot \alpha(t)\vec{w}}{|\alpha(t)|^3|\vec{w}|^3}.
+\]
+\[
+= \frac{\alpha'(t)\vec{w}}{|\alpha(t)||\vec{w}|}
+- \frac{\alpha'(t)\vec{w}}{|\alpha(t)||\vec{w}|}
+= \vec{0}.
+\]
+Hence $\vec{B}$ is constant
+\\
+
+Now  compute $\tau(t)$ 
+\[
+\tau = \frac{(\vec{r}\ ' \times \vec{r}\ '') \cdot \vec{r}\ '''}{|\vec{r}\ ' \times \vec{r}\ ''|^2}.
+\]
+We have $\vec{r}\ ' \times \vec{r}\ '' = \alpha(t)\vec{w}$ and
+$\vec{r}\ ''' = \alpha'(t)\vec{r} + \alpha(t)\vec{r}\ '$, so
+\[
+(\vec{r}\ ' \times \vec{r}\ '') \cdot \vec{r}\ '''
+= \alpha(t)\vec{w} \cdot \bigl(\alpha'(t)\vec{r} + \alpha(t)\vec{r}\ '\bigr)
+= \alpha(t)\alpha'(t)(\vec{r}\ ' \times \vec{r}) \cdot \vec{r}
++ \alpha(t)^2 (\vec{r}\ ' \times \vec{r}) \cdot \vec{r}\ '.
+\]
+Both terms vanish, since we are dotting a vector with a vector defined to be perpindicular
+to it
+
+Hence
+\[
+(\vec{r}\ ' \times \vec{r}\ '') \cdot \vec{r}\ ''' = 0,
+\]
+Hence
+\[
+\tau(t) = 0.
+\]
+
+
+
+
+
+
+
+
+
+
+\subsection*{Question 2}
+\[
+\vec{r}(t) = (1-t^2)\hat{i} - t^2 \hat{j}
+\]
+\[
+\vec{v}(t) = \vec{r}\ '(t) = -2t\hat{i} - 2t\hat{j}
+\]
+
+Speed is the magnitude of \(\vec{v}(t)\)
+\[
+|\vec{v}(t)|  = \sqrt{8t^2}
+\]
+
+The minimum speed of the particle is when \(t = 0, |\vec{v}(t)| = 0\), 
+since \(\sqrt{x} \geq 0 \ \forall x\)
+
+The corresponding location is \(\vec{r}(0)\)
+\[
+\vec{r}(0) = \hat{i}
+\]
+
+\subsection*{Question 3}
+\subsubsection*{(a)}
+\[
+\vec{r}(t) = (t^2 - 2t)\hat{i} + (t^2 - 4)\hat{j}
+\]
+\[
+\vec{v}(t) = (2t-2)\hat{i} + 2t \hat{j}
+\]
+\[
+\vec{a}(t) = 2\hat{i} + 2\hat{j}
+\]
+
+\[
+|\vec{v}(t)| = 2\sqrt{2t^2 - 2t +1}
+\]
+\[
+\vec{v}(t) \cdot \vec{a}(t) = 8t-4
+\]
+\[
+\vec{v}(t) \times \vec{a}(t) = ((4t-4) - 4t)\hat{k} = 4\hat{k}
+\]
+\[
+|\vec{v}(t) \times \vec{a}(t)| = 4
+\]
+
+\[
+\vec{T}(t) = \frac{(2t-2)\hat{i} + 2t \hat{j}}{2\sqrt{2t^2 - 2t +1}}
+\]
+
+In arbitrary parameterizations
+\[
+\vec{N}(t) = \frac{(\vec{v}(t) \times \vec{a}(t))\times \vec{v(t)}}{|(\vec{v}(t) \times \vec{a}(t))\times \vec{v(t)}|}
+\]
+
+\[
+(\vec{v}(t) \times \vec{a}(t))\times \vec{v(t)} = \det \begin{bmatrix}
+    \hat{i} & \hat{j} & \hat{k} \\
+    0 & 0 & 4 \\
+    2t-2 & 2t & 0
+\end{bmatrix} = (-8t)\hat{i} + (8t-8)\hat{j} 
+\]
+\[
+|(\vec{v}(t) \times \vec{a}(t))\times \vec{v(t)}| = \sqrt{128t^2 - 128t + 64}
+\]
+
+\[
+\vec{N}(t) = \frac{(-8t)\hat{i} + (8t-8)\hat{j}}{\sqrt{128t^2 - 128t + 64}}
+\]
+
+Then,
+
+\[
+a_T = \frac{8t-4}{2\sqrt{2t^2 - 2t +1}} = \frac{4t-2}{\sqrt{2t^2 - 2t +1}}
+\]
+\[
+a_N = \frac{4}{2\sqrt{2t^2 - 2t +1}} = \frac{2}{\sqrt{2t^2 - 2t +1}}
+\]
+
+\[
+\vec{a}(t) = \frac{4t-2}{\sqrt{2t^2 - 2t +1}}\frac{(2t-2)\hat{i} + 2t \hat{j}}{2\sqrt{2t^2 - 2t +1}} 
++ \frac{2}{\sqrt{2t^2 - 2t +1}} \frac{(-8t)\hat{i} + (8t-8)\hat{j}}{\sqrt{128t^2 - 128t + 64}}
+\]
+
+\[
+\kappa(t) = \frac{4}{(2\sqrt{2t^2 - 2t +1})^3} = \frac{1}{2(2t^2 - 2t +1)^{\frac{3}{2}}}
+\]
+\[
+\kappa(1) = \frac{1}{2}
+\]
+
+
+
+
+
+
+\subsubsection*{(b)}
+\[
+\vec{r}(t) = 3 \sin t \hat{i} + 2 \cos t \hat{j} - \sin 2t \hat{k}
+\]
+\[
+\vec{v}(t) = 3 \cos t \hat{i} -2 \sin t \hat{j} - 2\cos 2t \hat{k}
+\]
+\[
+\vec{a}(t) = -3 \sin t \hat{i} - 2 \cos t \hat{j} + 4 \sin 2t \hat{k}
+\]
+
+\[
+|\vec{v}(t)| = \sqrt{9 \cos^2 t + 4 \sin^2 t + 4 \cos^2 2t }
+\]
+\[
+\vec{v}(t) \cdot \vec{a}(t) = -9\cos t \sin t  + 4\sin t \cos t- 8\sin 2t \cos 2t
+\] 
+\begin{align*}
+    \vec{v}(t) \times \vec{a}(t) &= (-8\sin t \sin 2t - 4\cos t \cos 2t)\hat{i} + 
+    (12\cos t \sin 2t - 6 \sin t \cos 2t)\hat{j} + 
+    (-6\cos^2 t  - 6 \sin^2 t)\hat{k}
+    \\
+    &= -4(2\sin t \sin 2t - \cos t \cos 2t)\hat{i} + 
+    6(2\cos t \sin 2t - \sin t \cos 2t)\hat{j} + 
+    (-6)\hat{k}
+\end{align*}
+\[
+|\vec{v}(t) \times \vec{a}(t)|^2 =
+\]
+\[
+16(\sin^2 t \sin^2 2t -4\sin t \cos t \sin 2t \cos 2t
++ \cos^2 t \cos^2 2t ) + 36(4 \cos^2 t \sin^2 2t 
+- 4 \sin t \cos t \sin 2t \cos 2t + \sin^2 t \cos^2 2t) + 36
+\]
+\[
+\Rightarrow |\vec{v}(t) \times \vec{a}(t)|= \sqrt{616 \cos^2t\sin^4t + 164\cos^4t\sin^2 t + 16\cos^6t + 36\sin^6t + 36}
+\]
+
+\[
+\vec{T}(t) = \frac{3 \cos t \hat{i} -2 \sin t \hat{j} - 2\cos 2t \hat{k}}{\sqrt{9 \cos^2 t + 4 \sin^2 t + 4 \cos^2 2t }}
+\]
+
+
+Then,
+
+\[
+a_T = \frac{-9\cos t \sin t  + 4\sin t \cos t - 8\sin 2t \cos 2t}{\sqrt{9 \cos^2 t + 4 \sin^2 t + 4 \sin^2 2t }}
+\]
+\[
+a_N = \frac{\sqrt{616 \cos^2t\sin^4t + 164\cos^4t\sin^2 t + 16\cos^6t + 36\sin^6t + 36}}{\sqrt{9 \cos^2 t + 4 \sin^2 t + 4 \sin^2 2t }}
+\]
+
+We know \(\vec{a}(t) = a_T \vec{T} + a_N \vec{N}\), we can use this to solve for \(\vec{N}(t)\)
+\[
+-3 \sin t \hat{i} - 2 \cos t \hat{j} + 4 \sin 2t \hat{k} = \frac{-9\cos t \sin t + 4\sin t \cos t- 8\sin 2t \cos 2t}{\sqrt{9 \cos^2 t + 4 \sin^2 t + 4 \sin^2 2t }}
+\]
+\[
+\frac{3 \cos t \hat{i} -2 \sin t \hat{j} - 2\cos 2t \hat{k}}{\sqrt{9 \cos^2 t + 4 \sin^2 t + 4 \cos^2 2t }}
++ 
+\]
+\[
+\frac{\sqrt{616 \cos^2t\sin^4t + 164\cos^4t\sin^2 t + 16\cos^6t + 36\sin^6t + 36}}{\sqrt{9 \cos^2 t + 4 \sin^2 t + 4 \sin^2 2t }} \vec{N}
+\]
+
+I am not going to solve for  \(\vec{N}\) :( 
+\\
+
+Finally,
+\[
+\kappa(t) = \frac{\sqrt{616 \cos^2t\sin^4t + 164\cos^4t\sin^2 t + 16\cos^6t + 36\sin^6t + 36}}{(9 \cos^2 t + 4 \sin^2 t + 4 \cos^2 2t)^{\frac{3}{2}}}
+\]
+\[
+\kappa(\frac{\pi}{2}) = \frac{3}{8}
+\]
+
+
+\end{document}

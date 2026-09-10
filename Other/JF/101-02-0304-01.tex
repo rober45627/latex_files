@@ -1,0 +1,373 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Linear Algebra HW 9}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+\subsection*{Question 1}
+Let \(\vec{w_1} = \vec{v_1}\)
+
+\begin{align*}
+    \vec{w_2} &= \vec{v_2} - \frac{\langle \vec{w_1}, \vec{v_2} \rangle}{\langle \vec{w_1}, \vec{w_1} \rangle} \vec{w_1} \\
+    &= \begin{bmatrix}
+        1 \\ 0 \\ 1 
+    \end{bmatrix} - \frac{2}{6} \begin{bmatrix}
+        1 \\ 2 \\ 1 
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+        \frac{2}{3} \\ -\frac{2}{3} \\ \frac{2}{3}
+    \end{bmatrix}
+\end{align*}
+
+\begin{align*}
+\vec{w_3} &= \vec{v_3} -  \frac{\langle \vec{w_1}, \vec{v_3} \rangle}{\langle \vec{w_1}, \vec{w_1} \rangle} \vec{w_1} -  \frac{\langle \vec{w_2}, \vec{v_3} \rangle}{\langle \vec{w_2}, \vec{w_2} \rangle} \vec{w_2} \\
+&= \begin{bmatrix}
+    0 \\ 1 \\ 1
+\end{bmatrix} - \frac{3}{6}\begin{bmatrix}
+    1 \\ 2 \\ 1
+\end{bmatrix} - (0)(\dots) \\
+&= \begin{bmatrix}
+    -\frac{1}{2} \\ 0 \\ \frac{1}{2}
+\end{bmatrix}
+\end{align*}
+
+\subsection*{Question 2}
+Let the basis \(\{1,x,x^2,x^3\}\) have entries \(\vec{v_i}, \quad 1 \leq i \leq 4\)
+
+Let \(\vec{w_1} = \vec{v_1}\)
+
+\textbf{Note:}
+If \(f(x) = x^i\), \(i\) odd, \(\int_{-a}^{a} f(x) dx = 0\)
+
+\begin{align*}
+    \vec{w_2} &= \vec{v_2}  - \frac{\langle \vec{w_1}, \vec{v_2} \rangle}{\langle \vec{w_1}, \vec{w_1} \rangle} \vec{w_1} \\
+    &= x - \frac{\int_{-2}^{2} x dx}{\int_{-2}^{2} dx} \\
+    &= x
+\end{align*}
+
+\begin{align*}
+    \vec{w_3} &= x^2 - \frac{\int_{-2}^{2}x^2 dx}{\int_{-2}^{2}dx} - \frac{\int_{-2}^{2}x^3 dx}{\int_{-2}^{2} x^2 dx}x \\
+    &= x^2 - \frac{\frac{16}{3}}{4} \\
+    &= x^2 - \frac{4}{3}
+\end{align*}
+
+\begin{align*}
+    \vec{w_4} &= x^3 - \frac{\int_{-2}^{2}x^3dx}{\int_{-2}^{2} dx} - \frac{\int_{-2}^{2}x^4 dx}{\int_{-2}^{2}x^2 dx}x - \frac{\int_{-2}^{2}(x^2 - \frac{4}{3})(x^3) dx}{\int_{-2}^{2}x^4 dx}x^2 \\
+    &= x^3 - \frac{\frac{64}{5}}{\frac{16}{3}}x \\
+    &= x^3 - \frac{12}{5}x
+\end{align*}
+
+Hence \(\left\{ \vec{w_1}, \vec{w_2}, \vec{w_3}, \vec{w_4} \right\}\) form an orthogonal basis for \(\mathbb{P}_2[x]\) with the given inner product
+
+To get an orthonormal basis, we simply divide by the norm of the vectors w.r.t. to the inner product
+
+\[
+\langle \vec{w_1}, \vec{w_1} \rangle = \int_{-2}^{2} dx = 4
+\]
+\[
+\langle \vec{w_2}, \vec{w_2} \rangle = \int_{-2}^{2} x^2 dx = \frac{16}{3}
+\]
+\[
+\langle \vec{w_3}, \vec{w_2} \rangle = \int_{-2}^{2} x^4 dx = \frac{64}{5}
+\]
+\[
+\langle \vec{w_4}, \vec{w_4} \rangle = \int_{-2}^{2} x^6 dx = \frac{256}{7}
+\]
+
+Hence \(\left\{ \frac{1}{4}, \frac{3x}{16}, \frac{5(x^2 - \frac{4}{3})}{64}, \frac{7(x^3 - \frac{12}{5}x)}{256}\right\}\), forms an orthonormal basis
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{Question 3}
+\subsubsection*{(a)}
+(i)
+
+Let \(A,B,C \in M_{2\times 2}(\mathbb{R})\), \(\lambda \in \mathbb{R}\)
+
+Checking for linearity in the first variable, 
+\begin{align*}
+    \langle \lambda A + C , B\rangle &= \mathrm{tr}((\lambda A + C)B) \\
+    &= \mathrm{tr}(\lambda AB + CB) \\
+    &= \lambda \mathrm{tr}(AB) + \mathrm{tr}(CB)
+\end{align*}
+Hence it is linear in the first variable
+
+Checking for linearity in the second variable, 
+\begin{align*}
+    \langle  A , \lambda B + C\rangle &= \mathrm{tr}(A(\lambda B + C)) \\
+    &= \mathrm{tr}(\lambda AB + AC) \\
+    &= \lambda \mathrm{tr}(AB) + \mathrm{tr}(AC)
+\end{align*}
+Hence it is linear in the second variable
+
+Hence it is bilnear
+\\
+
+(ii)
+
+\begin{align*}
+    \langle A,B \rangle &= \mathrm{tr}(AB)
+\end{align*}
+
+With \(A\) having \(ij\) entries \(a_{ij}\), and similar for \(B\), we get 
+\[
+AB = \begin{bmatrix}
+    a_{11}b_{11} + a_{12}b_{21} & \dots \\
+    \dots & a_{21}b_{12} + a_{22}b_{22}
+\end{bmatrix}
+\]
+\[
+\Rightarrow \mathrm{tr}(AB) = a_{11}b_{11} + a_{12}b_{21} + a_{21}b_{12} + a_{22}b_{22}
+\]
+From this we see that \(\mathrm{tr}(AB) = \mathrm{tr}(BA)\)
+
+Then
+\[
+\langle A,B \rangle = \langle B,A \rangle
+\]
+Hence it is symmetric
+\\
+
+(iii)
+\[
+\langle A,A \rangle = \mathrm{tr}(A^2)
+\]
+This is not always greater or equal to zero
+
+Consider \(A = \begin{bmatrix}
+    0 & 1 \\
+    -1 & 0  
+\end{bmatrix}\), \(A^2 = \begin{bmatrix}
+    -1 & 0 \\
+    0 & -1 
+\end{bmatrix}\)
+
+Hence quite clearly \(\mathrm{tr}(A^2) < 0\)
+
+
+
+
+
+\subsubsection*{(b)}
+(i)
+
+Let \(A,B,C \in M_{2\times 2}(\mathbb{R})\), \(\lambda \in \mathbb{R}\)
+
+Checking for linearity in the first variable, 
+\begin{align*}
+    \langle \lambda A + C , B\rangle &= \mathrm{tr}((\lambda A + C)^T B) \\
+    &= \mathrm{tr}(\lambda A^TB + C^T B) \\
+    &= \lambda \mathrm{tr}(A^T B) + \mathrm{tr}(C^TB)
+\end{align*}
+Hence it is linear in the first variable
+
+Checking for linearity in the second variable, 
+\begin{align*}
+    \langle  A , \lambda B + C\rangle &= \mathrm{tr}(A^T(\lambda B + C)) \\
+    &= \mathrm{tr}(\lambda A^TB + A^TC) \\
+    &= \lambda \mathrm{tr}(A^TB) + \mathrm{tr}(A^TC)
+\end{align*}
+Hence it is linear in the second variable
+
+Hence it is bilnear
+\\
+
+(ii)
+
+\begin{align*}
+    \langle A,B \rangle &= \mathrm{tr}(A^TB)
+\end{align*}
+
+With \(A\) having \(ij\) entries \(a_{ij}\), and similar for \(B\), we get 
+\[
+A^T B = \begin{bmatrix}
+    a_{11}b_{11} + a_{21}b_{21} & \dots \\
+    \dots & a_{12}b_{12} + a_{22}b_{22}
+\end{bmatrix}
+\]
+\[
+\Rightarrow \mathrm{tr}(A^TB) = a_{11}b_{11} + a_{21}b_{21} + a_{12}b_{12} + a_{22}b_{22}
+\]
+From this we see that \(\mathrm{tr}(A^TB) = \mathrm{tr}(B^TA)\)
+
+Then
+\[
+\langle A,B \rangle = \langle B,A \rangle
+\]
+Hence it is symmetric
+\\
+
+(iii)
+\[
+\langle A,A \rangle = \mathrm{tr}(A^TA)
+\]
+With \(ij\) entries as before we get
+\[
+A^TA = \begin{bmatrix}
+    a_{11}^2 + a_{12}^2 & \dots \\
+    \dots & a_{21}^2 + a_{22}^2
+\end{bmatrix}
+\]
+Hence \(\mathrm{tr}(A^TA) \geq 0\), with equality \(\iff\) \(a_{ij} = 0 , \quad \forall \ 1 \leq i,j \leq 2\)
+
+\subsubsection*{(c)}
+(i)
+
+Let \(A,B,C \in M_{2\times 2}(\mathbb{R})\), \(\lambda \in \mathbb{R}\)
+
+Checking for linearity in the first variable
+\begin{align*}
+    \langle \lambda A + C, B \rangle &= \det(\lambda A + C + B) \\
+\end{align*}
+
+Since the determinant does not preserve addition, this is not bilnear
+\\
+
+(ii)
+\[
+\langle A,B \rangle = \det(A+B) = \det(B+A) = \langle B,A \rangle
+\]
+Hence it is symmetric
+\\
+
+(iii)
+\[
+\langle A,A \rangle = \det(A+A) = 2\det(A)
+\]
+But we know the determinant of a matrix can be negative
+
+Thus it is not postive definite
+
+
+
+
+
+
+
+
+
+
+\subsection*{Question 4}
+Since \(A\) is real symmetric matrix there exists an orthogonal matrix \(B\) s.t.
+\(B^{-1} AB \) is diagonal
+
+\begin{align*}
+    \chi_A(\lambda) &= (2-\lambda)((3-\lambda)^2 - 1) \\
+    &= (2-\lambda)(\lambda^2 -6\lambda + 8) \\
+    &= (2-\lambda)^2(\lambda -4)
+\end{align*}
+Thus there are two eigenvalues \(\lambda = 2\) and \(\lambda = 4\)
+
+\(\mathcal{N}(A-4I)\):
+\[
+\begin{bmatrix}
+    -1 & 1 & 0 & | & 0 \\
+    1 & -1 & 0 & | & 0 \\
+    0 & 0 & 2 & | & 0 
+\end{bmatrix}
+\]
+\[
+\Rightarrow \begin{bmatrix}
+    1 & -1 & 0 & | & 0 \\
+    0 & 0 & 0 & | & 0 \\
+    0 & 0 & 0 & | & 0 \\
+\end{bmatrix}
+\]
+\[
+\Rightarrow V(4) = \left\{ \begin{bmatrix}
+t \\ t \\ 0
+\end{bmatrix} | t \in \mathbb{R}  \right\}
+\]
+
+\(\mathcal{N}(A-2I)\):
+\[
+\begin{bmatrix}
+    1 & 1 & 0 & | & 0 \\
+    1 & 1 & 0 & | & 0 \\
+    0 & 0 & 0 & | & 0 
+\end{bmatrix}
+\]
+\[
+\Rightarrow \begin{bmatrix}
+    1 & 1 & 0 & | & 0 \\
+    0 & 0 & 0 & | & 0 \\
+    0 & 0 & 0 & | & 0 \\
+\end{bmatrix}
+\]
+\[
+\Rightarrow V(2) = \left\{ \begin{bmatrix}
+t \\ -t \\ s
+\end{bmatrix} | t,s \in \mathbb{R}  \right\}
+\]
+
+Since eigenvectors associated with different eigenvalues of a symmetric matrix are always
+orthogonal, we only need to be careful with the two eigenvectors associated with \(\lambda = 2\)
+
+Choosing them to be \(\begin{bmatrix}
+    1 \\ -1 \\ 0
+\end{bmatrix}\) and \(\begin{bmatrix}
+    0 \\ 0 \\ 1
+\end{bmatrix}\), with the eigenvector associated with \(\lambda = 4 \) being \(\begin{bmatrix}
+    1 \\ 1 \\ 0
+\end{bmatrix}\), we get 
+
+\[
+B = \begin{bmatrix}
+    1 & 1 & 0 \\
+    1 & -1 & 0 \\
+    0 & 0 & 1
+\end{bmatrix}
+\]
+
+
+\subsection*{Question 5}
+The matrix \(A\) defines a bilinear form by \(\langle \vec{x} , \vec{y} \rangle = \vec{x}^T A \vec{y}, \quad \vec{x}, \vec{y} \in \mathbb{R}^3\)
+
+Let \(\vec{x}\) have components \(x_1, x_2, x_3\), similarly for \(\vec{y}\)
+\begin{align*}
+    \langle \vec{x}, \vec{y}\rangle &= \begin{bmatrix}
+        x_1 a + x_2 + x_3 & x_1  + x_2 a + x_3 & x_1 + x_2 + x_3 a
+    \end{bmatrix} \vec{y} \\
+    &= y_1(x_1 a + x_2 + x_3) + y_2(x_1  + x_2 a + x_3) + y_3 (x_1 + x_2 + x_3 a) 
+\end{align*}
+
+To check for postive defitiness, we compute \(\langle \vec{x}, \vec{x} \rangle\)
+
+\begin{align*}
+    \langle \vec{x}, \vec{x}\rangle &= x_1(x_1 a + x_2 + x_3) + x_2(x_1  + x_2 a + x_3) + x_3 (x_1 + x_2 + x_3 a)  \\
+    &= a (x_1^2 + x_2^2 + x_3^2) + 2x_1x_3 + 2x_1x_2 + 2x_2x_3
+\end{align*}
+
+Since \((x_1 + x_2 + x_3)^2 = x_1^2+x_2^2+x_3^2 + 2(x_1x_2 + x_1x_3 + x_2x_3)\) 
+
+i.e. \(2(x_1x_2 + x_1x_3 + x_2x_3) = (x_1 + x_2 + x_3)^2 - (x_1^2+x_2^2+x_3^2 ) \)
+
+we have
+\begin{align*}
+    \langle \vec{x}, \vec{x}\rangle &= (a-1) (x_1^2 + x_2^2 + x_3^2) + (x_1+x_2+x_3)^2
+\end{align*}
+
+Thus we see that this is greater than equal to zero for \(a \geq 1\)
+
+Hence \(A\) is postive definite for \(a \geq 1\)
+
+\end{document}

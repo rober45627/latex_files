@@ -1,0 +1,143 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Real Analysis HW 5}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+
+\subsection*{BS - Page 86 Exercise 7}
+Let \(\{x_n\}\) be a Cauchy sequence such that \(x_n\) is an integer for every
+\(n \in \mathbb{N}\)
+
+Show that \(\{x_n\}\) is ultimately a constant sequence
+\\
+
+\(\{x_n\}\) Cauchy \(\Rightarrow \forall \ \epsilon > 0, \ |x_m - x_n| < \epsilon \ \forall \ m,n \geq N\)
+
+Pick \(\epsilon = \frac{1}{2}\)
+
+\[
+|x_m - x_n| < \frac{1}{2}
+\]
+\[
+-\frac{1}{2} < x_m - x_n < \frac{1}{2}
+\]
+
+We know that the difference of any two integers is an integer, say \(x_m - x_n = k , \ k \in \mathbb{Z}\)
+\[
+-\frac{1}{2} < k < \frac{1}{2}
+\]
+\[
+\Rightarrow k = 0
+\]
+
+i.e. \(\forall \ m,n \geq N, \ x_m - x_n = 0 \Rightarrow x_m = x_n\)
+
+\(\Rightarrow \{x_n\}\) is ultimately a constant sequence
+
+
+
+
+
+\subsection*{BS - Page 86 Exercise 9}
+If \(0 < r < 1\) and \(|x_{n+1} - x_n| < r^n\)  for all \(n \in \mathbb{N}\) 
+
+Show that \(\{x_n\}\) is a Cauchy sequence
+\\
+
+\[
+|x_{n} - x_{n-1}| < r^{n-1}
+\]
+\[
+-r^{n-1} + x_{n-1} < x_n < r^{n-1} + x_{n-1} 
+\]
+Then repeating this, estamating for \(x_{n-1}\),
+\[
+-r^{n-1} - r^{n-2} + x_{n-2} < x_n < r^{n-1} + r^{n-2} + x_{n-2}
+\]
+
+Then for \(m < n\)
+\[
+-(r^{n-1} + r^{n-2} + \dots + r^{m}) + x_m < x_n < r^{n-1} + r^{n-2} + \dots + r^{m} + x_m
+\]
+\begin{align*}
+    |x_n - x_m| &< r^{n-1} + r^{n-2} + \dots + r^{m} \\
+    &= r^m \frac{1 - r^{n-1-m}}{1-r} \\
+    &< r^m \frac{1}{1-r}
+\end{align*}
+
+We know \(r_m\) converges to 0, hence \(\frac{r^m}{1-r}\) also converges to \(0\), since \(1-r\) is a constant \((\neq 0)\)
+
+i.e. \(\forall \ \epsilon > 0 \ \exists \ N \in \mathbb{N} \text{ such that } |\frac{r^m}{1-r}| < \epsilon \ \forall \ n \geq N\)
+\[
+\Rightarrow \forall \ \epsilon > 0, |x_n - x_m| < \epsilon \ \forall \ m \geq N, n> m
+\]
+
+For \(n=m\) it is obvious that \(\forall \ \epsilon > 0, \  |x_m - x_m| = 0 < \epsilon \)
+
+Thus
+\[
+\Rightarrow \forall \ \epsilon > 0, \ |x_n - x_m| < \epsilon \ \forall \ m,n \geq N
+\]
+Hence \(\{x_n\}\) Cauchy
+
+\subsection*{BS - Page 95 Exercise 8}
+If \(\sum a_n\) with \(a_n > 0 \) is convergent, then is \(\sum a_n^2\) always convergent?
+Either prove it or give a counterexample
+\\
+
+Since \(\sum a_n\) convergent \(\Rightarrow \lim_{n\to\infty}{a_n} = 0\) and \(a_n > 0 \ \forall \ n\) 
+\[
+\Rightarrow \exists \ N \text{ such that } a_n < 1 \ \forall \ n \geq N
+\]
+
+If \(a_n < 1 \Rightarrow a_n^2 < a_n < 1\)
+\[
+\Rightarrow \exists \ N \text{ such that } 0 < a_n^2 < a_n < 1 \ \forall \ n \geq N
+\]
+
+We have that the convergence of series only depends on the tail of the series
+
+i.e. \(\sum_{n=1}^\infty x_n\) converges \(\iff \sum_{n=N}^\infty x_n\) converges
+
+and also that if \(0 < x_n < y_n \) and if \(\sum y_n \) converges then \(\sum x_n\) converges
+\\
+
+Hence \(\sum a_n^2\) converges
+
+
+
+
+
+
+
+
+
+\subsection*{BS - Page 95 Exercise 9}
+If \(\sum a_n\) with \(a_n > 0 \) is convergent, then is \(\sum \sqrt{a_n}\) always convergent?
+Either prove it or give a counterexample
+\\
+
+Counterexample:
+
+Consider \(a_n = \frac{1}{n^2}\), \(\sum \frac{1}{n^2}\) is a p-series with \(p = 2\)
+
+Thus \(\sum a_n\) converges
+\\
+
+Now consider \(\sqrt{a_n} = \frac{1}{n}\), we know \(\sum \frac{1}{n}\) does not converge
+
+Hence \(\sum \sqrt{a_n}\) does not always converge if \(\sum a_n\) converges
+
+\end{document}

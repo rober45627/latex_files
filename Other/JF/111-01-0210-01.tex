@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Limits}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\subsection*{Epsilon-Delta Definition of Limits}
+We say that \(f(x)\) approaches the limit \(L\) as \(x\) approaches \(x_0\) and we write
+\[
+\lim_{x\to x_0}{f(x)} = L
+\]
+if given any \(\epsilon > 0 \) there exists \(\delta > 0 \) such that
+\[
+0 \neq |x-x_0| < \delta \rightarrow |f(x)-L| < \epsilon
+\]
+(for examples see written notes)
+
+\subsection*{Triangle Inequality}
+One has \(|x+y| \leq |x| + |y|\) for all \(x,y\)
+
+For real numbers this holds because
+\begin{align*}
+    |x+y|^2 &= (x+y)^2 \\
+    &= x^2 +y^2+2xy \\
+    &\leq |x| + |y| + 2|x||y| = (|x| + |y|)^2
+\end{align*}
+
+
+\subsection*{Theorem - Properties of limits}
+The limit of a sum/product/quotient is the sum/product/quotient of the limits
+
+Namely, if
+\[
+\lim_{x\to x_0}{f(x)} = L, \quad \lim_{x\to x_0}{g(x)} = M
+\]
+Then
+\[
+\lim_{x\to x_0}{[f(x)+g(x)]} = L + M
+\]
+\[
+\lim_{x\to x_0}{[f(x)\cdot g(x)]} = L \cdot M
+\]
+\[
+\lim_{x\to x_0}{\left[\frac{f(x)}{g(x)}\right]} = \frac{L}{M}, \quad M \neq 0
+\]
+
+\subsubsection*{Proofs}
+We use the \(\epsilon - \delta\) definition
+
+We know \(\lim_{x\to x_0}{f(x)} = L\) and \(\lim_{x\to x_0}{g(x)} = M\)
+\\
+
+\textbf{To compute the limit of the sums}
+
+We need \(\lim_{x\to x_0}{[f(x) + g(x)]} = L + M\)
+
+Now, let \(\epsilon > 0 \) be given, we estimate
+\begin{align*}
+    |f(x) + g(x) - (L+M)| &= |f(x) - L + g(x)-M| \\
+    &\leq |f(x)-L| + |g(x)-M| 
+\end{align*}
+
+Since \(\lim_{x\to x_0}{f(x)} = L\) there exists \(\delta_1 > 0 \)
+\[
+0 \neq |x-x_0|<\delta_1 \Rightarrow |f(x)-L| < \frac{\epsilon}{2}
+\]
+
+Since \(\lim_{x\to x_0}{g(x)} = M\) there exists \(\delta_2 > 0 \)
+\[
+0 \neq |x-x_0|<\delta_2 \Rightarrow |g(x)-M| < \frac{\epsilon}{2}
+\]
+
+Thus,
+\[
+0 \neq |x-x_0| < \text{min}\{\delta_1,\delta_2\} \Rightarrow |f(x) + g(x)-L-M| < \epsilon
+\]
+\\
+
+\textbf{To compute the limit of the prodcuts}
+
+We estimate,
+\begin{align*}
+    |f(x)\cdot g(x)-LM| &= |f(x)\cdot g(x) -L\cdot g(x) + L \cdot g(x) -LM| \\
+    &\leq |g(x)||f(x) - L| + |L||g(x)-M|
+\end{align*}
+\end{document}

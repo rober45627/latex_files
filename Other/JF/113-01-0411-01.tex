@@ -1,0 +1,153 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Probablity Lecture 1}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+
+\subsection*{Sample Space}
+A set of all possible outcomes(\(\Omega\))
+
+Set must be
+\begin{itemize}
+    \item Mutually exclusive
+    \item Collectively exhaustive
+    \item At the "right" granularity
+\end{itemize}
+
+\subsection*{Probablity Axioms}
+
+\textbf{Event}: A subset of the sample space
+
+Probablities are assigned to events
+\\
+
+The Axioms are
+\begin{enumerate}
+    \item Nonnegativity \(P(A) \geq 0\)
+    \item Normalization \(P(\Omega) = 1\)
+    \item (Finite) Additivity, If \(A \cap B = \emptyset\) then \(P(A \cup B ) = P(A) + P(B)\)
+\end{enumerate}
+
+\subsubsection*{Simple Consequences of the Axioms}
+We know,
+\[
+A \cup A^c = \Omega
+\]
+and,
+\[
+A \cap A^c = \emptyset
+\]
+
+Thus from our axioms we get,
+\[
+1 = P(\Omega) = P(A \cup A^c) = P(A) + P(A^c)
+\]
+Also,
+\[
+P(A) = 1 - P(A^c) \leq 1
+\]
+
+Finally,
+\[
+1 = P(\Omega) + P(\Omega^c)
+\]
+\[
+1 = 1 + P(\emptyset)
+\]
+\[
+P(\emptyset) = 0
+\]
+
+\subsubsection*{Strengthining Axiom 3}
+\[
+P(A \cup B \cup C) = P((A \cup B) \cup C) = P(A \cup B) + P(C) = P(A) + P(B) + P(C)
+\]
+
+Thus we can see that,
+
+If \(A_1, \dots , A_k\) are disjoint events \(\Rightarrow P(A_1 \cup \dots \cup A_k) = \sum_{i=1}^{k} P(A_i) \)
+
+\subsubsection*{Further Consequences}
+Let \(A \subset B\),
+\[
+B = A \cup (B \cap A^c)
+\]
+\[
+P(B) = P(A) + P(B \cap A^c) \geq P(A)
+\]
+\\
+
+Let A, B be two sets such that \(P(A \cap B) \neq \emptyset\)
+
+We want \(P(A \cup B) = P(A) + P(B) + P(A \cap B)\)
+
+Let,
+\[
+a = P(A \cap B^c), \quad b = P(A \cap B), \quad c = P(B \cap A^c)
+\]
+Then,
+\[
+P(A \cup B) = a + b + c
+\]
+\[
+P(A) + P(B) - P(A \cap B) = (a+b) + (b+c) - b = a + b + c
+\]
+\\
+
+Since \(P(A \cap B) \geq 0\), \(P(A \cup B) \leq P(A) + P(B)\)   (union bound)
+\\
+
+Finally,
+\[
+A \cup B \cup C = A \cup (B \cap A^c) \cup (C \cap A^c \cap B^c)
+\]
+These events are disjoint, thus
+\[
+P(A \cup B \cup C) = P(A) + P(B \cap A^c) + P(C \cap A^c \cap B^c)
+\]
+
+\subsection*{Discrete Uniform Law}
+Assume \(\Omega\) contains \(n\) equally likely elements, assume the event A
+consists of \(k\) elements.
+
+Then
+\[
+P(A) = k \cdot \frac{1}{n}
+\]
+\\
+
+If \(\Omega \) is not discrete, Probablity = Area
+
+\subsection*{Probablity Calculation Steps}
+\begin{itemize}
+    \item Specify the sample space
+    \item Specify a probabilty law
+    \item Identify an event of interest
+    \item Calculate...
+\end{itemize}
+
+\subsection*{Countable Additivity Axiom}
+If \(A_1,A_2,A_3 \dots\) is an infinte sequence of disjoint events then
+
+\(P(A_1 \cup A_2 \cup A_3 \cup \dots) = P(A_1) + P(A_2) + P(A_3) + \dots\)
+
+\subsubsection*{Note}
+This only holds for "countable" sequences of events (shouldn't be a problem in this module)
+\\
+
+Using this Axiom on the unit square we see that it doesn't hold
+\[
+1 = P(\Omega) = P(\cup \{(x,y)\}) = \sum P(\{(x,y)\}) = \sum 0 = 0
+\]
+\end{document}

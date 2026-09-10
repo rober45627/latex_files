@@ -1,0 +1,190 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Real Analysis HW 8}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+\subsection*{BS - Page 144 Exercise 8}
+Prove that if \(f\) and \(g\) are each uniformly continuous on \(\mathbb{R}\), then the composite function
+\(f \circ g\) is uniformly continuous on \(\mathbb{R}\)
+\\
+
+Since \(f,g\) are two uniformly continuous functions
+\(\forall \ \epsilon >0 \ \exists \ \delta_0, \delta_1\) s.t. (with each \(\delta\) independent of \(c\))
+\[
+|x-c| < \delta_0 \Rightarrow |g(x) - g(c)| < \epsilon 
+\]
+and
+\[
+|x-c| < \delta_1 \Rightarrow |f(x) - f(c)| < \epsilon 
+\]
+
+For \(g\), picking its \(\epsilon = \delta_1\), we get the chain
+
+\[
+|x-c| < \delta_0 \Rightarrow |g(x) - g(c)| < \delta_1 \Rightarrow |f(g(x)) - f(g(c))| < \epsilon 
+\]
+Thus \(f \circ g\) is uniformly continuous, since the choice of both deltas were independent of \(c\)
+
+\subsection*{BS - Page 167 Exercise 7}
+Suppose that \(f:\mathbb{R} \rightarrow \mathbb{R}\) is differentiable at \(c\) and that \(f(c) = 0\). Show
+that \(g(x) := |f(x)|\) is differentiable at \(c\) if and only if \(f \ '(c) = 0\)
+\\
+
+\((\Rightarrow)\)
+
+Suppose \(g\) differentiable at \(c\),
+
+Suppose FTSOC \(f'(c) \neq 0\), 
+
+\(\Rightarrow f(c)\) is not a relative minimum or maximum
+
+\[
+\Rightarrow \forall \ \delta > 0  \ |x-c|< \delta \Rightarrow f(c) > f(x) \text{ and } f(c) < f(x)
+\]
+Thus in some delta interval around \(c\), \(f\) attains both postive and negative values, since \(f(c) = 0\)
+
+Also we have
+\[
+g \ ' (c) = \lim_{x\to c}{\frac{g(x) - g(c)}{x-c}} = \lim_{x\to c}{\frac{|f(x)|}{x-c}}
+\]
+
+Then choosing sequences which converge to \(c\) from the left and the right, say \(x_n = c - \frac{1}{2n}\) and \(y_n = c + \frac{1}{2n}\), 
+we have that \(x_n - c < \delta \Rightarrow f(x_n) < 0\) or \(y_n - c < \delta \Rightarrow f(y_n) < 0\), WLOG assume the first case
+
+\[
+x_n - c < \delta \Rightarrow f(x_n) < 0 \Rightarrow |f(x_n)| = - f(x_n)
+\]
+\[
+\Rightarrow g \ ' (c) = \lim_{n\to \infty}{\frac{-f(x_n)}{x_n - c}} = - f ' (c)
+\]
+
+Then
+\[
+y_n - c < \delta \Rightarrow f(y_n) > 0 \Rightarrow |f(y_n)| =  f(y_n)
+\]
+\[
+\Rightarrow g \ ' (c) = \lim_{n\to \infty}{\frac{f(y_n)}{y_n - c}} = f \ ' (c)
+\]
+
+Hence \(f \ '(c) = - f \ ' (c)\), which is a contradiction since we assumed \(f \ ' (c) \neq 0\)
+\\
+
+\((\Leftarrow)\)
+
+Suppose \(f \ '(c) = 0\)
+
+Then
+\[
+f \ ' (c) = \lim_{x\to c}{\frac{f(x)- f(c)}{x-c}} = \lim_{x\to c}{\frac{f(x)}{x-c}} = 0
+\]
+
+Also 
+\[
+g \ ' (c) = \lim_{x\to c}{\frac{|f(x)|}{x-c}}
+\]
+Then
+\[
+|g \ ' (c)| = \lim_{x\to c}{\left|\frac{|f(x)|}{x-c}\right|}=\lim_{x\to c}{\left|\frac{f(x)}{x-c}\right|} = |f \ ' (c)| = 0
+\]
+
+Hence \(g \ ' (c) = 0\)
+
+\subsection*{BS - Page 167 Exercise 9}
+Prove that if \(f:\mathbb{R} \rightarrow \mathbb{R}\) is an even function, and has a derivative at every point, then the derivative
+\(f \ '\) is an odd function. Also prove that if \(g: \mathbb{R} \rightarrow \mathbb{R}\) is an odd differentiable function then
+\(g \ '\) is an even function 
+\\
+
+\subsubsection*{(a)}
+We have that \(f(-x) = f(x)\),
+
+\[
+(f(x))' = (f(-x))' 
+\]
+Then by the Chain Rule
+\[
+f \ ' (x) = f \ ' (-x)(-1) 
+\]
+
+\[
+\Rightarrow f \ ' (-x) = - f \ ' (x)
+\]
+Thus \(f \ ' (x)\) is an odd function
+
+\subsubsection*{(b)}
+We have that \(g(-x) = -g(x)\),
+
+\[
+(g(-x))' = (-g(x))'
+\]
+
+Then by the Chain Rule
+\[
+g \ '(-x) (-1) = -g \ ' (x)
+\]
+
+\[
+\Rightarrow g \ ' (-x) = g(x) 
+\]
+Thus \(g \ ' (x)\) is an even function
+
+\subsection*{BS - Page 175 Exercise 11}
+Give an example of a uniformly continuous function on \([0,1]\) that is differentiable on \((0,1)\), but whose derivative is 
+not bounded on \((0,1)\)
+\\
+
+Consider \(f(x)= \sqrt{x}\), which I will prove is continuous on \([0,1]\)
+
+Let \(\epsilon >0\)
+
+Choose \(\delta = \epsilon^2 \)
+
+Then for \(|x-c| < \delta\)
+\begin{align*}
+    |f(x)-f(c)|^2 &= |\sqrt{x} - \sqrt{c}|^2 \\
+    &\leq |\sqrt{x} - \sqrt{c}||\sqrt{x} + \sqrt{c}| \\
+    &< |x-c| \\
+    &< \delta \\
+    &< \epsilon^2
+\end{align*}
+Thus
+\[
+|f(x)- f(c)| < \epsilon 
+\]
+
+Since our choice of \(\delta\) was independent of \(c\), \(f(x)\) is uniformly continuous
+\\
+
+Now we look at \(f \ ' (x) = \frac{1}{2\sqrt{x}}\)
+
+Let \(B >0\)
+
+Assume \(f \ ' (x)\) is bounded
+
+Then for all \(x \in (0,1)\), we have
+\[
+\frac{1}{2\sqrt{x}} \leq B 
+\]
+\[
+\Rightarrow \sqrt{x} \geq \frac{1}{2B}
+\]
+But since \(\lim_{x\to0}{\sqrt{x}}=0\), we get that it can be arbitrarily small, thus 
+for any given \(B>0\), \(\exists \ x\) s.t. the following inequality doesn't hold
+\[
+\sqrt{x} \geq \frac{1}{2B} > 0
+\]
+A contradiction, thus \(f \ ' (x)\) is unbounded
+
+\end{document}

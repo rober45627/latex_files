@@ -1,0 +1,110 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Probability Lecture 7}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+
+\subsection*{Conditional PMFs}
+We have done \(p_{X|A}(x|A) = P(X=x|A)\)
+now we want to condition on an another random variable, not an event
+\[
+p_{X|Y}(x|y) = P(X=x|Y=y) = \frac{P(X=x,Y=y)}{P(Y=y)} = \frac{p_{X,Y}(x,y)}{p_Y(y)}
+\]
+
+\[
+\sum_xp_{X|Y}(x|y) = 1
+\]
+
+Also (similar to the multiplication rule for events)
+\[
+p_{X,Y}(x,y) = p_Y(y)p_{X|Y}(x|y) = p_X(x)p_{Y|X}(y|x)
+\]
+
+\subsection*{Conditional PMFs involving more than two r.v.'s}
+\[
+P_{X|Y,Z}(x|y,z) = P(X=x|Y=y,Z=z) = \frac{P(X=x,Y=y,Z=z)}{P(Y=y, Z=z)} = \frac{p_{X,Y,Z}(x,y,z)}{p_{Y,Z}(y,z)}
+\]
+
+Similar multiplication rule (for three events) applies
+\[
+p_{X,Y,Z}(x,y,z) = p_X(x)p_{Y|X}(y|x)p_{Z|X,Y}(z|x,y)
+\]
+
+\subsection*{Conditional Expectation}
+\[
+E[X|Y = y] = \sum_x xp_{X|Y}(x|y)
+\]
+
+Expected Value Rule
+\[
+E[g(x)|Y=y] =\sum_x g(x)p_{X|Y}(x|y)
+\]
+
+\subsection*{Total probability and expectation theorems}
+\(
+A_1, \dots , A_n
+\) form a partition of \(\Omega\)
+
+\[
+p_X(x) = \sum_y p_Y(y)p_{X|Y}(x|y)
+\]
+\[
+E[X] = \sum_y p_Y(y)E[X|Y=y]
+\]
+
+\subsection*{Independence}
+\begin{itemize}
+    \item \textbf{of two events:} \(P(A \cup B) = P(A)P(B) \quad P(A|B) = P(A)\)
+
+    \item \textbf{of a r.v. and an event:} \(P(X=x \text{ and } A) = P(X=x)P(A)\) for all \(x\) \\
+    or \(p_{X|A}(x) = p_X(x)\) for all \(x\) \\
+    or \(P(A|X=x) = P(A)\) for all \(x\)
+
+    \item \textbf{of two r.v.:} \(P(X=x \text{ and } Y = y) = P(X=x)P(Y=y)\) for all \((x,y)\) \\
+    or \(p_{X,Y} = p_X(x)p_Y(y)\) for all \(x,y\) \\
+    or \(p_{X|Y}(x|y) = p_X(x)\)
+
+\end{itemize}
+
+\subsection*{Independence and Expectations}
+\[
+E[XY] = E[X]E[Y]
+\]
+
+\[
+E[g(x,y)] \quad g(x,y) = xy
+\]
+\[
+\sum_x \sum_y xy p_{X,Y}(x,y) = \sum_x \sum_y xy p_{X}(x) p_Y(y) = E[X]E[Y]
+\]
+
+The same holds for \(g(X), h(Y)\)
+
+\subsection*{Independence and Variance}
+If \(X,Y\) are independent \(\text{var}(X+Y) = \text{var}(X)+ \text{var}(Y)\)
+
+\subsection*{Variance of the binomial}
+\(X\): binomial with parameters \(n,p\)
+ - number of successs in \(n\) independent trials
+
+\(X_i = 1\) if \(i\)th trial is a success
+
+\(X_i = 0 \) otherwise
+
+\(X= X_1 + \dots + X_n\)
+
+\[
+\text{var}(X) = \text{var}(X_1)+ \dots + \text{var}(X_n) = n\text{var}(X_1) = np(1-p)
+\]
+\end{document}

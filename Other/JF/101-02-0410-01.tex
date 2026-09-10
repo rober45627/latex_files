@@ -1,0 +1,226 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Linear Algebra Homework }}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+\section*{Question 1}
+\[
+\vec{u} = \langle 1,4,-7 \rangle, \quad \vec{v} = \langle 2,-1,4 \rangle, \quad \vec{w} = \langle 1,5,-1 \rangle, \quad \vec{b} = \langle 0,-9,18 \rangle
+\]
+\subsubsection*{(a) Computing the area of the parallelogram determined by the vectors \(\vec{u}\) and \(\vec{v}\)}
+The area determined by two vectors is given by the magnitude of their cross product
+\begin{align*}
+    ||\vec{u} \times \vec{v}|| &= ||\langle u_2v_3 - u_3v_2, u_3v_1 - u_1v_3, u_1v_2 - u_2v_1 \rangle|| \\
+    ||\vec{u} \times \vec{v}|| &= ||\langle 16 - 7, -14 - 4, -1 -8 \rangle||\\
+    ||\vec{u} \times \vec{v}|| &= ||\langle 9, -18, -9 \rangle||\\
+    ||\vec{u} \times \vec{v}|| &= \sqrt{(9)^2 + (-18)^2 + (-9)^2}\\
+    ||\vec{u} \times \vec{v}|| &= \sqrt{486}\\
+\end{align*}
+
+\subsubsection*{(b) Computing the volume of the parallelepiped determined by the vectors \(\vec{u}\), \(\vec{v}\) and \(\vec{w}\)}
+The volume of a parallelepiped determined by three vectors is the absolute value of the cross product of two vectors dotted with the third vector
+\begin{align*}
+    |(\vec{u} \times \vec{v}) \cdot \vec{w}| &= |\langle 9, -18, -9 \rangle \cdot \langle 1,5,-1 \rangle | \\
+    |(\vec{u} \times \vec{v}) \cdot \vec{w}| &= | 9 - 90 + 9| \\
+    |(\vec{u} \times \vec{v}) \cdot \vec{w}| &= 72 
+\end{align*}
+
+\subsubsection*{(c) Finding     \(|\vec{b} \cdot (\vec{u} \times \vec{v})|\)}
+\begin{align*}
+    |\vec{b} \cdot (\vec{u} \times \vec{v})| &= |\langle 0,-9,18 \rangle \cdot \langle 9, -18, -9 \rangle| \\
+    &= 0 + 162 - 162 \\
+    &= 0
+\end{align*}
+Thus, we can conclude that the vectors \(\vec{u}, \vec{v}\) and \(\vec{b}\) are coplanar
+
+\section*{Question 2}
+\subsubsection*{Finding the vector equation of a line given a point and a parallel line}
+We are given a parallel line so finding a vector between any two points on the line is the direction
+vector for the other line 
+
+Getting the vector between \(t = 0\) and \(t = 1\) for the parallel line
+\begin{align*}
+    \vec{v} &= \langle -1 - 2, 3 + 1, 7 - 8 \rangle \\
+    &= \langle -3,4,-1 \rangle
+\end{align*}
+We now have both a point on the line and a direction vector and thus are able to find the equation of the line
+\begin{align*}
+    \vec{r} &= \langle -1,2,4 \rangle + t\langle -3,4,-1 \rangle \\
+    &= \langle -3t-1, 4t+2, 4-t \rangle
+\end{align*}
+
+\section*{Question 3}
+\subsubsection*{Finding the equation of a plane given a point and a perpendicular line}
+A plane is described by a point in the plane and a normal vector
+
+We are given a line perpendicular to the plane, and so a direction vector of the line is the normal 
+vector of the plane
+
+Take the direction vector between \(t = 0\) and \(t = 1\) as our normal vector
+\begin{align*}
+    \vec{n} &= \langle -3, 2 -1, 3-7 \rangle \\
+    &= \langle -3,1,-4 \rangle
+\end{align*}
+Let \(P(x,y,z)\) be any other point on the plane and let \(P_0(2,0,1)\) be the known point. Then,
+\[
+\overrightarrow{P_0P} \cdot \vec{n} = 0
+\]
+
+\[
+\langle x -2,y,z-1 \rangle \cdot \langle -3,1,-4 \rangle = 0
+\]
+\[
+6-3x + y + 4 -4z = 0
+\]
+\[
+3x -y +4z = 10
+\]
+
+Thus, \(3x -y +4z = 10\) is the equation of the plane
+
+\section*{Question 4}
+\subsubsection*{Finding the equation of a plane which passes through three given points}
+\[
+P_1 =(1,1,0), \quad P_2 = (2,0,1),\quad P_3 = (0,-1,3)
+\]
+To describe the plane, we need a normal vector, which we can obtain by getting the cross product of two vectors
+in the plane
+
+\[
+\overrightarrow{P_1P_2} = \langle 1,-1,1 \rangle, \quad \overrightarrow{P_2P_3} = \langle -2,-1,2 \rangle
+\]
+
+\begin{align*}
+    \vec{n} &= \overrightarrow{P_1P_2} \times \overrightarrow{P_2P_3} \\
+    &= \langle -2 +1,-2 -2, -1-2 \rangle \\
+    &= \langle -1,-4,-3 \rangle
+\end{align*}
+
+Let \(P(x,y,z)\) be any other point in the plane
+\[
+\overrightarrow{PP_1} \cdot \vec{n} = 0
+\]
+\[
+\langle x-1,y-1,z \rangle \cdot \langle -1,-4,-3 \rangle = 0
+\]
+\[
+1-x,4-4y, -3z = 0
+\]
+\[
+x+4y+3z = 5
+\]
+Thus, \(x+4y+3z = 5\) is the equation of the plane
+
+\section*{Question 5}
+\subsubsection*{Finding the intersection of a line and a plane}
+Let the vector between the two points \((\vec{v})\) be the direction vector
+\[
+\vec{v} = \langle 3,-2,1 \rangle
+\]
+Then the equation of the line is
+\begin{align*}
+    \vec{r} &= \langle 1,0,1 \rangle + t\langle 3,-2,1 \rangle \\
+    &= \langle 1+3t, -2t, 1+t \rangle
+\end{align*}
+The parametric equations are
+\[
+x = 1+3t 
+\]
+\[
+y= -2t
+\]
+\[
+z = 1+t
+\]
+
+Substituting these into the equation of the plane, to find the point of intersection
+\[
+x +y+z = 6
+\]
+\[
+1+3t-2t+1+t = 6
+\]
+\[
+t = 2
+\]
+The point at \(t = 2\) is \((7, -4, 3)\), which is the point of intersection
+
+\section*{Question 6}
+\subsubsection*{Do three given points form a right triangle?}
+\[
+P_1 = (-1,7,9), \quad P_2 = (1,5,14),  \quad P_3 = (-9,11,13)
+\]
+
+Any three points in \(\mathbb{R}^3\) are coplanar, and such a triangle is formed between them
+
+So the only thing to check is whether or not there is a right angle
+
+Check this by checking if any two of the vectors between the three points are perpendicular to each other
+\[
+\overrightarrow{P_1P_2} = \langle 2,-2,5 \rangle, \quad \overrightarrow{P_2P_3} = \langle -10,6,-1 \rangle, 
+\quad \overrightarrow{P_1P_3} = \langle -8,4,4 \rangle
+\]
+
+\begin{align*}
+    \overrightarrow{P_1P_2} \cdot \overrightarrow{P_2P_3} &= -20-12-5 \\
+    &= -37 \\
+    &\neq 0
+\end{align*}
+\begin{align*}
+    \overrightarrow{P_1P_2} \cdot \overrightarrow{P_1P_3} &= -16-8+20 \\
+    &= -4 \\
+    &\neq 0
+\end{align*}
+\begin{align*}
+    \overrightarrow{P_1P_3} \cdot \overrightarrow{P_2P_3} &= -80 +24-4 \\
+    &= -60 \\
+    &\neq 0
+\end{align*}
+
+Since none of the three vectors are perpendicular to one another, we conclude that a right triangle is not formed
+
+\section*{Question 7}
+\subsubsection*{Find three points that do form a right triangle in \(\mathbb{R}^3\)}
+
+Let,
+\[
+P_1 = (-1,7,9), \quad P_2 = (1,5,14),  \quad P_3 = (x,y,z)
+\]
+
+Then,
+\[
+\overrightarrow{P_1P_2} = \langle 2,-2,5 \rangle, \quad \overrightarrow{P_2P_3} = \langle x-1,y-5,z-14 \rangle, 
+\quad \overrightarrow{P_1P_3} = \langle x+1,y-7,z-9 \rangle
+\]
+For there to be a right angle any two vectors should be perpendicular
+
+\[
+\overrightarrow{P_1P_2} \cdot \overrightarrow{P_2P_3} = 0
+\]
+
+\[
+2x-2-2y+10+5z-70 = 0 
+\]
+\[
+2x-2y+5z = 62
+\]
+
+For the three points to form a right triangle, \(P_3\) needs to be in the plane \(2x-2y+5z = 62\)
+
+One such point is 
+\[P_3 =(31,0,0)\]
+
+Thus the points \((-1,7,9), (1,5,14)\) and \((31,0,0)\) form a right triangle 
+\end{document}

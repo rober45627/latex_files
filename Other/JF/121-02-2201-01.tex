@@ -1,0 +1,196 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Anlaysis on the Real Line HW 1}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+
+\subsection*{BS - Page 11 Exercise 5}
+(a)
+\\
+\[
+A_1 = \{2k \ | \ k \in \mathbb{N}\}
+\]
+\[
+A_2 = \{3k \ | \ k \in \mathbb{N}\}
+\]
+
+\[
+A_1 \cap A_2
+= \{ n \in \mathbb{N} \mid n = 2k \text{ and } n = 3m \text{ for some } k,m \in \mathbb{N} \}.
+\]
+These are all of the numbers which are multiples of 2 and of 3, i.e. multiples of 6 \\
+Hence
+\[
+A_1 \cap A_2 = \{6k \ | \ k \in \mathbb{N}\} = A_5
+\]
+\\
+
+(b)
+\\
+\[
+\cup \{A_n \ | \ n \in \mathbb{N}\} 
+\]
+Consider \(A_k\), the multiples of \(k+1\), note \(k+1 \in A_k\) \\
+Then \(\forall \ k \in \mathbb{N}, k + 1 \in A_k\) \\
+i.e. for all \(A_k, \ k \in \mathbb{N}\) there is a set which includes \(k+1\). \\
+No set inlcudes 1, since 1 is not a multiple
+of \(k+1 \ \forall \ k \in \mathbb{N}\)
+\[\Rightarrow \cup \{A_n \ | \ n \in \mathbb{N}\} = \mathbb{N} \backslash {1}\]
+\\
+
+\[
+\cap \{A_n \ | \ n \in \mathbb{N}\}
+\]
+Consider \(A_k\), the multiples of \(k+1\), note \(k \notin A_k\) \\
+Then \(\forall \ k \in \mathbb{N}, k \notin A_k\) \\
+i.e. for all \(A_k, \ k \in \mathbb{N}\) there is a set which does not include \(k\), so it can't be in the intersection
+\[\Rightarrow \cap \{A_n \ | \ n \in \mathbb{N}\} = \emptyset\]
+
+
+
+\subsection*{BS - Page 11 Exercise 12}
+Let \(f\) be a function, \(f: A \rightarrow B\) and let \(E,F\) be subsets of \(A\), 
+to show \(f(E \cup F) = f(E) \cup f(F)\), we must show that \(F(E \cup F) \subseteq f(E) \cup f(F) \) and 
+\(F(E) \cup f(F) \subseteq f(E \cup F) \)
+\\
+
+Firstly, \\ 
+Let \(y \in f(E \cup F)\), then \(\exists \ x \in E \cup F\) such that \(y = f(x)\) \\
+Since \(x \in E \cup F\), \(x \in E\) or \(x \in F\) 
+\begin{itemize}
+    \item If \(x \in E \Rightarrow y \in f(E)\)
+    \item If \(x \in F \Rightarrow y \in f(F)\)
+\end{itemize}
+
+Thus we see if \(x \in E \cup F \Rightarrow y \in f(E)\) or \(y \in f(F)\) \\
+Then \(y \in f(E) \cup f(F)\) \\
+Therefore, \(f(E \cup F) \subseteq f(E) \cup f(F)\)
+\\
+
+For the second part,
+Let \(y \in f(E) \cup f(F)\), then
+\begin{itemize}
+    \item If \(y \in f(E) \Rightarrow \exists \ x \in E\) such that \(y = f(x)\)
+    \item If \(y \in f(F) \Rightarrow \exists \ x \in F\) such that \(y = f(x)\)
+\end{itemize}
+
+Thus we see that if \(y \in f(E) \cup f(F) \Rightarrow \exists\) \(x \in E\) or \(x \in F\) such that \(y = f(x)\) \\
+Then \(\exists \ x \in E \cup F\) such that \(y = f(x)\) \\
+\(\Rightarrow y \in f(E \cup F)\) \\
+Therefore \(f(E) \cup f(F) \subseteq f(E \cup F) \)
+\\
+
+Hence \(f(E \cup F) = f(E) \cup f(F)\)
+\\
+
+\vspace{7mm}
+
+Now we show that \(f(E \cap F) \subseteq f(E) \cap f(F)\),
+\\ 
+
+Let \(y \in f(E\cap F) \Rightarrow \ \exists \ x \in E \cap F\)  such that \( f(x) = y\). 
+\\
+Thus \(x \in E \) and \( x \in F \Rightarrow y \in f(E)\) and \(y \in f(F)\)
+
+\(\Rightarrow y \in f(E)\cap f(F)\)
+
+Hence \(f(E \cap F) \subseteq f(E) \cap f(F)\)
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection*{BS - Page 16 Exercise 16}
+To find all natural number such that \(n^2 < 2^n\)
+\\
+
+Let \(P(n)\) be the proposition \(n^2 < 2^n\) with \(n \in \mathbb{N}\), \\
+A quick check of the first few propositions shows that \(P(1), P(5), P(6), P(7)\) are
+true while \(P(2), P(3), P(4)\) are false. \\
+
+Let us check if \(P(n)\) holds for \(n > 4\),
+
+\begin{itemize}
+    \item \(P(5)\) is true since, \(25 < 32\)
+    \item Assume \(P(k)\) holds.
+Check if \(P(k+1)\) holds with the assumption
+\begin{align*}
+    k^2 &< 2^{k} \\
+    k^2 + 2k + 1 &< 2^k + 2k + 1 \\
+    (k+1)^2 &< 2^k + 2k + 1 \\
+\end{align*}
+We observe that \(\forall \ k > 4, \quad 2k + 1 < 2^k\)* \\
+Which we will also prove by induction, \\
+
+Base case: \(7 < 2^7 = 128\) \\
+Induction step: Assume this holds for \(k = m\)
+
+i.e. \(2m+1<2^m\) \\
+\begin{align*}
+    2m+1 + 2 &< 2^m +2 \\
+    2(m+1) &< 2^m + 2 < 2(2^m) \ \ \text{Since } x+2 < 2x \ \forall \ x> 4, x \in \mathbb{N} \\
+    &< 2^{m+1}
+\end{align*}
+Hence,
+\begin{align*}
+    (k+1)^2 &< 2^k + 2^k \\
+    (k+1)^2 &< 2(2^k) \\
+    (k+1)^2 &< 2^{k+1}
+\end{align*}
+
+Thus by induction, we see that \(n^2 < 2^n\) for all \(n > 4, n \in \mathbb{N}\)
+\end{itemize}
+
+
+
+
+
+
+
+\subsection*{BS - Page 21 Exercise 11}
+Q. Use induction to prove that if a set \(S\) has \(n\) elements then \(\mathcal{P}(S)\) has \(2^n\) elements.
+
+\begin{itemize}
+    \item Base Case: A set with no elements (the empty set)
+\[
+\mathcal{P}(\emptyset) = \{\emptyset\}
+\]
+\[
+2^0 = 1
+\]
+
+    \item Induction Step: Assume our proposition holds for any set \(A\) with \(k\) elements, i.e. it's powerset contains \(2^k\) sets.
+Now consider the set \( S = A \cup \{x\}\) which has \(k+1\) elements. 
+
+There are two categories of the subsets of \(S\), those which contain \(x\) and
+those which don't. Of the ones the don't, by assumption there are exactly \(2^k\) of these, since these are all the possible subsets of \(A\). 
+
+The other subsets are of the form \(B \cup \{x\}\) where 
+\(B \subset A\), we know that there is exactly \(2^k\) subsets of A, thus there are exactly \(2^k\) subsets of \(S\) of this form. 
+
+\(|\mathcal{P}(S)| = 2^k + 2^k = 2^{k+1}\)
+
+Thus, by induction we have proved that  if a set \(S\) has \(n\) elements then \(\mathcal{P}(S)\) has \(2^n\) elements.
+
+\end{itemize}
+\end{document}

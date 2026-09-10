@@ -1,0 +1,133 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Advanced Calculus HW 6}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+
+\subsection*{Question 1}
+\[
+f(x,y,z) = (x^2 + y^2 +z^2)^\alpha
+\]
+
+Partial Derivatives at \((0,0,0)\)
+\begin{align*}
+    f_x(0,0,0) &= \lim_{h\to 0}{\frac{f(0+h,0,0)- f(0,0,0)}{h}} \\
+    &= \lim_{h\to 0}{\frac{h^{2\alpha} - 0^\alpha}{h}} \\
+    &= \lim_{h\to 0}{h^{2\alpha -1}} - \lim_{h\to 0}{\frac{0^\alpha}{h}}
+\end{align*}
+This limit only exists if \(\alpha > \frac{1}{2}\)
+
+The same is true for \(y\) and \(z\), (nothing changes for \(y\) and \(z\) because of the question)
+
+\[
+\lim_{(\Delta x, \Delta y, \Delta z)\to (0,0,0)}{\frac{\Delta f - f_x(0,0,0)\Delta x - f_y(0,0,0)\Delta y - f_z(0,0,0)\Delta z}{\sqrt{\Delta x ^2 + \Delta y^2 + \Delta z^2}}}
+\]
+with
+\[
+\Delta f = f(\Delta x , \Delta y, \Delta z) - f(0,0,0) = (\Delta x^2, \Delta y^2, \Delta z^2)^\alpha \text{ for } \alpha \neq 0
+\]
+
+With \(\alpha > \frac{1}{2}\), we then have the partial derivatives as 
+\[
+f_x(x,y,z) = 2x\alpha(x^2 + y^2 + z^2)^{\alpha -1}
+\]
+\[
+f_y(x,y,z) = 2y\alpha(x^2 + y^2 + z^2)^{\alpha -1}
+\]
+\[
+f_z(x,y,z) = 2z\alpha(x^2 + y^2 + z^2)^{\alpha -1}
+\]
+
+Then
+\[
+f_x(0,0,0) = f_y(0,0,0) = f_z(0,0,0) = 0
+\]
+
+Then with \(\alpha > \frac{1}{2}\) the earlier limit is defined and is 
+\[
+\lim_{(\Delta x, \Delta y, \Delta z)\to (0,0,0)}{\frac{(\Delta x^2 + \Delta y^2 + \Delta z^2)^\alpha}{(\Delta x ^2 + \Delta y^2 + \Delta z^2)^{\frac{1}{2}}}}
+\]
+\[
+= \lim_{(\Delta x, \Delta y, \Delta z)\to (0,0,0)}{(\Delta x^2 + \Delta y^2 + \Delta z^2)^{\alpha - \frac{1}{2}}}
+\]
+
+Which is equal to zero \(\forall \ \alpha > \frac{1}{2}\)
+
+Thus \(f\) is differntiable \(\forall \ \alpha > \frac{1}{2}\)
+
+\subsection*{Question 2}
+\[
+L(x,y,z) = f(x_0,y_0,z_0) + f_x(x_0,y_0,z_0)(x-x_0) + f_y(x_0,y_0,z_0)(y-y_0) + f_z(x_0,y_0,z_0)(z-z_0)
+\]
+
+Then,
+\[
+L(x_0,y_0,z_0) = f(x_0,y_0,z_0)
+\]
+\[
+\Rightarrow f(0,-1,-2) = L(0,-1,-2) = -4
+\]
+
+Also,
+\[
+L_x(x,y,z) = f_x(x_0,y_0,z_0)
+\]
+\[
+\Rightarrow f_x(0,-1,-2) = \frac{\partial}{\partial x} (x + 2y + 3z + 4) = 1
+\]
+
+Similarly,
+\[
+f_y(0,-1,-2) = 2
+\]
+\[
+f_z(0,-1,-2) = 3
+\]
+
+\subsection*{Question 3}
+\subsubsection*{(a)}
+\[
+z = V(r, h) = \pi r^2 h
+\]
+
+Then
+\[
+dz = f_r dr + f_h dh = 2\pi rh dr + \pi r^2 dh
+\]
+\[
+\Rightarrow |dz| = \leq |2\pi rh||dr| + |\pi r^2| |dh|
+\]
+
+Then for a cylinder with \(r = 5\), \(h=3\) and \(dr = 0.1\) and \(dh = 0.05\)
+\[
+|dz| \leq |30 \pi||0.1| + |25 \pi||0.05| = 4.25 \pi
+\]
+
+\subsubsection*{(b)}
+With \(z = f(x_1, x_2, \dots , x_n)\)
+
+We have 
+\[
+dz =   \sum_{i=1}^n \frac{\partial f}{\partial x_i} dx_i
+\]
+Then,
+\[
+|dz| = |\sum_{i=1}^n \frac{\partial f}{\partial x_i} dx_i|
+\]
+\[
+\leq \sum_{i=1}^n |\frac{\partial f}{\partial x_i}|| dx_i|
+\]
+
+\end{document}

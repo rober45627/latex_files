@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Probability Lecture 2}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\subsection*{Conditional Probability}
+Use new information to revise a model
+
+\subsubsection*{Defintion of Conditional Probability}
+\[
+P(A|B) = \frac{P(A \cup B)}{P(B)}
+\]
+
+\subsubsection*{Properties of Conditional Probabilities}
+\begin{itemize}
+    \item \(P(A|B) \geq 0\)
+    \item \(P(\Omega |B) = 1\)
+    \item \(P(B|B) = 1 \)
+    \item If \(A \cap C = \emptyset\), then \(P(A \cup C | B) = P(A|B) + P(C|B)\)
+\end{itemize}
+
+We can see that conditional probablities satisfy all the standard probability axioms
+
+\subsection*{The Multiplication Rule}
+
+\[
+P(A|B) = \frac{P(A \cup B)}{P(B)}
+\]
+\[
+P(A \cup B) = P(B)P(A|B) = P(A)(B|A)
+\]
+can be extended to \(N\) events
+
+\subsection*{Total Probability Theorem}
+We have
+\begin{itemize}
+    \item Partition of sample space into \(A_1, A_2,\dots, A_n\)
+    \item Have \(P(A_i)\) for every \(i\)
+    \item Have \(P(B|A_i)\) for every \(i\)
+\end{itemize}
+
+Then
+\[
+P(B) = \sum_{i = 1}^n P(A_i)P(B|A_i)
+\]
+
+\subsection*{Bayes' Theorem}
+We have
+\begin{itemize}
+    \item Partition of sample space into \(A_1, A_2,\dots, A_n\)
+    \item Have \(P(A_i)\) for every \(i\)
+    \item Have \(P(B|A_i)\) for every \(i\)
+\end{itemize}
+
+Then
+\[
+P(A_i|B) = \frac{P(A_i \cap B)}{P(B)} = \frac{P(A_i)P(B|A_i)}{\sum_j P(A_j)P(B|A_j)}
+\]
+
+This is a systematic approach for incorporating new evidence
+\\
+
+\subsection*{Bayesian Inference}
+
+Initial Beliefs \(P(A_i)\) on possible cause of an observed event B
+ 
+- Model if the world under each \(A_i: P(B|A_i)\) 
+\[
+A_i \rightarrow B \ \text{using} \ \text{model} \ \& \ P(B|A_i)
+\]
+
+- Draw conclusions about causes
+\[
+B \rightarrow A_i \ \text{using} \ \text{inference} \ \& \ P(A_i|B)
+\]
+
+\textbf{Bayesian inference} reasons from observed effects to probable causes. 
+Given initial beliefs $P(A_i)$ and forward models $P(B|A_i)$, we observe $B$ 
+and compute $P(A_i|B) \propto P(B|A_i)P(A_i)$. \textit{Example:} observing fever ($B$), 
+with causes $A_1=\text{flu}$, $A_2=\text{COVID}$, $A_3=\text{cold}$, 
+we combine prior probabilities $P(\text{flu})=0.3$, $P(\text{COVID})=0.1$, 
+$P(\text{cold})=0.6$ with likelihoods $P(\text{fever}|\text{flu})=0.9$, $P(\text{fever}|\text{COVID})=0.8$, 
+$P(\text{fever}|\text{cold})=0.3$ to determine which cause is most likely responsible.
+
+\end{document}

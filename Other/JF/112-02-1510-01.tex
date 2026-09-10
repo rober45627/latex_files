@@ -1,0 +1,180 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Programming HW 2}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section*{Question 1}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+$A$ & $B$ & $C$ & $D$ & $A \ \text{AND} \ B$ & $\text{NOT} \ C$ & $\text{NOT} \ C \ \text{AND} \ D$ & $(A \ \text{AND} \ B)\ \  \text{OR}\ \ (\text{NOT} \ C \ \text{AND} \ D)$ \\ \hline
+F & F & F & F & F  & T  & F  &  F  \\ \hline
+F & F & F & T & F  & T  & T  & T  \\ \hline
+F & T & F & F &  F & T  & F  &  F \\ \hline
+F & T & F & T &  F & T  & T  &  T \\ \hline
+T & F & F & F & F  & T  & F  &  F \\ \hline
+T & F & F & T &  F & T  & T  &  T \\ \hline
+T & T & F & F &  T & T  & F  & T  \\ \hline
+T & T & F & T &  T & T  & T  & T  \\ \hline
+F & F & T & F &  F & F  & F  &  F \\ \hline
+F & F & T & T &  F & F  & F  & F  \\ \hline
+F & T & T & F &  F & F  & F  & F  \\ \hline
+F & T & T & T &  F & F  & F  & F  \\ \hline
+T & F & T & F & F  & F  & F  & F  \\ \hline
+T & F & T & T & F  &  F & F  & F  \\ \hline
+T & T & T & F &  T & F  &  F & T  \\ \hline
+T & T & T & T &  T & F  & F  & T  \\ \hline
+\end{tabular}
+\end{center}
+
+
+\section*{Question 2}
+\[
+(n)(n+1)(n+2)(n+3) = 24k, \quad k \in \mathbb{Z}, n \in \mathbb{Z}, 
+\]
+\subsubsection*{Proof}
+\[
+P = (n)(n+1)(n+2)(n+3)
+\]
+Since we are looking at the products of four consecutive integers we know that two are divisible by two, one of those two also divisible by four 
+and another by three
+
+Thus \(P\) is divisible by 2,3 and 4.
+If \(P\) is divisible by 2,3 and 4 it must also be divisible by \(2\times 3 \times 4 = 24\)
+
+
+\section*{Question 3}
+\subsubsection*{Proof by contrapositive}
+Trying to prove \(p \rightarrow q\)
+
+Contrapositive is NOT \(q \rightarrow\) NOT \(p \)
+
+\subsubsection*{Restatement of Question}
+\(2^{n}-1\) is prime \(\rightarrow \ n\) is prime
+
+\(n\) is NOT prime \(\rightarrow \ 2^{n}-1\) is NOT prime
+
+\subsubsection*{Proof}
+\(n \in \mathbb{N}\)
+
+Assume \(n\) is not prime and therefore can be written as a product of two integers, where \(1<a,b<n\)
+\[
+n = ab
+\]
+\[
+2^{n}-1 = 2^{ab}-1
+\]
+
+Then using the expression \(x^{k}-1 = (x-1)((x)^{k-1}+(x)^{k-2} \dots x+1)\), we get
+\[
+    2^{n}-1 = (2^a-1)((2^a)^{b-1}+(2^a)^{b-2} \dots 2^a+1)
+\]
+Since \(a,b > 0 \), we have that \(2^n-1\) can be written as the product of two integers, meaning that if \(n\) is not a prime
+then \(2^n-1\) is also not a prime.
+
+Then the original statement, if \(2^n-1\) is prime then \(n\) is prime must be true
+
+
+\section*{Question 4}
+For any integers \(m\) and \(n\) where \(n \neq 0\), \(m+\sqrt{2}n\) is not rational
+
+\subsubsection*{Step 1}
+
+Assume \(n\sqrt{2}\) is rational,
+
+\(n\sqrt{2} = \frac{a}{b}\) where the fraction is in its simplist form, i.e. highest common factor of \(a\) and \(b\) is 1 and \(b \neq 0\), \(a,b \in \mathbb{Z}\)
+
+\[
+2n^2 = \frac{a^2}{b^2}
+\]
+\[
+2(b^2n^2) = a^2
+\]
+Thus \(a^2\) and \(a\) are even
+\[
+a = 2k, \quad z \in \mathbb{Z}
+\]
+
+\[
+2(b^2n^2) = 4k^2
+\]
+\[
+n^2b^2 = 2k^2
+\]
+Thus \(n^2b^2\) is even, and at least one of the factors must be even
+\\
+
+If \(n^2\) is odd then \(b^2\) and \(b\) must be even, which contradicts the assumption that the highest common 
+factor of \(a,b\) is 1, a contradiction
+\\
+
+If \(n^2\) is even then \(n\) is even, then looking back at the original equation \(n\sqrt{2} = \frac{a}{b}\) we see that 
+\(n\) and \(a\) are even, thus
+\[
+p\sqrt{2} = \frac{k}{b}
+\]
+This is a smaller fraction which represents the same number, a contradiction
+
+Thus \(n\sqrt{2}\) must be irrational
+\\
+
+\subsubsection*{Step 2}
+We now will check the case \(m+\sqrt{2}n\), knowing \(n\sqrt{2}\) is irrational
+
+Assume \(m+\sqrt{2}n\) is rational, 
+
+\( m + n\sqrt{2} = \frac{a}{b}\) where the fraction is in its simplist form, i.e. highest common factor of \(a\) and \(b\) is 1 and \(b \neq 0\), \(a,b \in \mathbb{Z}\)
+
+We can reorder the equation to get
+\[
+n\sqrt{2} = \frac{a}{b} - m
+\]
+\[
+n\sqrt{2} = \frac{a-mb}{b}
+\]
+
+This shows that \(n\sqrt{2}\) can be written as a fraction, which we know is false since we just proved it's irrationality
+
+This is a contradiction, thus \(m + n\sqrt{2}\) is also irrational
+
+
+\section*{Question 5}
+\[
+\sum_{i=0}^{n} i^2 = \frac{1}{6}n(n+1)(2n+1)
+\]
+
+\subsubsection*{Proof by Induction}
+Check base case (\(n=0\))
+\[
+0 = \frac{1}{6}(0)(1)(2) = 0
+\]
+
+Assume formula holds for \(n = k\)
+\[
+\sum_{i=0}^{k} i^2 = \frac{1}{6}k(k+1)(2k+1)
+\]
+
+
+\begin{align*}
+    \sum_{i=0}^{k} i^2 + (k+1)^2 &= \frac{1}{6}k(k+1)(2k+1) + (k+1)^2 \\
+    \sum_{i=0}^{k+1} i^2 &= \frac{1}{6}(2k^3 + 3k^2 + k  + 6k^2 + 12k + 6 ) \\ 
+    &= \frac{1}{6}(2k^3 + 9k^2 + 13k + 6 ) \\ 
+    &= \frac{1}{6}(k+1)(2k^2 + 7k + 6) \\ 
+    & = \frac{1}{6}(k+1)(k+2)(2k + 3) \\
+    & = \frac{1}{6}(k+1)((k+1)+1)(2(k+1)+1)
+\end{align*}
+
+Thus the formula holds in the induction step, and the result is proven
+\end{document}

@@ -1,0 +1,189 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Real Analsyis HW 7}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+
+\subsection*{BS - Page 129 Exercise 12}
+A function \(f\) is said to be additive if \(f(x + y) = f(x) + f(y)\) for all \(x , y\) 
+\(\in \mathbb{R}\). Prove that if \(f\) is continuous at some point \(x_0\), then 
+it is continuous at every point of \(\mathbb{R}\)
+\\
+
+First I will prove some intermediate properties of \(f\)
+
+\begin{itemize}
+    \item \(f(x) = f(x + 0) = f(x) + f(0)\) \\
+    Thus \(f(0) = 0\)
+    \item \(f(0) = f(x -x) = f(x) + f(-x)\) \\
+    Thus \(-f(x) = f(-x)\)
+    \item Also \(f(c) = f(c - x_0) + f(x_0)\)
+\end{itemize}
+
+We have that \(f\) is continuous at \(x_0\), since \(x_0\) must be a cluster point, since all points \(\in \mathbb{R}\)
+are cluster points of \(\mathbb{R}\), then 
+\[
+\lim_{x\to x_0}{f(x)}  = f(x_0)
+\]
+
+
+\begin{align*}
+    \lim_{x\to x_0}{f(x)}  &= \lim_{x\to x_0}{[f(x- x_0) + f(x_0)]} \\
+    &= \lim_{x\to x_0}{[f(x - x_0)]}  + f(x_0) \\
+    &= f(x_0)
+\end{align*}
+
+\[
+\Rightarrow \lim_{x\to x_0}{f(x)} = 0 = f(0)
+\]
+If \(\alpha = x - x_0\)
+\[
+\Rightarrow \lim_{\alpha \to 0}{f(\alpha)} = f(0)
+\]
+Therefore \(f\) is continuous at \(0\)
+\\
+
+Let \(c \in \mathbb{R}\), and \(\epsilon > 0\)
+
+Then
+\[
+|f(x)- f(c)| = |f(x-c)|
+\]
+Letting \(\beta = x-c\)
+
+Since \(f(\beta)\) is continuous at \(0\) and \(f(0) = 0\), we have
+\[
+\forall \ \epsilon > 0 \ \exists \ \delta \text{ such that } 0 < |\beta| < \delta \Rightarrow |f(\beta)| < \epsilon 
+\]
+then
+\[
+\forall \ \epsilon > 0 \ \exists \ \delta \text{ such that } 0 < |x-c| < \delta \Rightarrow |f(x-c)| < \epsilon 
+\]
+Thus \(f(c)\) is continuous \(\forall \ c \in \mathbb{R}\)
+
+
+\subsection*{BS - Page 129 Exercise 14}
+Let \(g: \mathbb{R} \rightarrow \mathbb{R}\) satisfy the relation \(g(x+y) = g(x)g(y)\)
+forall \(x,y \in \mathbb{R}\). Show that if \(g\) is continuous at \(x=0\), then \(g\) 
+is continuous at every point of \(\mathbb{R}\). Also if we have \(g(a) = 0\) for some
+\(a \in \mathbb{R}\), then \(g(x) = 0\) for all \(x \in \mathbb{R}\)
+\\
+
+\(g(x)\) is continuous at \(x = 0\)
+
+Thus \(\lim_{x\to 0}{g(x)} = g(0)\)
+\\
+
+In all of what follows, we assume \(g(x) \neq 0 \ \forall \ x\) 
+
+\[
+g(x) = g(x+0) = g(x)g(0)
+\]
+\[
+\Rightarrow g(0) = 1
+\]
+Also
+\[
+1 = g(0) = g(x + (-x)) = g(x)g(-x)
+\]
+\[
+\Rightarrow g(x) = \frac{1}{g(-x)}
+\]
+
+Then, let \(c \in \mathbb{R}\)
+\begin{align*}
+    \lim_{x\to c}{g(x)} = g(c)  &\iff \lim_{x\to c}{\frac{g(x)}{g(c)}} = 1 \\
+    &\iff \lim_{x\to c}{\frac{g(x)}{(\frac{1}{g(-c)})}} = 1 \\
+    &\iff \lim_{x\to c}{g(x-c)} = 1 \\
+    &\iff \lim_{\beta\to 0}{g(\beta)} = 1
+\end{align*}
+
+Which is true since, we have that \(g\) is continuous at \(0\)
+
+Thus \(g(x)\) is continuous \(\forall \ x \in \mathbb{R}\), under the assumption \(g(x) \neq 0 \ \forall \ x\)
+\\
+
+Let \(c \in \mathbb{R}\)
+
+If \(\exists \ a \in \mathbb{R}\) s.t. \(g(a) = 0\), then
+\[
+g(c) = g(c - a  + a) = g(c-a)g(a) = g(c-a)(0) = 0
+\]
+\[
+\Rightarrow g(c) = 0 \ \forall \ c \in \mathbb{R}
+\]
+
+
+\subsection*{BS - Page 135 Exercise 3}
+Let \(I := [a,b]\) and let \(f: I \rightarrow \mathbb{R}\) be a continuous function on 
+\(I\) such that for each \(x \in I\) there exists \(y \in I\) such that 
+\(|f(y)| \leq \frac{1}{2}|f(x)|\). Prove that there exists a point \(c \in I\) such that
+\(f(c) = 0\)
+\\
+
+Since we are dealing with a function \(f\) which is continuous on a closed interval we know that there will
+be both a maximum value, say \(f(t)\), and minimum value, say \(f(s)\), in the interval (Extreme Value Theorem)
+\\
+
+First I will show that \(f(t) \geq 0\)
+
+Assume that \(f(t) < 0\),
+
+Then there exists \(y \in I\), s.t. \(|f(y)| \leq \frac{1}{2}|f(t)|\)
+
+If \(f(y) \leq 0\), then from the above property, its absoute value is less than that of 
+\(f(t)\) and thus, \(f(y) > f(t)\), a contradiction
+
+If \(f(y) > 0\), then \(f(y) > f(t)\), a contradiction
+
+Thus \(f(t) \geq 0\)
+\\
+
+Now we look at \(f(s)\)
+
+Assume \(f(s) > 0\)
+
+Then there exists \(y \in I\), s.t. \(|f(y)| \leq \frac{1}{2}|f(s)| = \frac{1}{2}f(s) \), a contradiction since this
+implies \(f(y) < f(s)\)
+
+Thus \(f(s) \leq 0\)
+\\
+
+Now we have it that \(f(t) \geq 0 \geq f(s)\), then by the Intermediate Value Theorem, there exists
+\(c \in I\) s.t. \(f(c) = 0\)
+
+
+\subsection*{BS - Page 135 Exercise 5}
+Show that the polynomial \(p(x) := x^4 + 7x^3 - 9\) has at least two real roots. Use
+a calculator to locate these roots to within two decimal places
+\\
+
+We see that \(p(-10) > 0\) and \(p(-5) < 0\), then Intermediate Value Theorem \(\Rightarrow\) on the closed interval \([-10,-5]\),
+\(p\) has at least one root
+
+We see that \(p(0) < 0\) and \(p(5) > 0\), then Intermediate Value Theorem \(\Rightarrow\) on the closed interval \([0,5]\),
+\(p\) has at least one root
+
+Then on \(p:\mathbb{R} \rightarrow \mathbb{R}\), \(p\) has at least two roots
+\\
+
+For the first root, we can shrink the interval down to \([-7.026,-7.025]\) (i.e. the signs of the endpoints of the interval are 
+different), thus to two decimal places the root is given by \(-7.03\)
+
+For the second root, we can shrink the interval down to \([1.037, 1.039]\), thus to two decimal places
+the root is given by \(1.04\)
+
+
+\end{document}

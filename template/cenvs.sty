@@ -1,0 +1,71 @@
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{template/cenvs}[2025/01/01 Custom problem/solution and mathematical environments]
+
+\RequirePackage{amsthm}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+
+% ============================================================
+% Numbering
+% ============================================================
+
+\newcounter{problemnum}
+
+% ============================================================
+% Problem / Solution environments
+% ============================================================
+
+\newenvironment{problem}[1][]{%
+	\refstepcounter{problemnum}%
+	\noindent\rule{\textwidth}{0.4pt}\par
+	\vspace{4pt}%
+	\textbf{Problem \theproblemnum}%
+	\ifx&#1&\else\ (#1)\fi
+	\par\vspace{4pt}%
+}{%
+	\par\vspace{8pt}%
+}
+
+\newenvironment{solution}{%
+	\begin{proof}[Solution]%
+		}{%
+	\end{proof}%
+}
+
+% ============================================================
+% Theorem-like environments
+% ============================================================
+
+% Definitions: upright text
+\theoremstyle{definition}
+
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+
+% Theorems: italic text
+\theoremstyle{plain}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+
+% Remarks/observations: upright text
+\theoremstyle{remark}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+
+% ============================================================
+% Common mathematical sets
+% ============================================================
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+
+\endinput

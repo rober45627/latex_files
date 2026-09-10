@@ -1,0 +1,578 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[shortlabels]{enumitem}
+
+\title{\textbf{Linear Algebra HW 4}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+
+\subsection*{Question 1}
+\begin{enumerate}[(a)]
+    \item The matrix of minors is the matrix with \((i,j)\) entries \(\det{A^{ij}}\)
+    
+    For example, the \((1,1)\) entry of \(A\) is \((5)(10)-(6)(8) = 2\)
+
+    Repeating this for all the entries of \(A\), you get
+    \[ M = 
+    \begin{bmatrix}
+        2&-2&-3 \\
+        -4&-11&-6 \\
+        -3&-6&-3
+    \end{bmatrix}
+    \]
+
+    \item The cofactor matrix is then the \((i,j)\) entries of \(M\) mutliplied
+    by \((-1)^{i+j}\)
+    \[ C = 
+    \begin{bmatrix}
+        2&2&-3 \\
+        4&-11&6 \\
+        -3&6&-3 
+    \end{bmatrix}
+    \]
+
+    \item Using an expansion across the first row, 
+    \[
+    \det{A} = 1(A^{11}) - 2(A^{12}) + 3(A^{13})
+    \]
+    which we can use the matrix of minors to compute easily
+    \[
+    \det{A} = -3
+    \]
+
+    \item We know \(A^{-1} = \frac{1}{\det{A}}(C^T)\)
+    
+    Then 
+    \[
+    A^{-1} = -\frac{1}{3}\begin{bmatrix}
+        2&4&-3 \\
+        2&-11&6 \\
+        -3&6&-3
+    \end{bmatrix}
+    \]
+
+    \item We are asked to solve the equation 
+    \begin{align*}
+    A\begin{bmatrix}
+        x_1\\x_2\\x_3
+    \end{bmatrix} &= \begin{bmatrix}
+        2\\-7\\10
+    \end{bmatrix} \\
+    \Rightarrow
+    \begin{bmatrix}
+        x_1\\x_2\\x_3
+    \end{bmatrix} &= A^{-1}\begin{bmatrix}
+        2\\-7\\10
+    \end{bmatrix}
+    \\
+    &= -\frac{1}{3}\begin{bmatrix}
+        2&4&-3 \\
+        2&-11&6 \\
+        -3&6&-3
+    \end{bmatrix}\begin{bmatrix}
+        2\\-7\\10
+    \end{bmatrix}
+    \\
+    &= -\frac{1}{3}\begin{bmatrix}
+        -54\\141\\-78
+    \end{bmatrix}
+    \\
+    &= \begin{bmatrix}
+        18\\-47\\26
+    \end{bmatrix}
+\end{align*}
+
+\item Similarly we try to solve
+\begin{align*}
+    A\begin{bmatrix}
+        x_1\\x_2\\x_3
+    \end{bmatrix} &= \begin{bmatrix}
+        3\\15\\-18
+    \end{bmatrix}
+    \\
+    \Rightarrow 
+    \begin{bmatrix}
+        x_1\\x_2\\x_3
+    \end{bmatrix} &=  -\frac{1}{3}\begin{bmatrix}
+        2&4&-3 \\
+        2&-11&6 \\
+        -3&6&-3
+    \end{bmatrix}\begin{bmatrix}
+        3\\15\\-18
+    \end{bmatrix}
+    \\
+    &= -\frac{1}{3}\begin{bmatrix}
+        120\\-267\\135
+    \end{bmatrix}
+    \\
+    &= \begin{bmatrix}
+        -40\\89\\-45
+    \end{bmatrix}
+\end{align*}
+
+\end{enumerate}
+
+
+
+
+
+\subsection*{Question 2}
+\begin{enumerate}[(i)]
+    \item Since \(V\) contains three vectors in \(\mathbb{R}^2\) we know that it won't
+    be linearly independent.
+
+    We see that \(\vec{v_1} + \frac{4}{3}\vec{v_2} - \frac{44}{21}\vec{v_3} = 0\)
+    \\
+
+    Looking at just the first and second vectors of \(V\) now, we see that they are linearly
+    independent, as they are not scaled copies of each other, then
+
+    \begin{align*}
+        \text{span}\{{V}\} &= \left\{c_1\begin{bmatrix}
+        20\\-12
+        \end{bmatrix} + c_2\begin{bmatrix}
+        -4\\9
+        \end{bmatrix} \middle| c_1,c_2 \in \mathbb{R}\right\}
+        \\
+        & = \left\{\begin{bmatrix}
+        y_1\\y_2
+        \end{bmatrix} \middle| \begin{bmatrix}
+        y_1\\y_2
+        \end{bmatrix} = 
+        \begin{bmatrix}
+          20 & -4 \\
+        -12 & 9
+        \end{bmatrix}
+        \begin{bmatrix}
+        c_1\\c_2
+        \end{bmatrix}, c_1,c_2 \in \mathbb{R}\right\}
+    \end{align*}
+
+    Since the columns of the matrix are linearly independent
+    we know there is a unique solution for when \(\vec{y} = \vec{0}\), thus it has a unique solution for all \(\vec{y}\)
+
+    Then \(\vec{y}\) could be any vector in \(\mathbb{R}^2\), i.e. the set spans \(\mathbb{R}^2\)
+    
+    The addition of the third vector does not change the spanning set, since it will still be able to each all points 
+    in \(\mathbb{R}^2\), it won't change where we can reach
+    \\
+
+    Since the three vectors are not linearly independent by definition they 
+    cannot form a basis of \(\mathbb{R}^2\)
+
+    \item Since we are looking at three vectors in \(\mathbb{R}^3\), the question of linear
+    independence is equivalent to asking is the determinant of the matrix \(A\), with columns \(\vec{v_1}, \vec{v_1},
+    \vec{v_3}\) non zero, since a non-zero determinant implies a unique solution to the 
+    equation \(A\vec{x} = \vec{0}\) and \(A\) is an \(n\times n\) matrix
+
+    The determinant of \(A\), taking an expansion across the first column, is \(15(-28) = -420\), which
+    is non-zero, thus the vectors are linearly independent
+    \\
+
+    \begin{align*}
+        \text{span}\{{V}\} &= \left\{c_1\begin{bmatrix}
+        0\\0\\15
+        \end{bmatrix} + c_2\begin{bmatrix}
+        0\\7\\-1
+        \end{bmatrix} + c_3\begin{bmatrix}
+        4\\-5\\20
+        \end{bmatrix} \middle| c_1,c_2,c_3 \in \mathbb{R}\right\}
+        \\
+        & = \left\{\begin{bmatrix}
+        y_1\\y_2\\y_3
+        \end{bmatrix} \middle| \begin{bmatrix}
+        y_1\\y_2\\y_3
+        \end{bmatrix} = \begin{bmatrix}
+        0&0&4\\0&7&-5 \\ 15&-1&20
+        \end{bmatrix}\begin{bmatrix}
+        c_1\\c_2\\c_3
+        \end{bmatrix}, c_1,c_2,c_3 \in \mathbb{R}\right\}
+    \end{align*}
+
+    Since the columns of the matrix are linearly independent
+    we know there is a unique solution for when \(\vec{y} = \vec{0}\), thus it has a unique solution for all \(\vec{y}\),
+    because the matrix is invertible
+
+    Then \(\vec{y}\) could be any vector in \(\mathbb{R}^2\), i.e. the set spans \(\mathbb{R}^3 \)
+    \\
+
+    Since the vectors are linearly independent and also span \(\mathbb{R}^3\), 
+    they also form a basis for \(\mathbb{R}^3\).
+
+    \item Since we are looking at four vectors in \(\mathbb{R}^4\), the question of linear
+    independence is equivalent to asking is the determinant of the matrix \(A\), with columns \(\vec{v_1}, \vec{v_1},
+    \vec{v_3}, \vec{v_4}\) non zero, since a non-zero determinant implies a unique solution to the 
+    equation \(A\vec{x} = \vec{0}\) and \(A\) is an \(n\times n\) matrix
+
+    We can calculate the determinant of \(A\) by row reducing it to 
+    \[
+    \begin{bmatrix}
+        1&2&3&4 \\ 
+        0&1&1&5 \\
+        0&0&1&7 \\
+        0&0&0&78
+    \end{bmatrix}
+    \]
+    which I used three row swaps to get to, so \(\det{A} = -78 \neq 0\), thus the vectors are linearly independent
+    \\
+
+    \begin{align*}
+        \text{span}\{{V}\} &= \left\{c_1\begin{bmatrix}
+        1\\5\\1\\0
+        \end{bmatrix} + c_2\begin{bmatrix}
+        2\\6\\0\\1
+        \end{bmatrix} + c_3\begin{bmatrix}
+        3\\0\\2\\1
+        \end{bmatrix} + c_4\begin{bmatrix}
+        4\\1\\1\\5
+        \end{bmatrix}\middle| c_1,c_2,c_3,c_4 \in \mathbb{R}\right\}
+        \\
+        & = \left\{\begin{bmatrix}
+        y_1\\y_2\\y_3\\y_4
+        \end{bmatrix} \middle| \begin{bmatrix}
+        y_1\\y_2\\y_3\\y_4
+        \end{bmatrix} = \begin{bmatrix}
+        1&5&1&0\\2&6&0&1 \\3&0&2&1 \\ 4&1&1&5
+        \end{bmatrix}\begin{bmatrix}
+        c_1\\c_2\\c_3\\c_4
+        \end{bmatrix}, c_1,c_2,c_3,c_4 \in \mathbb{R}\right\}
+    \end{align*}
+
+    Since the columns of the matrix are linearly independent
+    we know there is a unique solution for when \(\vec{y} = \vec{0}\), thus it has a unique solution for all \(\vec{y}\),
+    because the matrix is invertible
+
+    Then \(\vec{y}\) could be any vector in \(\mathbb{R}^4\), i.e. the set spans \(\mathbb{R}^4 \)
+    \\
+
+    Since the vectors are linearly independent and also span \(\mathbb{R}^4\), 
+    they also form a basis for \(\mathbb{R}^4\).
+
+
+    \item Since the set conatins the zero vector, we know it can't be linearly independent
+    \(0v_1 + 0v_2 + 99v_3 + 0v_4 = 0\)
+    \\
+
+    Since we know the zero vector won't add to the span of the set, we only need to look at the other three vectors
+    \begin{align*}
+        \text{span}\{{V}\} &= \left\{c_1\begin{bmatrix}
+        -3\\17\\-2\\25\\13\\-22
+        \end{bmatrix} + c_2\begin{bmatrix}
+        0\\-4\\-5\\22\\-13\\12
+        \end{bmatrix} + c_3\begin{bmatrix}
+        9\\3\\1\\6\\15\\18
+        \end{bmatrix} \middle| c_1,c_2,c_3 \in \mathbb{R}\right\}
+        \\
+        & = \left\{\begin{bmatrix}
+        y_1\\y_2\\y_3
+        \end{bmatrix} \middle| \begin{bmatrix}
+        y_1\\y_2\\y_3
+        \end{bmatrix} = \begin{bmatrix}
+        -3&0&9\\
+        17&-4&3 \\
+        -2&-5&1 \\
+        25&22&6 \\
+        13&-13&15 \\
+        -22&12&18
+        \end{bmatrix}\begin{bmatrix}
+        c_1\\c_2\\c_3
+        \end{bmatrix}, c_1,c_2,c_3 \in \mathbb{R}\right\}
+    \end{align*}
+
+    Since we have a \(6\times 3\) matrix, we know there cannot be a pivot in each row, thus in the reduced row
+    echelon form of the matrix there will be at least three rows of zeros, then for some \(\vec{y}\) there will 
+    be inconsistencies and thus no solutions i.e. the set does not span \(\mathbb{R}^6\) since \(\vec{y}\) cannot be
+    any vector in \(\mathbb{R}^6\)
+    \\
+
+    Since the three vectors are not linearly independent and they do not span \(\mathbb{R}^6\), by definition they 
+    cannot form a basis of \(\mathbb{R}^6\)
+
+    \item Since we are looking at three vectors in \(\mathbb{R}^3\), the question of linear
+    independence is equivalent to asking is the determinant of the matrix \(A\), with columns \(\vec{v_1}, \vec{v_1},
+    \vec{v_3}\) non zero, since a non-zero determinant implies a unique solution to the 
+    equation \(A\vec{x} = \vec{0}\) and \(A\) is an \(n\times n\) matrix
+
+    The determinant of \(A\), taking an expansion across the third column, is \(4(-2+2) = 0\), which
+    is zero, thus the vectors are linearly dependent
+    
+    
+    
+    \begin{align*}
+        \text{span}\{{V}\} &= \left\{c_1\begin{bmatrix}
+        1\\-2\\0
+        \end{bmatrix} + c_2\begin{bmatrix}
+        1\\-2\\0
+        \end{bmatrix} + c_3\begin{bmatrix}
+        1\\2\\4
+        \end{bmatrix} \middle| c_1,c_2,c_3 \in \mathbb{R}\right\}
+        \\
+        & = \left\{\begin{bmatrix}
+        y_1\\y_2\\y_3
+        \end{bmatrix} \middle| \begin{bmatrix}
+        y_1\\y_2\\y_3
+        \end{bmatrix} = \begin{bmatrix}
+        1&-2&0\\1&-2&0 \\ 1&2&4
+        \end{bmatrix}\begin{bmatrix}
+        c_1\\c_2\\c_3
+        \end{bmatrix}, c_1,c_2,c_3 \in \mathbb{R}\right\}
+    \end{align*}
+
+    Then analysing the matrix equation we see we can get a row of zeros (\(r_1 - r_2\)), thus for some values of \(\vec{y}\)
+    there will be inconsistencies and thus no solutions i.e. the set does not span \(\mathbb{R}^3\) since \(\vec{y}\) cannot be
+    any vector in \(\mathbb{R}^3\) 
+    \\
+
+    Since the three vectors are not linearly independent and they do not span \(\mathbb{R}^3\), by definition they 
+    cannot form a basis of \(\mathbb{R}^3\)
+
+\end{enumerate}
+
+
+
+
+
+
+
+\subsection*{Question 3}
+\begin{enumerate}[(a)]
+    \item This set is clearly not a subspace of \(\mathbb{R}^3\) since the set does not contain the zero vector, since \(0+0+0 \neq 4\)
+    \\
+    The reason why this implies that this is not a subspace is because if \(\vec{v} \in U\) then \(0 \cdot \vec{v} \notin U\)
+    therefore it is not closed under scalar multiplication
+
+    \item This set is less straight forward, we can see that it contains the zero vector, since 
+    \(\vec{v} = \vec{0}\) satifies the given equation, therefore the set is non-empty.\\
+    
+    To check if it is closed under addition, \\
+    Let \(\vec{v}, \vec{w} \in U\), we then want to check if \(\vec{v} + \vec{w} \in U\)
+    
+    We know \(-3v_1 + 4v_2 + 2v_3 = 0\) and \(-3w_1 + 4w_2 + 2w_3 = 0\), 
+    
+    Then
+    \(-3v_1 + 4v_2 + 2v_3 -3w_1 + 4w_2 + 2w_3 = 0\) \\
+    \(\Rightarrow -3(v_1+w_1) + 4(v_2+w_2) + 2(v_3+w_3) = 0\) \\
+    Which satifies the given equation for \(\vec{v} + \vec{w}\)\\
+
+    We know check if \(U\) is closed under scalar multiplication,\\
+    Let \(\vec{v} \in U, \quad \lambda \in \mathbb{R}\) \\
+    We want \(\lambda \vec{v} \in U\) \\
+    Again we know \(-3v_1 + 4v_2 + 2v_3 = 0\)
+    
+    Then \(\lambda (-3v_1 + 4v_2 + 2v_3) = 0\) \\
+    \(\Rightarrow -3(\lambda v_1) + 4(\lambda v_2)  + 2(\lambda v_3) = 0\)\\
+    Which satifies the given equation for \(\lambda \vec{v}\)\\
+
+    Since \(U\) is non-empty, closed under addition and scalar multiplication, 
+    it is a subspace of \(\mathbb{R}^3\)
+
+    \item This set is clearly not a subspace of \(\mathbb{R}^3\) since the set does not contain the zero vector, since \(0+0+0 \neq 1\)
+
+    \item This set is clearly not a subspace of \(\mathbb{R}^3\) since the set does not contain the zero vector,
+    as no values of \(a,b\) will make \(4 = 0\)
+
+    \item Once more we do a full check,
+    
+    We have the zero vector when \(p= q =r = 0\)\\
+    
+    To check if it is closed under addition, let \(\vec{v}, \vec{w} \in U\)
+
+    Then
+    \begin{align*}
+    \vec{v} + \vec{w} &= \begin{bmatrix}
+        -3p_v - 3q_v + 2r_v \\
+        7r_v \\
+        -3p_v \\
+        q_v \\
+        q_v + 23p_v 
+    \end{bmatrix} + \begin{bmatrix}
+        -3p_w - 3q_w + 2r_w \\
+        7r_w \\
+        -3p_w \\
+        q_w \\
+        q_w + 23p_w 
+    \end{bmatrix} \\
+    \\
+    & = \begin{bmatrix}
+        -3(p_v+p_w) - 3(q_v+q_w) + 2(r_v + r_w) \\
+        7(r_v +r_w) \\
+        -3(p_v+p_w) \\
+        (q_v + q_w) \\
+        (q_v + q_w) + 23(p_v + p_w) 
+    \end{bmatrix}
+    \end{align*}
+    If \(p\) and \(w\) both attain all real numbers, it follows that
+    \(p + w\) attain all real numbers.
+    Thus we can see that the vector \(\vec{v} + \vec{w} \in U\) 
+    \\
+
+    We now need to check if the set is closed under scalar multiplication
+
+    Let \(\vec{v} \in U\) and \(\lambda \in \mathbb{R}\)
+
+    Then 
+    \begin{align*}
+    \lambda \vec{v} &= \begin{bmatrix}
+        \lambda (-3p_v - 3q_v + 2r_v) \\
+        \lambda (7r_v) \\
+        \lambda (-3p_v) \\
+        \lambda (q_v) \\
+        \lambda (q_v + 23p_v )
+    \end{bmatrix} \\
+    \\
+    & = \begin{bmatrix}
+        -3(\lambda p_v) - 3(\lambda q_v) + 2(\lambda r_v) \\
+        7(\lambda r_v) \\
+        -3(\lambda p_v) \\
+        \lambda q_v \\
+        \lambda q_v  + 23(\lambda p_v) 
+    \end{bmatrix}
+    \end{align*}
+
+    Similarly if \(p\) attains all reals, then so does \(\lambda p\). Thus \(\lambda \vec{v} \in U\)
+    \\
+
+    Since \(U\) is non-empty, closed under addition and scalar multiplication, 
+    it is a subspace of \(\mathbb{R}^5\)
+\end{enumerate}
+
+
+
+\subsection*{Question 4}
+\begin{enumerate}[(a)]
+    \item 
+    Let \(A =
+    \begin{bmatrix}
+        1& 2& 38& 12 \\
+        34& 12& 7& 9 \\
+        81& 21& 3& 1 \\
+        0&0&0&0
+    \end{bmatrix}
+    \) \\
+
+    Then the vector \(\vec{b} = \begin{bmatrix}
+        1 \\ 2 \\ 3 \\ 4
+    \end{bmatrix}\) is not in the column space of \(A\), since no linear combination of 
+    constants times zero equal four in the last row of \(\vec{b}\).
+    \[
+    \text{span}\{{V}\} = \left\{c_1\begin{bmatrix}
+        1\\34\\81\\0
+        \end{bmatrix} + c_2\begin{bmatrix}
+        1\\2\\21\\0
+        \end{bmatrix} + c_3\begin{bmatrix}
+        38\\7\\3\\0
+        \end{bmatrix} + c_4\begin{bmatrix}
+        12\\9\\1\\0
+        \end{bmatrix} \middle| c_1,c_2,c_3,c_4 \in \mathbb{R}\right\}
+    \]
+    i.e. the columns span three dimensions while we have a four dimensional vector
+    \\
+
+    \item 
+    Let \(C =
+    \begin{bmatrix}
+        1& 2& 38& 12 \\
+        34& 12& 7& 9 \\
+        81& 21& 3& 1 \\
+        0&0&0&0
+    \end{bmatrix}
+    \) \\
+    
+    Then the vector \(\vec{d} = \vec{0}\) is in the nullspace of \(C\) as, the nullspace of a matrix is always a subspace of 
+    \(\mathbb{R}^n\) where the matrix is has \(n\) columns, thus it always contains the zero vector, alternatively
+    we see that it is the trivial solution, no matter what the columns of the matrix are the linear combination with 
+    constants all being zero is always equal to zero 
+\end{enumerate}
+
+\subsection*{Question 5}
+The vectors \(\vec{v_1}, \vec{v_2}, \vec{v_3}\) are linearly independent if the only linear combination of the three
+vectors equal to zero is the trivial combination. 
+
+Equivalently if \(\vec{v_1}, \vec{v_2}, \vec{v_3}\) make up the columns of the \(3\times 3\) matrix \(A\), the only solution to 
+\(A\vec{x} = \vec{0}\) is the trivial solution. This implies there is a unique solution to the linear system, i.e. \(\det{A} \neq 0\) 
+for a square matrix.
+
+We are now looking for the values of \(h\) which lead to a non-zero determinant of the matrix \(A\)
+
+Using an expansion across the first row
+\[
+\det{A} = (1)(6-7h) - (-3)(-4+2h) + (2)(-28+12) = -38 -h
+\]
+
+Thus the determinant of \(A\) is non-zero as long as \(h \neq -38\)
+
+Hence the vectors \(\vec{v_1}, \vec{v_2}, \vec{v_3}\) are linearly independent for \(h \in \mathbb{R}, h \neq -38\)
+
+
+\subsection*{Question 6}
+If we start with three vectors \(\in \mathbb{R}^3\) who span \(\mathbb{R}^3\), as the columns of a matrix not in row echelon form
+say 
+\[
+\begin{bmatrix}
+    1&0&0 \\
+    2&1&0 \\
+    0&0&1
+\end{bmatrix}
+\]
+These span \(\mathbb{R}^3\) since the matrix, call it \(A\), has a non-zero determinant (using an expansion across the first row this result is obvious), 
+so there is a unique solution to 
+\(A\vec{x} = \vec{y}\) for all \(\vec{y} \in \mathbb{R}^3\), i.e. it spans \(\mathbb{R}^3\)
+\\
+
+Then expand these vectors to vectors \(\in \mathbb{R}^5\) by adding fourth and fifth elements which
+are zeros, they span 3 dimensions (since the basis for the column space has three vectors, which can be the vectors in the matrix since they are linearly independent) 
+but are now elements of \(\mathbb{R}^5\)
+\[
+\begin{bmatrix}
+    1&0&0 \\
+    2&1&0 \\
+    0&0&1 \\
+    0&0&0 \\
+    0&0&0
+\end{bmatrix}
+\]
+
+To increase this to a \(5 \times 6\) matrix we can now add three zero vectors to the columns
+of the matrix, which won't affect the column space of the matrix as they don't contribute
+when you take any linear comnination of the columns (i.e. the basis for the subspace still has three vectors, since for the vectors to be linearly independent we have to remove the zero vectors)
+
+Then the final matrix is
+\[
+\begin{bmatrix}
+    1&0&0&0&0&0 \\
+    2&1&0&0&0&0 \\
+    0&0&1&0&0&0\\
+    0&0&0&0&0&0 \\
+    0&0&0&0&0&0
+\end{bmatrix}
+\]
+
+\subsection*{Question 7}
+We know that if the system \(A\vec{x} = y\) has a solution for all \(\vec{y}\) this implies 
+that in the reduced row echelon form of \(A\) there are no rows of zeros 
+(as if there were then there would be an inconsistency
+i.e. for some \(\vec{y}\) the row of zeros would be equal to a constant).
+\\
+
+Which implies a pivot in every row, and then for an \(n \times n \) matrix
+it would also mean a pivot in every column, a pivot in every row and column
+would mean that \(A\) is invertible, i.e. it has a unique solution for all \(\vec{y}\)
+
+Thus the equation \(A\vec{x} = \vec{0}\) has a unique solution
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,111 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Analysis on the Real Line HW 2}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+
+\subsection*{BS - Page 30 Exercise 18}
+Let \(a,b \in \mathbb{R}\), and suppose that for every \(\epsilon > 0\) we have
+\(a \leq b + \epsilon\). We want to prove that \(a \leq b\).
+\\
+
+To do this we will use a contrapostive proof.
+
+i.e. prove there exists an \(\epsilon\) such that \(a>b \Rightarrow a > b + \epsilon\)
+\\
+
+Since \(a>b \Rightarrow a-b > 0\).
+
+Picking epsilon to be \(\frac{a-b}{2}\), which is positive, we see that \(a = b + 2\epsilon\)
+
+Thus \(a > b + \epsilon\)
+
+Which proves that \(a \leq b + \epsilon \Rightarrow a \leq b\)
+
+\subsection*{BS - Page 34 Exercise 5}
+We know \(a <x <b\) and \(a<y<b \Rightarrow -b < -y < -a\).
+
+Adding these together we get \(a-b < x-y < b-a\)
+
+Since \(-(a-b) = b-a\), we can use one of the properties of the absolute value function to get \(|x-y| < b-a\).
+
+Interpreting this geometrically, we get that the distance between \(a\) and \(b\) is always greater than the distance between 
+\(x\) and \(y\)
+
+
+
+
+\subsection*{BS - Page 38 Exercise 5}
+Define \(-S = \{-s | s \in S\}\)
+
+Let \(s_0\) be  \(\inf(S)\)
+\begin{itemize}
+    \item \(s_0 \geq s \quad \forall \ s \in S\)
+    \item If \(z\) is another lower bound for \(S\), i.e. \( z \geq s \quad \forall \ s \in S \), then \(s_0 \geq z \quad \forall \ z\)
+\end{itemize}
+
+Using these properties we see 
+\begin{itemize}
+    \item \(-s_0 \leq -s \quad \forall \ s \in S\)
+    \item \( -s_0 \leq z \quad \forall \ z\) such that \( -z \leq -s \quad \forall \ s \in S\)
+\end{itemize}
+
+Then
+\begin{itemize}
+    \item \(-s_0 \leq k \quad \forall \  k \in -S\)
+    \item \( -s_0 \leq z \quad \forall \ z\) such that \( -z \leq k \quad \forall \ k \in -S\)
+\end{itemize}
+
+Thus we see \(-s_0\) satisfies the properties of being a supremum on the set \(-S\)
+\[
+-s_0 = \sup (-S) \Rightarrow \inf(S)  = -\sup (-S)
+\]
+
+
+
+\subsection*{BS - Page 43 Exercise 1}
+From class we have that \(\sup(x+A) = x + \sup(A)\), \(A \subset \mathbb{R}, x \in \mathbb{R}\)
+
+i.e. \(\sup(1- \frac{1}{n}| n \in \mathbb{N}) = 1 + \sup(-\frac{1}{n}| n \in \mathbb{N})\)
+\\
+
+Now we need to show, \(\sup(-\frac{1}{n}| n \in \mathbb{N}) = 0\)
+
+\begin{itemize}
+    \item \(n > 0 \Rightarrow -\frac{1}{n} < 0\) \(\quad \forall \ n \in \mathbb{N}\)
+    \\ 
+    0 is an upper bound for the set
+
+    \item Let \(s = \sup(-\frac{1}{n}| n \in \mathbb{N})\)
+    
+    Hence \(s \leq 0\)
+
+    If \(s < 0 \Rightarrow -s > 0\) then by the Archimedean Property 
+    \begin{itemize}
+        \item \(-sn > 1\) for some \(n \in \mathbb{N}\)
+        \item \(-s > \frac{1}{n}\)
+        \item \(s < - \frac{1}{n}\)
+        \item \(s\) is not an upper bound, a contradiction
+    \end{itemize}
+
+    Hence \(s = 0\)
+\end{itemize}
+
+\(\sup(1- \frac{1}{n}| n \in \mathbb{N}) = 1 + 0 = 1\)
+
+
+
+
+\end{document}

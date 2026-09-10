@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Lines and Planes in \(\mathbb{R}^3\)}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+\section*{Lines in \(\mathbb{R}^3\)}
+A line in \(\mathbb{R}^3\) is completely determined by a point and a direction vector
+
+\subsubsection*{Vector Equation}
+Let \(\overrightarrow{0P_0}\) be the vector joing the origin in \(\mathbb{R}^3\) to the point \(P_0\)
+
+The vector equation of the line through \(P_0\) with direction vector \(\vec{v}\) is given by
+\[
+\vec{r}(t) = \overrightarrow{0P_0} + t\vec{v}, \quad  \quad t \in \mathbb{R}
+\]
+
+All vectors that satisfy the equation have their tips lying on the line.
+
+As \(t\) ranges from \(-\infty\) to \(\infty\) the tips of the vectors trace out the line
+
+\subsubsection*{With Coordinates}
+Let \(P_0 = (x_0,y_0,z_0)\), \(\vec{v} = \langle a,b,c \rangle\)
+
+
+\begin{align*}
+    \vec{r}(t) &= \langle x_0,y_0,z_0 \rangle + t\langle a,b,c \rangle \\
+    &= \langle x_0 + ta, y_0 + tb, z_0 +tc \rangle
+\end{align*}
+
+A vector \(\langle x,y,z \rangle \in \mathbb{R}^3\) lies on the line if and only if
+\[
+x = x_0  + ta 
+\]
+\[
+y = y_0 + tb
+\]
+\[
+z = z_0 + tc
+\]
+
+\section*{Planes in \(\mathbb{R}^3\)}
+A plane in \(\mathbb{R}^3\) is completely determined by a point and a normal vector (perpendicular to the plane)
+
+\subsubsection*{Equation}
+We wish to describe the plane in \(\mathbb{R}^3\) that passes through the point \(P_0(x_0,y_0,z_0)\)
+and that has \(\vec{n} \langle a,b,c \rangle\) as the normal vector
+
+Let \(P(x,y,x)\) be any other point in the plane
+
+Let \(\overrightarrow{PP_0}\) be the vector that joins \(P\) to \(P_0\)
+
+\(\overrightarrow{PP_0}\) lies in the plane
+
+Thus \(\overrightarrow{PP_0} \cdot \vec{n} = 0\)
+
+\[
+\langle x - x_0, y-y_0,z-z_0 \rangle \cdot \langle a,b,c \rangle = 0
+\]
+\[
+ax+by+cz = ax_0 + by_0 +cz_0
+\]
+
+\textbf{Note}
+
+In this form the coeffecients of \(x,y,z\) form the components of the normal vector
+\end{document}

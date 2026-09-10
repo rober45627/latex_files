@@ -1,0 +1,174 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Analysis on the Real Line Hw 3}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+
+\subsection*{BS - Page 60 Exercise 16}
+Show that \(\lim_{n\to\infty}{\frac{2^n}{n!}} = 0\)
+
+[Hint: if \(n \geq 3\), then \(0 < \frac{2^n}{n!} \leq 2(\frac{2}{3})^{n-2}\)]
+\\
+
+Claim: \(2(\frac{2}{3})^{n-2}\) converges to \(0\), i.e. \(\forall \ \epsilon > 0 \ \exists \ N \in \mathbb{N}\) s.t. 
+\(|2(\frac{2}{3})^{n-2}| < \epsilon \ \forall \ n \geq N\) 
+\begin{align*} 
+    2\left(\frac{2}{3}\right)^{n-2} &< \epsilon \\
+    (n-2)\ln(\frac{2}{3}) &<\ln(\frac{\epsilon}{2}) \\
+    n &> \frac{\ln(\frac{\epsilon}{2})}{\ln(\frac{2}{3})} + 2
+\end{align*}
+Thus for \(N > \max\{3, \frac{\ln(\frac{\epsilon}{2})}{\ln(\frac{2}{3})} + 2\}\) the inequality holds and hence
+\(2(\frac{2}{3})^{n-2}\) converges to \(0\)
+
+Then from the hint, we have \(0 < \frac{2^n}{n!} \leq 2(\frac{2}{3})^{n-2} \quad \forall n \geq 3\)
+\\
+
+Both \(\{0\}\) and \(\{2(\frac{2}{3})^{n-2}\}\) converge to \(0\), thus by Squeeze Theorem
+\(\lim_{n\to\infty}{\frac{2n}{n!}} = 0\)
+
+\subsection*{BS - Page 67 Exercise 9}
+Let \(y_n := \sqrt{n+1}- \sqrt{n}\) for \(n \in \mathbb{N}\). Show that \((y_n)\) 
+and \((\sqrt{n}y_n)\) converge. Find their limits
+\\
+
+\subsubsection*{(a)}
+We can rewrite \(y_n = \sqrt{n+1} - \sqrt{n} = \frac{(\sqrt{n+1} - \sqrt{n})(\sqrt{n+1} + \sqrt{n})}{\sqrt{n+1} + \sqrt{n}} 
+= \frac{1}{\sqrt{n+1} + \sqrt{n}} \) which creates a nicer form to work with.
+
+We have \(\sqrt{n+1} + \sqrt{n} > 0 \Rightarrow \frac{1}{\sqrt{n+1} + \sqrt{n}} > 0\)
+
+Also \(\sqrt{n+1} + \sqrt{n} > 2\sqrt{n} \Rightarrow \frac{1}{2\sqrt{n}} > \frac{1}{\sqrt{n+1} + \sqrt{n}}\)
+\\
+
+Thus \(0 < \{y_n\} < \{\frac{1}{2\sqrt{n}}\} \quad \forall \ n\)
+\\
+
+Claim: \(\frac{1}{2\sqrt{n}}\) converges to \(0\), i.e. \(\forall \ \epsilon > 0 \ \exists \ N \in \mathbb{N}\) s.t. 
+\(|\frac{1}{2\sqrt{n}}|< \epsilon \ \forall \ n \geq N\)
+\begin{align*}
+    \left|\frac{1}{2\sqrt{n}}\right| &< \epsilon 
+    \\
+    \frac{1}{2\sqrt{n}} &< \epsilon
+    \\
+    n &> \frac{1}{4\epsilon^2}
+\end{align*}
+Thus for \(N > \frac{1}{4\epsilon^2}\) the inequality holds and hence \(\{\frac{1}{2\sqrt{n}}\}\) converges to 0
+\\
+
+Since the constant sequence \(\{0\}\) and \(\{\frac{1}{2\sqrt{n}}\}\) both converge to 0, we also have that \(\{y_n\}\) 
+converges to 0, by the squeeze theorem.
+
+\subsubsection*{(b)}
+By dividing top and bottom by \(\sqrt{n}\), we can rewrite \(\{\sqrt{n}y_n\}\) as 
+\[
+\frac{\sqrt{n}}{\sqrt{n+1} + \sqrt{n}} = \frac{1}{\sqrt{1+ \frac{1}{n}} + 1}
+\]
+
+By using the laws for limits established in class, we can see that
+\begin{align*}
+    \lim_{n\to\infty}{\frac{1}{\sqrt{1+ \frac{1}{n}} + 1}} &= \frac{\lim_{n\to\infty}{1}}{\lim_{n\to\infty}{\sqrt{1+ \frac{1}{n}} + 1}} \\
+    &= \frac{1}{(\lim_{n\to\infty}{\sqrt{1+ \frac{1}{n}}}) + 1}
+\end{align*}
+
+Claim: \(\lim_{n\to\infty}{\sqrt{1+ \frac{1}{n}}}\) converges to \(0\), i.e. \(\forall \ \epsilon > 0 \ \exists \ N \in \mathbb{N}\) s.t. 
+\(\left|\sqrt{1+ \frac{1}{n}}\right|< \epsilon \ \forall \ n \geq N\)
+
+\begin{align*}
+    \sqrt{1+ \frac{1}{n}} &< \epsilon
+    \\
+    1 + \frac{1}{n} &< \epsilon^2 
+    \\
+    \frac{1}{\epsilon^2 -1} &< n 
+\end{align*}
+Thus for \(N > \frac{1}{\epsilon^2 -1}\) the inequality holds and hence \(\{\sqrt{1+ \frac{1}{n}}\}\) converges to 0
+
+Then,
+\[
+\lim_{n\to\infty}{\sqrt{n}y_n} = \frac{1}{1 + 1} = \frac{1}{2}
+\]
+
+
+
+\subsection*{BS - Page 68 Exercise 21}
+Suppose that \((x_n)\) is a convergent sequence and \(y_n\) is such that for any
+\(\epsilon > 0\) there exists \(M\) such that \(|x_n-y_n| < \epsilon\) for all \(n \geq M\).
+Does it follow that \((y_n)\) is convergent?
+\\
+
+
+Let \(\{x_n\}\) be a convergent sequence with \(\lim_{n\to\infty}{x_n} = x\)
+
+\(\Rightarrow \epsilon > 0 \ \exists \ N_1 \in \mathbb{N}\) such that \(|x_n - x| < \epsilon \ \forall \ n \geq N_1\)
+
+\(\frac{\epsilon}{2} > 0 \Rightarrow |x_n - x| < \frac{\epsilon}{2} \ \forall \ n \geq N_1\)
+
+\(\Rightarrow x - \frac{\epsilon}{2} < x_n  < x + \frac{\epsilon}{2}\)
+\\
+
+From the question we have \(\{x_n- y_n\}\)  a convergent sequence with \(\lim_{n\to\infty}{x_n-y_n} = 0\)
+
+\(\Rightarrow \epsilon > 0 \ \exists \ N_2 \in \mathbb{N}\) such that \(|x_n - y_n | < \epsilon \ \forall \ n \geq N_2\)
+
+\(\frac{\epsilon}{2} > 0 \Rightarrow |x_n - y_n| < \frac{\epsilon}{2} \ \forall \ n \geq N_2\)
+
+\(\Rightarrow  - \frac{\epsilon}{2} < x_n - y_n  < \frac{\epsilon}{2}\)
+\\
+
+Then multpilying the first result by \(-1\) we get, \(\Rightarrow -(x + \frac{\epsilon}{2}) < -x_n < -(x - \frac{\epsilon}{2})\)
+
+For \(n \geq \max\{N_1, N_2\}\), the last two inequalities hold, adding these we get \(- x - \epsilon < - y_n < - x+ \epsilon\)
+
+\(\Rightarrow - \epsilon < -y_n + x < \epsilon\)
+
+\(\Rightarrow |y_n - x| < \epsilon\)
+\\
+
+\(\Rightarrow y_n\) convergent with \(\lim_{n\to\infty}{y_n} = x\)
+
+
+
+\subsection*{BS - Page 74 Exercise 7}
+Let \(x_1 := a >0 \) and \(x_{n+1} := x_n + \frac{1}{x_n}\) for \(n \in \mathbb{N}\).
+Determine if \((x_n)\) converges or diverges.
+\\
+
+Assume for the sake of contradiction that \(\{x_n\}\) is convergent with \(\lim_{n\to\infty}{x_n} = L\)
+
+Since the limit of a sequence does  not depend on the start point of the sequence, we have
+\begin{align*}
+    \lim_{n\to\infty}{x_{n+1}} &= \lim_{n\to\infty}{x_n}
+    \\
+    \lim_{n\to\infty}{(x_{n} + \frac{1}{x_n})} &= \lim_{n\to\infty}{x_n}
+    \\
+    \lim_{n\to\infty}{x_{n}} + \frac{1}{\lim_{n\to\infty}x_n} &= \lim_{n\to\infty}{x_n}
+    \\
+    L + \frac{1}{L} &= L
+    \\
+    \frac{1}{L} = 0
+\end{align*}
+Thus is a contradiction, thus \(\{x_n\}\) is divergent
+\\
+
+\textbf{Note:} We know \(L \neq 0\) since \(a>0 \) and \(\{x_n\}\) is monotone increasing, 
+
+This is true since \(x_n > 0  \ \forall \ n\), which we can prove by induction
+
+Base case: \(a>0\)
+
+Induction step: Assume \(x_k >0\), thus \(x_{k+1} = x_k + \frac{1}{x_k} > 0\),
+
+which implies \(x_{n+1} -x_n = \frac{1}{x_n} > 0\) and thus \(\{x_n\}\) is monotone increasing
+
+\end{document}

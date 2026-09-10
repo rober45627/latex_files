@@ -1,0 +1,184 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Probability Lecture 5}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\subsection*{Random Variables}
+\begin{itemize}
+    \item A random variable (r.v.) associates a value to every possible outcome
+    \item Mathematically: A function from the sample space \(\Omega\) to the real numbers
+    \item It can take discrete or continuous values
+    \item Notation: random variable \(X\), numerical value \(x\)
+    \item We can have several random variables defined on the same sample space
+    \item A function of one or several random variables is also a random variable
+\end{itemize}
+
+\subsection*{Probability Mass Function (PMF) of a discrete r.v. \(X\)}
+\begin{itemize}
+    \item It is the "probability law" or a "probability distribution" of \(X\)
+    \item If we fix some \(x\) then "\(X=x\)" is an event
+\[
+p_X(x) = P(X=x) = P(\{\omega \in \Omega \ \text{s.t.} \ X(\omega) = x\})
+\]
+    \item \(p_X(x) \geq 0 \quad \sum_{x} p_X(x) = 1 \)
+\end{itemize}
+
+\subsection*{Types of PMFs}
+\subsubsection*{Bernoulli}
+\[
+X = \begin{cases}
+    1,\\0
+\end{cases}
+\]
+
+\[
+p_X(0) = 1 - p
+\]
+\[
+p_X(1) = p
+\]
+
+Models a trial that results in success/ failure
+\\
+
+Indicator r.v. of an event
+
+\(I_A = 1\) iff A occurs
+\[
+p_{I_A}(1) = P(I_A = 1) = P(A)
+\]
+
+
+\subsubsection*{Discrete Uniform}
+\begin{itemize}
+    \item \textbf{Parameters:} integers \(a,b \quad a \leq b\)
+    \item \textbf{Experiment:} Pick one of \(a,a+1,\dots,b\) at random; all equally likely
+    \item \textbf{Sample Space:} \{a,a+1,\dots, b\}
+    \item \textbf{Random Variable:} \(X: X(\omega)= \omega\)
+    \item \textbf{Model of:} complete ignorance
+\end{itemize}
+
+\subsubsection*{Binomial}
+\begin{itemize}
+    \item \textbf{Experiment:} \(n\) independent tosses of a coin with \(P(Heads) = p\)
+    \item \textbf{Sample Space:} Set of sequences of H and T of length \(n\)
+    \item \textbf{Random Variable:} \(X:\) number of heads observed
+    \item \textbf{Model of:} number of successes in a given number of independent trials
+\end{itemize}
+
+\[
+p_X(k) = P(X=k) = \binom{n}{k}p^k(1-p)^{n-k}
+\]
+
+\subsubsection*{Geometric}
+
+\begin{itemize}
+    \item \textbf{Experiment:} infintely many independent tosses of a coin; \(P(\text{Heads}) = p\)
+    \item \textbf{Sample Space:} Set of infinite sequences of H and t
+    \item \textbf{Random Variable:} \(X:\) number of tosse until the first heads
+    \item \textbf{Model of:} waiting times; number of trials until a success
+\end{itemize}
+
+\[
+p_X(k) = P(X=k) = P(T\dots TH) = (1-p)^{k-1} p
+\]
+
+\[
+P(\text{no Heads ever}) \leq P(TT\dots T) = (1-p)^k 
+\]
+\[
+\lim_{k\to\infty}{(1-p)^k} = 0
+\]
+
+\subsection*{Expectation/ mean of a random variable}
+\textbf{Definition:} \(E[X] = \sum_{x} xp_X(x)\)
+
+\subsubsection*{Bernoulli}
+If \(X\) is the indicator of an event \(A\), \(X = I_A\)
+
+\(X=1\) iff \(A\) occurs
+\[
+p = P(A), \quad E[I_A] = P(A)
+\]
+
+\subsubsection*{Uniform r.v.}
+Remember \(p_X(x)= \frac{1}{n+1}\)
+\[
+E[X] = 0 \frac{1}{n+1} + 1 \frac{1}{n+1} + \dots + n \frac{1}{n+1} = \frac{1}{n+1} \frac{n(n+1)}{2} = \frac{n}{2}
+\]
+
+\subsection*{Elementary properties of Expectations}
+\begin{itemize}
+    \item If \(X \geq 0\) then \(E[X] \geq 0\)
+for all \(w: \ X(w) \geq 0\)
+    \item If \(a \leq X \leq b\), then \(a \leq E[X] \leq b\)
+for all \(w: \ a \leq X(w) \leq b\)
+\[
+E[X] = \sum_{x} xp_X(x) \geq \sum_{x} ap_X(x) = a\cdot 1 = a
+\]
+
+    \item If \(c\) is a constant, \(E[c] = c\)
+\[
+E[c] = c \cdot p(c) = c
+\]
+\end{itemize}
+
+\subsection*{Expected Value Rule for calculating E[g(X)]}
+Let \(X\) be a r.v. and let \(Y = g(X)\)
+
+Averaging over \(y\): \(E[Y] = \sum_{y} yp_Y(y)\)
+\\
+
+Averaging over \(x\): \(E[Y] = E[g(X)] = \sum_{x} g(x)pX(x)\)
+
+\subsubsection*{Proof}
+\[
+\sum_{Y} \sum_{x:g(x) = y} g(x)p_X(x)
+\]
+\[
+\Rightarrow \sum_{y} \sum_{x:g(x) = y} y p_X(x)
+\]
+\[
+\Rightarrow \sum_{y} y \sum_{x:g(x) = y} p_X(x)
+\]
+\[
+\Rightarrow \sum_{y} y p_Y(y) = E[Y]
+\]
+
+\subsubsection*{Example}
+\[
+E[X^2] = \sum_{x} x^2p_X(x)
+\]
+This is not equal to \((E[X])^2\), this is true in most cases
+
+\subsection*{Linearity of Expectation}
+\[
+E[aX + b] = aE[X] + b
+\]
+
+\subsubsection*{Derivation}
+Based on the expected value rule
+\[
+g(x) + ax+b, \quad Y = g(x)
+\]
+\begin{align*}
+    E[Y] &= \sum_{x} g(x)p_X(x) \\
+    &= \sum_(x) (ax+b)p_X(x) \\
+    &= a\sum_{x} xp_X(x) + b \sum_{x}p_x(x) \\
+    &= aE[x] + b
+\end{align*}
+
+In this exceptional case \(E[g(x)] = g(E[X])\)
+
+\end{document}

@@ -1,0 +1,215 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\title{\textbf{Advanced Calculus HW}}
+\author{Robert O'Connell}
+\date{\today}
+\begin{document}
+\maketitle
+\vspace{5mm}
+\section*{Question 1}
+\subsubsection*{(a)}
+\(\vec{r}(t) = (\cosh(t), \sinh(t), 3)\) and we need
+\[
+\vec{T} = \frac{\vec{r} \ '}{|\vec{r} \ '|}, \quad \vec{N} = \frac{\vec{T} \ '}{|\vec{T} \ '|}, \quad \vec{B} = \vec{T} \times \vec{N}
+\]
+
+Then
+\[
+\vec{r} \ '(t) = (\sinh(t), \cosh(t), 0)
+\]
+\[
+|\vec{r} \ '(t)| = \sqrt{\sinh^2(t) + \cosh^2(t)} 
+\]
+Thus
+\[
+\vec{T}(t) = \frac{1}{\sqrt{\sinh^2(t) + \cosh^2(t)}}(\sinh(t), \cosh(t), 0)
+\]
+\\
+
+Now calculating \(\vec{N}(t)\), 
+
+(simplifications \(\cosh^2(t)+\sinh^2(t) = \cosh(2t)\), \(\sinh(2t) = 2\sinh(t)\cosh(t)\) and \(\cosh^2(t) - \sinh^2(t) = 1\) used)
+
+\begin{align*}
+    \vec{T} \ '(t) &= \frac{1}{\sqrt{\cosh(2t)}}(\cosh(t), \sinh(t), 0) -\frac{\sinh(2t)}{(\cosh(2t))^{\frac{3}{2}}}(\sinh(t),\cosh(t), 0) 
+    \\
+    &= \frac{1}{(\cosh(2t))^{\frac{3}{2}}} \left(\cosh(2t)(\cosh(t), \sinh(t), 0) -(2\sinh(t)\cosh(t))(\sinh(t),\cosh(t), 0) \right)
+    \\
+    &= \frac{1}{(\cosh(2t))^{\frac{3}{2}}} (\cosh(t)\cosh(2t) - 2\sinh^2(t)\cosh(t), \sinh(t)\cosh(2t) - 2\sinh(t)\cosh^2(t), 0)
+    \\
+    &= \frac{1}{(\cosh(2t))^{\frac{3}{2}}} (\cosh^3(t) + \sinh^2(t)\cosh(t) - 2\sinh^2(t)\cosh(t), \sinh^3(t) + \cosh^2(t)\sinh(t) - 2\sinh(t)\cosh^2(t), 0)
+    \\
+    &= \frac{1}{(\cosh(2t))^{\frac{3}{2}}} (\cosh(t)(\cosh^2(t) - \sinh^2(t)), \sinh(t)(\sinh^2(t) - \cosh^2(t)), 0)
+    \\
+    &= \frac{1}{(\cosh(2t))^{\frac{3}{2}}} (\cosh(t)(1), \sinh(t)(-1), 0)
+    \\
+    &= \frac{1}{(\cosh(2t))^{\frac{3}{2}}} (\cosh(t), -\sinh(t), 0)
+\end{align*}
+
+\begin{align*}
+    |\vec{T} \ '(t)| &= \frac{1}{(\cosh(2t))^{\frac{3}{2}}} \sqrt{\cosh^2(t) +  \sinh^2(t)}
+    \\
+    &= \frac{1}{(\cosh(2t))^{\frac{3}{2}}} \sqrt{\cosh(2t)}
+    \\
+    &= \frac{1}{\cosh(2t)}
+\end{align*}
+
+\begin{align*}
+    \vec{N}(t) &= \frac{1}{(\cosh(2t))^{\frac{3}{2}}} (\cosh(t), -\sinh(t), 0) (\cosh(2t))
+    \\ 
+    &= \frac{1}{\sqrt{\cosh(2t)}} (\cosh(t), -\sinh(t), 0)
+\end{align*}
+
+Finally calculating \(\vec{B}(t)\)
+
+\begin{align*}
+    \vec{B}(t) &= \left(\frac{1}{\sqrt{\cosh(2t)}}(\sinh(t), \cosh(t), 0)\right) \times \left(\frac{1}{\sqrt{\cosh(2t)}} (\cosh(t), -\sinh(t), 0)\right)
+    \\
+    &= \left(\frac{1}{\sqrt{\cosh(2t)}}\right)^2 \det \begin{bmatrix}
+        \hat{i} & \hat{j} & \hat{k} \\
+        \sinh(t) & \cosh(t) & 0 \\
+        \cosh(t) & -\sinh(t) & 0
+    \end{bmatrix}
+    \\
+    &= \frac{1}{\cosh(2t)} (0, 0, -\sinh^2(t) -\cosh^2(t))
+    \\
+    &= \frac{1}{\cosh(2t)} (0, 0, -\cosh(2t))
+    \\
+    &= (0,0,-1)
+\end{align*}
+
+\subsubsection*{(b)}
+For an arbitrary smooth parameter \(t\), \(\kappa(t)\) is given by \(\frac{|\vec{r}\ '(t) \times \vec{r}\ ''(t)|}{|\vec{r}\ '(t)|^3}\)
+
+\[
+\vec{r} '(t) = (\sinh(t), \cosh(t), 0)
+\]
+\[
+\vec{r}\ ''(t) = (\cosh(t), \sinh(t), 0)
+\]
+\begin{align*}
+    \vec{r}\ '(t) \times \vec{r}\ ''(t) &= \det \begin{bmatrix}
+        \hat{i} & \hat{j} & \hat{k} \\
+        \sinh(t) & \cosh(t) & 0 \\
+        \cosh(t) & \sinh(t) & 0
+    \end{bmatrix}
+    \\
+    &= (0,0, \sinh^2(t) - \cosh^2(t))
+    \\
+    &= (0,0, -1)
+\end{align*}
+\[
+|\vec{r}\ '(t) \times \vec{r}\ ''(t)| = 1
+\]
+
+\[
+|\vec{r} \ ' (t)| = \sqrt{\cosh(2t)}
+\]
+
+Thus,
+\[
+\kappa(t) = \frac{1}{(\cosh(2t))^{\frac{3}{2}}}
+\]
+
+Then for the points corresponding to \(t = 0\) and \(t = \frac{\ln(2)}{2}\), we get
+\[
+\kappa(0) = \frac{1}{1} = 1, \quad \kappa\left(\frac{\ln(2)}{2}\right) = \frac{1}{(\frac{5}{4})^{\frac{3}{2}}} = \frac{8}{5\sqrt{5}}
+\]
+
+Now finding the tangent line to the curve at the point corresponding to \(t = \frac{\ln(2)}{2}\),
+
+The point is \((\cosh(\frac{\ln(2)}{2}), \sinh(\frac{\ln(2)}{2}), 3) = (\frac{3}{2\sqrt{2}}, \frac{1}{2\sqrt{2}}, 3)\), and points
+in the direction of \(\vec{r} \ '(t)\), which is \((\frac{1}{2\sqrt{2}}, \frac{3}{2\sqrt{2}}, 0)\)
+
+Thus the vector equation of the line is 
+\[
+\vec{L} = \left(\frac{3}{2\sqrt{2}}, \frac{1}{2\sqrt{2}}, 3\right) + s\left(\frac{1}{2\sqrt{2}}, \frac{3}{2\sqrt{2}}, 0\right) \quad \forall \ s \in \mathbb{R}
+\]
+
+Now we have to find the circle with the same tangent line and containing the point
+
+It should have radius \(\frac{1}{\kappa(t)} = \frac{5\sqrt{5}}{8}\)
+
+The centre of this circle should be one radius from the point in the direction of \(\vec{N}(\frac{\ln(2)}{2}) = (\frac{3}{\sqrt{10}}, -\frac{1}{\sqrt{10}}, 0)\) 
+\[
+C = \left(\frac{3}{2\sqrt{2}}, \frac{1}{2\sqrt{2}}, 3\right) + \frac{5\sqrt{5}}{8} \left(\frac{3}{\sqrt{10}}, -\frac{1}{\sqrt{10}}, 0\right)
+\]
+Then simplifying
+\[
+C = \left(\frac{27}{8\sqrt{2}}, -\frac{1}{8\sqrt{2}}, 3\right)
+\]
+
+We now have the centre and radius of the circle meaning its equation is
+\[
+\left( x- \frac{27}{8\sqrt{2}}\right)^2 + \left(y + \frac{1}{8\sqrt{2}}\right)^2 = \left(\frac{5\sqrt{5}}{8}\right)^2, \quad z=3
+\]
+
+
+\subsection*{Question 2}
+
+\subsubsection*{(a)}
+\[
+\vec{r} \ '(s) = \left(\frac{1}{2}\cos\left(1+ \frac{s}{2}\right), -\frac{1}{2}\sin\left(1+ \frac{s}{2}\right), \frac{\sqrt{3}}{2}\right)
+\]
+\[
+|\vec{r} \ '(s)| = \sqrt{\frac{1}{4}(\cos^2\left(1+\frac{s}{s}\right) + \sin^2\left(1+ \frac{s}{2}\right)) + \frac{3}{4}} = \sqrt{\frac{1}{4} + \frac{3}{4}} = 1
+\]
+
+\subsubsection*{(b)}
+\(\kappa(s) = |\frac{d\vec{T}}{ds}| = |\vec{r}\ ''(s)|\)
+\[
+\vec{r}\ ''(s) = \left(-\frac{1}{4}\sin\left(1+ \frac{s}{2}\right), -\frac{1}{4}\cos\left(1+ \frac{s}{2}\right),0 \right)
+\]
+\[
+|\vec{r}\ ''(s)| = \sqrt{\frac{1}{16}} = \frac{1}{4}
+\]
+
+Thus,
+\[
+\kappa(s) = \frac{1}{4}
+\]
+
+
+\subsubsection*{(c)}
+In arc length parameterizations we know \(\vec{T} = \vec{r}\ ', \quad \vec{N} = \frac{\vec{r}\ ''}{|\vec{r}\ ''|}, \quad \vec{B} = \frac{\vec{r}\ ' \times \vec{r}\ ''}{|\vec{r}\ ''|}\)
+
+Thus
+\[
+\vec{T}(s) = \left(\frac{1}{2}\cos\left(1+ \frac{s}{2}\right), -\frac{1}{2}\sin\left(1+ \frac{s}{2}\right), \frac{\sqrt{3}}{2}\right)
+\]
+
+Then
+\[
+\vec{N}(s) = (-\sin\left(1+ \frac{s}{2}\right), -\cos\left(1+ \frac{s}{2}\right),0)
+\]
+
+Finally
+\begin{align*}
+    \vec{B}(s) &= 4\left(\left(\frac{1}{2}\cos\left(1+ \frac{s}{2}\right), -\frac{1}{2}\sin\left(1+ \frac{s}{2}\right), \frac{\sqrt{3}}{2}\right) \times \left(-\frac{1}{4}\sin\left(1+ \frac{s}{2}\right), -\frac{1}{4}\cos\left(1+ \frac{s}{2}\right) \right)\right) 
+    \\    
+    &= \det\begin{bmatrix}
+        \hat{i} & \hat{j} & \hat{k} \\
+        2\cos\left(1+ \frac{s}{2}\right) & -2\sin\left(1+ \frac{s}{2}\right) & \frac{\sqrt{3}}{2} \\
+        -\sin\left(1+ \frac{s}{2}\right) & -\cos\left(1+ \frac{s}{2}\right) & 0
+    \end{bmatrix}
+    \\
+    &= \left(\frac{\sqrt{3}}{2}\cos\left(1+ \frac{s}{2}\right), \frac{\sqrt{3}}{2}\sin\left(1+ \frac{s}{2}\right), -2\cos^2\left(1+\frac{s}{2}\right)-2\sin^2\left(1+\frac{s}{2}\right)\right)
+    \\
+    &= \left(\frac{\sqrt{3}}{2}\cos\left(1+ \frac{s}{2}\right), \frac{\sqrt{3}}{2}\sin\left(1+ \frac{s}{2}\right), -2\right)
+\end{align*}
+
+\subsubsection*{(d)}
+\begin{align*}
+    \vec{B}\ '(s) &= \left(-\frac{\sqrt{3}}{4}\sin\left(1+ \frac{s}{2}\right), \frac{\sqrt{3}}{4}\cos\left(1+ \frac{s}{2}\right), 0\right) \\
+    &= \frac{\sqrt{3}}{4}\vec{N}(s)
+\end{align*}
+\end{document}

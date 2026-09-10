@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage{tcolorbox}
+\tcbset{colback=white!94!black, colframe=black!60!white, coltitle = white, boxrule=0.8pt, arc=2mm}
+\newtcolorbox{boxs}[2][]{title= #2,#1}
+\usepackage{datetime2}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+
+
+\begin{document}
+\begin{center}
+    \Huge \textbf{Index Codes}
+\end{center}
+\vspace{5mm}
+\section{\textbf{Module Codes}}
+Each module code will consist of three digits. The first digit refers to the year the module is being taken, 
+the second refers to what semester it is taken (0 for a yearlong module), the final digit then refers to 
+the module itself (See Section 4 for full list of module codes).
+\begin{itemize}
+    \item 101 $\longrightarrow$ Linear Algebra
+    \item 102 $\longrightarrow$ Mechanics
+    \item 111 $\longrightarrow$ Single Variable Calculus
+    \item 112 $\longrightarrow$ Introduction to Programming
+    \item 113 $\longrightarrow$ Introduction to Probability
+\end{itemize}
+\vspace{2.5mm}
+\section{\textbf{Subfolder Codes}}
+Each module's folder is split up in to three subfolders each with their own code. 
+\begin{itemize}
+    \item 01 $\longrightarrow$ Class Notes
+    \item 02 $\longrightarrow$ Problem Sets
+    \item 03 $\longrightarrow$ Other
+    \item 04 $\longrightarrow$ Questions
+\end{itemize}
+\vspace{2.5mm}
+\section{\textbf{File Codes}}
+Each file is named first off the date (year excluded), which is followed by two digits which seperate files 
+created on the same day.
+\begin{itemize}
+    \item \textbf{Example} $\longrightarrow$ 1509-01 is the first file created on the 15th of September
+\end{itemize}
+\vspace{2.5mm}
+\section{\textbf{Full List of Module Codes}}
+\begin{itemize}
+    \item 101 $\longrightarrow$ Linear Algebra
+    \item 102 $\longrightarrow$ Mechanics
+    \item 111 $\longrightarrow$ Single Variable Calculus
+    \item 112 $\longrightarrow$ Introduction to Programming
+    \item 113 $\longrightarrow$ Introduction to Probability
+    \item 121 $\longrightarrow$ Analysis on the Real Line
+    \item 122 $\longrightarrow$ Advanced Calculus
+    \item 123 $\longrightarrow$ Introduction to Computation Theory and Logic
+    \item 124 $\longrightarrow$ Introduction to Statistics
+\end{itemize} 
+\end{document}
