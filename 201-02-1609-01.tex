@@ -1,0 +1,291 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{datetime2}
+\usepackage{template/cenvs}
+
+\title{\textbf{Homework 1}}
+\author{Robert O'Connell}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{problem}
+Given points \( x,y,z,t \) in a metric space \( (X,d) \) prove that
+\[
+	|d(x,y) - d(z,t)| \le d(x,z) + d(y,t)
+\]
+
+\begin{solution}
+	We start with the triangle inequality on \( d \)
+	\begin{align*}
+		d(x,y)          & \le d(x,z) + d(z,y)          \\
+		d(x,y)          & \le d(x,z) + d(z,t) + d(t,y) \\
+		d(x,y) - d(z,t) & \le d(x,z) + d(y,t)
+	\end{align*}
+
+	Again
+	\begin{align*}
+		d(z,t)          & \le d(z,x) + d(x,t)          \\
+		d(z,t)          & \le d(z,x) + d(x,y) + d(y,t) \\
+		d(z,t) - d(x,y) & \le d(x,z) + d(y,t)
+	\end{align*}
+
+	Then we have \( a \le b \) and \( -a \le b \). Thus \( |a| \le b \).
+
+	i.e.
+	\[
+		|d(x,y) - d(z,t)| \le d(x,z) + d(y,t)
+	\]
+\end{solution}
+\end{problem}
+
+
+
+\begin{problem}
+Suppose that \( d \) is a metric for a non-empty set \( X \), and for any \( x,y \in X \) define
+\\
+\( d^{(1)}(x,y) = kd(x,y) \), where \( k \) is a positive constant, \( d^{(2)}(x,y) = \min\{1,d(x,y)\} \), \( d^{(3)}(x,y) = \frac{d(x,y)}{1 + d(x,y)} \), \( d^{(4)}(x,y) = d(x,y)^2 \)
+\\
+Prove that \( d^{(1)}, d^{(2)}, d^{(3)} \) are metrics for \( X \) but \( d^{(4)} \) may not be a metric for \( X \)
+\\
+
+\begin{solution}
+	For each \( d^{(i)}, \quad i = 1,2,3,4 \) it is clear that each function is well defined.
+	Let \( x,y,z \in X \)
+
+	Since we know that \( d \) is a metric for \( X \) it is clear that \( d^{(1)} \) preserves the symmetry and non-negativity since \( k > 0 \), also \( d^{(1)}(x,y) = 0 \iff d(x,y) = 0 \iff x = y \). Then for the triangle inequality, starting with the triangle inequality for \( d \) we have the triangle equality of \( d^{(1)} \) once we multiply across by \( k \).
+	\\
+
+	Since \( d^{(2)} \le 0 \iff d \le  0 \), we see it preserves the non-negegativity of \( d \) and also if \( d^{(2)} = 0 \iff d = 0 \iff x=y \), also \( d^{(2)}(x,y) = \min\{1,d(x,y)\} = \min\{1, d(y,x)\} = d^{(2)}(y,x) \), so it is symmetric.
+
+	\begin{lemma}
+		For all \( a, b \ge 0\), we have \( \min\left\{ 1, a + b \right\} \le \min\left\{ 1,a \right\} + \min\left\{ 1, b \right\}  \)
+	\end{lemma}
+	\begin{proof}
+		Case (i). \( a + b < 1 \)
+		\[
+			a + b \le \min\left\{ 1, a \right\} + \min\left\{ 1,b \right\} = a + b
+		\]
+		Since both \( a \) and \( b \) are less than one, so the min picks them out
+
+		Case (ii) \( a + b \ge 1 \)
+		\[
+			1 \le \min\left\{ 1 , a \right\} + \min\left\{ 1,b \right\}
+		\]
+		In any selection of \( a,b \) this holds. Since if it picks out any of the ones, it is obvious, and the case condition takes take if both \( a \) and \( b \) get picked
+	\end{proof}
+
+	For the triangle inequality
+	\begin{align*}
+		d^{(2)}(x,y) & = \min\{1, d(x,y)\}                      \\
+		             & \le \min\{1,d(x,z) + d(z,y)\}            \\
+		             & \le \min\{1, d(x,z)\} + \min\{1,d(z,y)\} \\
+		             & \le d^{(2)}(x,z) + d^{(2)}(z,y)
+	\end{align*}
+
+	Once again, we see that \( d^{(3)} \le 0 \iff d  \le 0 \), which is never the case, thus it is non-negative and also \( d^{(3)}(x,y) = 0 \iff d(x,y) = 0 \iff x = y  \). Also the symmetry of \( d \) implies the symmetry of \( d^{(3)} \). For the triangle inequality
+	\begin{align*}
+		d^{(3)}(x,y) = \frac{d(x,y)}{1+d(x,y)} & = 1- \frac{1}{1+d(x,y)}                                                     \\
+		                                       & \le 1 - \frac{1}{1 + d(x,z) + d(z,y)}                                       \\
+		                                       & \le \frac{d(x,z) + d(z,y)}{1 + d(x,z) + d(z,y)}                             \\
+		                                       & \le \frac{d(x,z)}{1 + d(x,z) + d(z,y)} + \frac{d(z,y)}{1 + d(x,z) + d(z,y)} \\
+		                                       & \le \frac{d(x,z)}{1 + d(x,z)} + \frac{d(z,y)}{1 + d(z,y)}                   \\
+		                                       & \le d^{(3)}(x,z) + d^{(3)}(z,y)
+	\end{align*}
+
+	Then for \( d^{(4)} \).
+
+	Assume it is a metric. Let \( X = \mathbb{R} \), and choose \( x = 1, z = 1.5, y = 2 \)
+
+	Then \( d(x,y) = 1, d(x,z) = 0.5, d(z,y) = 0.5 \) with \( d \) being the usual Euclidean metric
+
+	Looking at the triangle inequality of \( d^{(4)} \), we get
+	\[
+		1 \le 0.25 + 0.25
+	\]
+	A contradiction, thus \( d^{(4)} \) is not a metric.
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Let \( (X,d_X) \) and \( (Y,d_Y) \) be metric spaces. For \( (x_1,y_1), (x_2,y_2) \in X \times Y \) let
+\begin{align*}
+	d_1((x_1,y_1), (x_2,y_2))        & = d_X(x_1,x_2) + d_Y(y_1,y_2),                \\
+	d_2((x_1,y_1), (x_2,y_2))        & = \sqrt{d_X(x_1,x_2)^2 + d_Y(y_1, y_2)^2},    \\
+	d_{\infty}((x_1,y_1), (x_2,y_2)) & = \max\{d_X(x_{1}, x_{2}), d_Y(y_{1},y_{2})\}
+\end{align*}
+\begin{itemize}
+	\item Prove that for each of \( d_1,d_2,d_{\infty} \) is a metric for \( X \times Y \)
+	\item Prove that for any \( p,q \in X \times Y \)
+	      \[
+		      d_{\infty}(p,q) \le d_2(p,q) \le d_1(p,q) \le 2d_{\infty}(p,q)
+	      \]
+	\item Show that the open sets in \( X \times Y \) are the same for \( d_1, d_2,d_{\infty} \)
+	\item Let \( U,V \) be open subsets of \( X,Y \) respectively. Show that \( U \times V \) is \( d_i \)-open in \( X \times Y \) for \( i = 1,2, \infty \)
+\end{itemize}
+
+\begin{solution}1.
+
+	Clearly each of the metrics \( d_1,d_{2}, d_{\infty} \) are well defined due to the properties of \( d_X \) and \( d_Y \)
+
+	Let \( x_{1},x_{2},x_{3} \in X \) and \( y_{1}, y_{2},y_{3} \in  Y \)
+	\\
+
+	Clearly \( d_1 \) is non-negative since the sum of two non-neg is non-neg
+
+	Also \( d_1 = 0 \iff x_{1} = x_{2} \text{ and } y_{1} = y_{2} \) implying \( (x_{1},y_{1}) = (x_{2},y_{2}) \)
+
+	Clearly \( d_1 \) is symmetric, since both \( d_X \) and \( d_Y \) are
+
+	Triangle Inequality
+	\begin{align*}
+		d_{1}((x_{1},y_{1}),(x_{2},y_{2})) & = d_X(x_{1},x_{2}) + d_Y(y_{1},y_{2})                                         \\
+		                                   & \le d_X(x_{1},x_{3}) + d_X(x_{3},x_{2}) + d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{2}) \\
+		                                   & \le d_1((x_{1},y_{1}),(x_{3},y_{3})) + d_{1}((x_{3},y_{3}),(x_{2},y_{2}))
+	\end{align*}
+
+	Thus \( d_1 \) is a metric on \( X \times X \)
+	\\
+
+	\( d_{2} \) is non-negative since \( \sqrt{a} > 0 \ \forall \ a \in \mathbb{R} \)
+
+	Similarly \( d_{2} = 0 \iff \) the square root is 0 \( \iff d_X \text{ and } d_y \) are zero \( \iff \) the pairs are the same
+
+	Again due to the symmetry of \( d_X \text{ and } d_Y \) it is clear that \( d_2 \) is symmetric
+
+	% Cauchy Schwartz ??????
+	\begin{align*}
+		d_{2}((x_{1},y_{1}), (x_{2},y_{2})) & = \sqrt{d_X(x_{1},x_{2})^2 + d_Y(y_{1},y_{2})^2}                                             \\
+		                                    & \le \sqrt{(d_X(x_{1},x_{3}) + d_X(x_{3},x_{2}))^2 + (d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{1}))^2}
+	\end{align*}
+	\\
+
+	Again, the max of two non-negative numbers is obviously non-negative
+
+	Also if the max of two non-neg numbers is 0, then all are 0 implying \( (x_{1},y_{1})  = (x_{2},y_{2})\)
+
+	Again due to the symmetry of \( d_X \text{ and } d_Y \) it is clear that \( d_{\infty} \) is symmetric
+
+	\begin{lemma}
+		For all \( a,b,c \ge 0 \), we have \( \max\left\{ a+b, c \right\} \le \max\left\{ a,c \right\} + \max\left\{ b,c \right\}  \)
+	\end{lemma}
+	\begin{proof}
+		Case (i). \( a + b < c \)
+		\[
+			c \le \max\left\{ a,c \right\} + \max\left\{ b,c \right\} = 2c
+		\]
+		Since it will pick out \( c \) both times
+
+		Case (ii). \( a + b \ge c \)
+		\[
+			a + b \le \max\left\{ a,c \right\} + \max\left\{ b,c \right\}
+		\]
+		In any selection this holds since if both \( a \) and \( b \) are bigger than \( c \) you get \( a + b \le a+ b \), but if \( c \) is greater than one or both, evidently the sum on the right will be greater
+	\end{proof}
+
+	For the triangle inequality, we get
+	\begin{align*}
+		d_{\infty}((x_{1},y_{1}),(x_{2},y_{2})) & = \max\left\{ d_X(x_{1},x_{2}), d_Y(y_{1},y_{2}) \right\}                                                                                                                       \\
+		                                        & \le \max\left\{ d_X(x_{1},x_{3}) + d_X(x_{3},x_{2}), d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{2}) \right\}                                                                               \\
+		                                        & \le \max\left\{ d_X(x_{1},x_{3}), d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{2}) \right\} + \max\left\{ d_X(x_{3},x_{2}), d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{2}) \right\}                     \\
+		                                        & \le \max\left\{ d_X(x_{1},x_{3}), d_Y(y_{1},y_{3}) \right\} + \max\left\{ d_X(x_{1},x_{3}), d_Y(y_{3},y_{2}) \right\} + \max\left\{ d_X(x_{3},x_{2}), d_Y(y_{1},y_{3}) \right\} \\
+		                                        & \ldots + \max\left\{ d_X(x_{3},x_{2}), d_Y(y_{3},y_{2}) \right\}                                                                                                                \\
+		                                        & \le d_{\infty}((x_{1},y_{1}),(x_{3},y_{3})) + d_{\infty}((x_{3},y_{3}),(x_{2},y_{2}))
+	\end{align*}
+	\\
+
+	Thus each of the functions are metrics on \( (X \times Y) \)
+
+\end{solution}
+
+
+\begin{solution}2.
+
+	Let \( d_{\infty}((x_{1},y_{1}),(x_{2},y_{2})) = \max\left\{ d_X(x_1,x_{2}), d_Y(y_{1},y_{2}) \right\} = \alpha\). Then
+	\begin{equation}
+		d_2((x_{1},y_{1}),(x_{2},y_{2})) \ge \sqrt{\alpha ^2 + 0^2} = \alpha = d_{\infty}((x_{1},y_{1}),(x_{2},y_{2}))
+	\end{equation}
+
+	Let \( d_1((x_{1},y_{1}),(x_{2},y_{2})) = a + b, \quad a,b \in \mathbb{R} \). Then \( d_2((x_{1},y_{1}),(x_{2},y_{2})) = \sqrt{a^2+b^2}  \)
+
+	Then
+	\[
+		d_1^2 = a^2 + b^2 + 2ab, \quad d_2^2 = a^2 + b^2
+	\]
+	\begin{equation}
+		d_2^2 \le d_{1}^2 \Rightarrow d_2((x_{1},y_{1}),(x_{2},y_{2})) \le d_1((x_{1},y_{1}),(x_{2},y_{2}))
+	\end{equation}
+
+	Again let \( d_{\infty} = \alpha \). Then \( d_1 \le \alpha + \alpha = 2d_{\infty} \)
+	\begin{equation}
+		\Rightarrow d_{1}((x_{1},y_{1}),(x_{2},y_{2})) \le 2 d_{\infty}((x_{1},y_{1}),(x_{2},y_{2}))
+	\end{equation}
+
+	Combining 1,2 and 3 we get, with \( p = (x_{1},y_{1}) \) and \( q = (x_{2},y_{2}) \)
+	\[
+		d_{\infty}(p,q) \le d_2(p,q) \le d_1(p,q) \le 2d_{\infty}(p,q)
+	\]
+
+
+\end{solution}
+
+
+
+
+
+\end{problem}
+
+\begin{problem}
+Let \( (X,d) \) be a metric space and consider \( X \times X \) as a metric space with the metric \( d_1 \) of Problem 3. Show that \( d: X \times X \to \mathbb{R}\) is continuous
+\[
+	d_1((x_1,x_2), (x_3,x_4)) = d(x_1,x_{3}) + d(x_{2},x_{4})
+\]
+\\
+
+\begin{solution}
+	Assume for the sake of contradiction that \( d \) is not continuous i.e.
+	\\
+	Let \( x_1, x_{2} \in X\), then
+	\[
+		\exists \ \epsilon > 0 \text{ such that } \ \forall \ \delta > 0 \ 0 < |x_{1}-x_{2}| < \delta \Rightarrow |d(x_1,x_2)| \ge \epsilon
+	\]
+	Aim: to show that \( (X \times X, d_1) \) is not a metric space under the given assumptions
+
+	Clearly \( d_1 \) is non-negative since the sum of two non-neg is non-neg
+
+	Also \( d_1 = 0 \iff x_{1} = x_{3} \text{ and } x_{2} = x_{4} \) implying \( (x_{1},x_{2}) = (x_{3}, x_{4}) \)
+
+	Clearly \( d_1 \) is symmetric
+
+	Triangle Inequality
+	\begin{align*}
+		d_{1}((x_{1},x_{2}),(x_{3},x_{4})) & = d(p_{1}) + d(p_{2})                                     \\
+		                                   & \le d(x_{1},y) + d(y,x_{3}) + d(x_{2},z) + d(z,x_{4})     \\
+		                                   & \le d_1((x_{1},x_{2}),(y,z)) + d_{1}((y,z),(x_{3},x_{4}))
+	\end{align*}
+
+
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Consider the set of all maps from the natural numbers to the real numbers
+\[
+	X = \mathbb{R}^{\mathbb{N}}
+\]
+Define
+\[
+	d(x,y) = \sum_{n=1}^{\infty} \frac{1}{2^j}\frac{|x_j-y_j|}{1+|x_j-y_j|}
+\]
+Show that \( (X,d) \) is a metric space
+\end{problem}
+\end{document}
+
