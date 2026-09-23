@@ -91,7 +91,16 @@ Prove that \( d^{(1)}, d^{(2)}, d^{(3)} \) are metrics for \( X \) but \( d^{(4)
 		             & \le d^{(2)}(x,z) + d^{(2)}(z,y)
 	\end{align*}
 
-	Once again, we see that \( d^{(3)} \le 0 \iff d  \le 0 \), which is never the case, thus it is non-negative and also \( d^{(3)}(x,y) = 0 \iff d(x,y) = 0 \iff x = y  \). Also the symmetry of \( d \) implies the symmetry of \( d^{(3)} \). For the triangle inequality
+	Once again, we see that \( d^{(3)} \le 0 \iff d  \le 0 \), which is never the case, thus it is non-negative and also \( d^{(3)}(x,y) = 0 \iff d(x,y) = 0 \iff x = y  \). Also the symmetry of \( d \) implies the symmetry of \( d^{(3)} \).
+	\begin{lemma}
+		For \( 0 < x \le y \), we have that \( 1 - \frac{1}{x} \le 1 - \frac{1}{y} \)
+
+		\begin{proof}
+			Since \( 0 < x \le y \Rightarrow \frac{1}{x} \ge \frac{1}{y} \Rightarrow -\frac{1}{x} \le -\frac{1}{y} \Rightarrow 1 - \frac{1}{x} \le 1 - \frac{1}{y} \)
+		\end{proof}
+	\end{lemma}
+
+	For the triangle inequality
 	\begin{align*}
 		d^{(3)}(x,y) = \frac{d(x,y)}{1+d(x,y)} & = 1- \frac{1}{1+d(x,y)}                                                     \\
 		                                       & \le 1 - \frac{1}{1 + d(x,z) + d(z,y)}                                       \\
@@ -161,10 +170,42 @@ Let \( (X,d_X) \) and \( (Y,d_Y) \) be metric spaces. For \( (x_1,y_1), (x_2,y_2
 
 	Again due to the symmetry of \( d_X \text{ and } d_Y \) it is clear that \( d_2 \) is symmetric
 
+	\begin{lemma}
+		For \( a,b,c,d > 0 \), we have \( \sqrt{(a+b)^2 + (c+d)^2} \le \sqrt{a^2+c^2} + \sqrt{b^2+d^2} \)
+
+		\begin{proof}
+			Since both sides are non-negative it is equivalent to prove the following
+			\[
+				(a+b)^2+(c+d)^2 \le (a^2+c^2) + (b^2+d^2) + 2\sqrt{(a^2+c^2)(b^2+d^2)}
+			\]
+			Then expanding the LHS and cancelling out some terms we get that it is equivalent to proving
+			\[
+				ab + cd \le \sqrt{(a^2+c^2)(b^2+d^2)}
+			\]
+			Squaring and expanding
+			\[
+				a^2b^2+2abcd+c^2d^2 \le a^2b^2+a^2d^2+c^2b^2+c^2d^2
+			\]
+			\[
+				0 \le a^2d^2-2ad^3 +c^2b^2
+			\]
+			\[
+				0 \le (ad-bc)^2
+			\]
+			Which is a square and thus always non-negative.
+
+			Hence the inequality holds
+		\end{proof}
+	\end{lemma}
+
+	For the triangle inequality
+
 	% Cauchy Schwartz ??????
 	\begin{align*}
-		d_{2}((x_{1},y_{1}), (x_{2},y_{2})) & = \sqrt{d_X(x_{1},x_{2})^2 + d_Y(y_{1},y_{2})^2}                                             \\
-		                                    & \le \sqrt{(d_X(x_{1},x_{3}) + d_X(x_{3},x_{2}))^2 + (d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{1}))^2}
+		d_{2}((x_{1},y_{1}), (x_{2},y_{2})) & = \sqrt{d_X(x_{1},x_{2})^2 + d_Y(y_{1},y_{2})^2}                                                    \\
+		                                    & \le \sqrt{(d_X(x_{1},x_{3}) + d_X(x_{3},x_{2}))^2 + (d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{1}))^2}        \\
+		                                    & \le \sqrt{d_X(x_{1},x_{3})^2 + d_Y(y_{1},y_{3})^2} + \sqrt{d_X(x_{3},x_{2})^2 + d_Y(y_{3},y_{1})^2} \\
+		                                    & \le d_{2}((x_{1},y_{1}),(x_{3},y_{3})) + d_{2}((x_{3},y_{3}),(x_{2},y_{2}))
 	\end{align*}
 	\\
 
@@ -233,11 +274,27 @@ Let \( (X,d_X) \) and \( (Y,d_Y) \) be metric spaces. For \( (x_1,y_1), (x_2,y_2
 	\[
 		d_{\infty}(p,q) \le d_2(p,q) \le d_1(p,q) \le 2d_{\infty}(p,q)
 	\]
-
-
 \end{solution}
 
+\begin{solution}3.
 
+	Let \( U \subset X \times Y \), \( U \) is open iff
+	\[
+		\forall \ x \in U \ \exists \ \epsilon_x \text{ s.t. } B_{\epsilon_x}(x) \subset U
+	\]
+	To prove the open sets are the same under the three different metrics, we must prove that if a set is open under \( d_1 \) then it is also open under \( d_{\infty} \) and vice versa and again with ...
+
+	First I will do the double inclusion for \( d_{1} \) and \( d_{\infty} \)
+
+	Let \( U \subset  X \times Y \) and \( (x_{0},y_{0}) \in U \)
+
+	Assume \( U \) is open under \( d_{1} \). i.e. \( \exists \ \epsilon_{1} \text{ s.t. } B_{\epsilon_{1}}^{d_{1}}(x_{0},y_{0}) \subset U \)
+
+	Choose \( \epsilon_{\infty} = \epsilon_{1} \)
+
+	Then
+
+\end{solution}
 
 
 
@@ -251,28 +308,25 @@ Let \( (X,d) \) be a metric space and consider \( X \times X \) as a metric spac
 \\
 
 \begin{solution}
-	Assume for the sake of contradiction that \( d \) is not continuous i.e.
-	\\
-	Let \( x_1, x_{2} \in X\), then
+	Let \( (x_{0},y_{0}) \in X \times X \)
+
+	\( d: X \times X \to \mathbb{R} \) is continuous at \( (x_{0}, y_{0}) \) iff
 	\[
-		\exists \ \epsilon > 0 \text{ such that } \ \forall \ \delta > 0 \ 0 < |x_{1}-x_{2}| < \delta \Rightarrow |d(x_1,x_2)| \ge \epsilon
+		\forall \ \epsilon > 0 \ \exists \ \delta > 0 \text{ s.t. } d_{1}((x_{0},y_0), (x,y)) < \delta \Rightarrow |d(x_{0},y_{0}) - d(x,y)| < \epsilon
 	\]
-	Aim: to show that \( (X \times X, d_1) \) is not a metric space under the given assumptions
+	Let \( \epsilon > 0 \)
 
-	Clearly \( d_1 \) is non-negative since the sum of two non-neg is non-neg
+	Choose \( \delta = \epsilon \)
 
-	Also \( d_1 = 0 \iff x_{1} = x_{3} \text{ and } x_{2} = x_{4} \) implying \( (x_{1},x_{2}) = (x_{3}, x_{4}) \)
-
-	Clearly \( d_1 \) is symmetric
-
-	Triangle Inequality
-	\begin{align*}
-		d_{1}((x_{1},x_{2}),(x_{3},x_{4})) & = d(p_{1}) + d(p_{2})                                     \\
-		                                   & \le d(x_{1},y) + d(y,x_{3}) + d(x_{2},z) + d(z,x_{4})     \\
-		                                   & \le d_1((x_{1},x_{2}),(y,z)) + d_{1}((y,z),(x_{3},x_{4}))
-	\end{align*}
-
-
+	Then \( d_1((x_{0},y_{0}), (x,y)) < \delta \) gives
+	\[
+		d(x_{0},x) + d(y_{0},y) < \epsilon
+	\]
+	Then using the property from Problem 1, we get
+	\[
+		|d(x_{0},y_{0}) - d(x,y)| \le d(x_{0},x) + d(y_{0},y) < \epsilon
+	\]
+	Which satisfies the definition of continuity above
 \end{solution}
 \end{problem}
 
@@ -283,9 +337,32 @@ Consider the set of all maps from the natural numbers to the real numbers
 \]
 Define
 \[
-	d(x,y) = \sum_{n=1}^{\infty} \frac{1}{2^j}\frac{|x_j-y_j|}{1+|x_j-y_j|}
+	d(x,y) = \sum_{j=1}^{\infty} \frac{1}{2^j}\frac{|x_j-y_j|}{1+|x_j-y_j|}
 \]
 Show that \( (X,d) \) is a metric space
+
+\begin{solution}
+	Let \( x,y,z \in X \)
+
+	It is obvious that \( d(x,y) \) is non-negative since \( |x_j-y_j| \ge 0 \ \forall \ j \)
+
+	Then if \( d(x,y)  = 0 \) we see that this happens iff \( |x_j - y_j|  = 0 \ \forall \ j\) i.e. \( x = y \)
+
+	Also  \( |x_j - y_j| = |y_j - x_j| \) and thus \( d(x,y) = d(y,x) \)
+
+	Then for the triangle inequality (using lemma 2 from earlier)
+
+	\begin{align*}
+		d(x,y) & = \sum_{j=1}^{\infty} \frac{1}{2^j} \frac{|x_j-y_j|}{1 + |x_j-y_j|}                                                                                \\
+		       & = \sum_{j=1}^{\infty} \frac{1}{2^j}\left( 1 - \frac{1}{1 + |x_j-y_j|} \right)                                                                      \\
+		       & \le \sum_{j=1}^{\infty} \frac{1}{2^j}\left( 1 - \frac{1}{1 + |x_j-z_j| + |z_j- y_j|} \right)                                                       \\
+		       & \le \sum_{j=1}^{\infty} \frac{1}{2^j}\left( \frac{|x_j - z_j| + |z_j - y_j|}{1 + |x_j-z_j| + |z_j-y_j|} \right)                                    \\
+		       & \le \sum_{j=1}^{\infty} \frac{1}{2^j}\left( \frac{|x_j-z_j|}{1 + |x_j-z_j| + |z_j-y_j|} + \frac{|z_j-y_j|}{1 + |x_j - z_j| + | z_j - y_j|} \right) \\
+		       & \le \sum_{j=1}^{\infty} \frac{1}{2^j}\left( \frac{|x_j-z_j|}{1 + |x_j-z_j|} + \frac{|z_j-y_j|}{1 + | z_j - y_j|} \right)                           \\
+		       & \le d(x,z) + d(z,y)
+	\end{align*}
+
+	Hence \( (X,d) \) is a metric space
+\end{solution}
 \end{problem}
 \end{document}
-
