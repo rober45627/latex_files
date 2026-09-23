@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.20)  23 SEP 2026 21:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.9.20)  23 SEP 2026 23:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -406,24 +406,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 164--166
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--211
+Underfull \hbox (badness 10000) in paragraph at lines 208--210
 
  []
 
 
-Overfull \hbox (27.39345pt too wide) detected at line 243
+Overfull \hbox (27.39345pt too wide) detected at line 242
 []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--245
+Underfull \hbox (badness 10000) in paragraph at lines 242--244
 
  []
 
 
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 307--309
+Underfull \hbox (badness 10000) in paragraph at lines 283--286
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--301
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--322
 
  []
 
@@ -459,13 +469,14 @@ obro/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:
 pfb><C:/Users/robro/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
 m/cmr7.pfb><C:/Users/robro/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
 fonts/cm/cmsy10.pfb><C:/Users/robro/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmsy7.pfb><C:/Users/robro/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/robro/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/robro/AppData/Loca
-l/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on 201-02-1609-01.pdf (5 pages, 175483 bytes).
+ublic/amsfonts/cm/cmsy5.pfb><C:/Users/robro/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/robro/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/robro/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/robro/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on 201-02-1609-01.pdf (5 pages, 184520 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
+ 103 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

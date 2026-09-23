@@ -200,7 +200,6 @@ Let \( (X,d_X) \) and \( (Y,d_Y) \) be metric spaces. For \( (x_1,y_1), (x_2,y_2
 
 	For the triangle inequality
 
-	% Cauchy Schwartz ??????
 	\begin{align*}
 		d_{2}((x_{1},y_{1}), (x_{2},y_{2})) & = \sqrt{d_X(x_{1},x_{2})^2 + d_Y(y_{1},y_{2})^2}                                                    \\
 		                                    & \le \sqrt{(d_X(x_{1},x_{3}) + d_X(x_{3},x_{2}))^2 + (d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{1}))^2}        \\
@@ -282,17 +281,31 @@ Let \( (X,d_X) \) and \( (Y,d_Y) \) be metric spaces. For \( (x_1,y_1), (x_2,y_2
 	\[
 		\forall \ x \in U \ \exists \ \epsilon_x \text{ s.t. } B_{\epsilon_x}(x) \subset U
 	\]
-	To prove the open sets are the same under the three different metrics, we must prove that if a set is open under \( d_1 \) then it is also open under \( d_{\infty} \) and vice versa and again with ...
+	To prove the open sets are the same under the three different metrics, we must prove that if a set is \( d_{\infty} \)-open then it is also \( d_{1} \)-open and then also \( d_{2} \)-open and finally once again to \( d_{\infty} \) completing the cycle.
+	\\
 
-	First I will do the double inclusion for \( d_{1} \) and \( d_{\infty} \)
+	Assume \( U \) is \( d_{\infty} \)-open. i.e. \( \exists \ \epsilon_{\infty} \text{ s.t. } B_{\epsilon_{\infty}}(x_{0},y_{0}) \subset U\)
 
-	Let \( U \subset  X \times Y \) and \( (x_{0},y_{0}) \in U \)
-
-	Assume \( U \) is open under \( d_{1} \). i.e. \( \exists \ \epsilon_{1} \text{ s.t. } B_{\epsilon_{1}}^{d_{1}}(x_{0},y_{0}) \subset U \)
-
-	Choose \( \epsilon_{\infty} = \epsilon_{1} \)
-
+	Choose \( \epsilon_{1} = \epsilon_{\infty} \)
 	Then
+	\[
+		B_{\epsilon_{\infty}}^{d_{\infty}}(x_{0},y_{0}) = \left\{ (x,y) \in X \times Y \mid \max\left\{ d_X(x,x_{0}), d_Y(y,y_{0}) \right\} < \epsilon_{\infty} \right\}
+	\]
+	\[
+		B_{\epsilon_{1}}^{d_1}(x_{0},y_{0}) \left\{ (x,y) \in X\times Y \mid d_X(x,x_{0}) + d_Y(y,y_{0}) < \epsilon_{1} = \epsilon_{\infty} \right\}
+	\]
+	If \( a \in B_{\epsilon_{1}}^{d_1} \Rightarrow a \in B_{\epsilon_{\infty}}^{d_{\infty}} \) since \( d_{\infty} \le d_1 \) (from part above) \( \Rightarrow B_{\epsilon_{1}}^{d_{1}} \subset B_{\epsilon_{\infty}}^{d_{\infty}} \subset U  \).
+
+	Hence \( U \) is \( d_{1} \)-open
+	\\
+
+	Assume \( U \) is \( d_{1} \)-open. i.e. \( \exists \ \epsilon_1 \text{ s.t. } B_{\epsilon_{1}} \subset U \)
+
+	Choose \( \epsilon_2 = \epsilon_{1} \)
+
+	Again \( B_{\epsilon} \)
+
+
 
 \end{solution}
 
