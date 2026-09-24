@@ -61,7 +61,7 @@ Prove that \( d^{(1)}, d^{(2)}, d^{(3)} \) are metrics for \( X \) but \( d^{(4)
 	For each \( d^{(i)}, \quad i = 1,2,3,4 \) it is clear that each function is well defined.
 	Let \( x,y,z \in X \)
 
-	Since we know that \( d \) is a metric for \( X \) it is clear that \( d^{(1)} \) preserves the symmetry and non-negativity since \( k > 0 \), also \( d^{(1)}(x,y) = 0 \iff d(x,y) = 0 \iff x = y \). Then for the triangle inequality, starting with the triangle inequality for \( d \) we have the triangle equality of \( d^{(1)} \) once we multiply across by \( k \).
+	Since we know that \( d \) is a metric for \( X \) it is clear that \( d^{(1)} \) preserves the symmetry and non-negativity since \( k > 0 \), also \( d^{(1)}(x,y) = 0 \iff d(x,y) = 0 \iff x = y \). Then for the triangle inequality, starting with the triangle inequality for \( d \) we have the triangle inequality of \( d^{(1)} \) once we multiply across by \( k \).
 	\\
 
 	Since \( d^{(2)} \le 0 \iff d \le  0 \), we see it preserves the non-negegativity of \( d \) and also if \( d^{(2)} = 0 \iff d = 0 \iff x=y \), also \( d^{(2)}(x,y) = \min\{1,d(x,y)\} = \min\{1, d(y,x)\} = d^{(2)}(y,x) \), so it is symmetric.
@@ -80,7 +80,7 @@ Prove that \( d^{(1)}, d^{(2)}, d^{(3)} \) are metrics for \( X \) but \( d^{(4)
 		\[
 			1 \le \min\left\{ 1 , a \right\} + \min\left\{ 1,b \right\}
 		\]
-		In any selection of \( a,b \) this holds. Since if it picks out any of the ones, it is obvious, and the case condition takes take if both \( a \) and \( b \) get picked
+		In any selection of \( a,b \) this holds. Since if it picks out any of the ones, it is obvious, and the case condition takes care if both \( a \) and \( b \) get picked
 	\end{proof}
 
 	For the triangle inequality
@@ -161,17 +161,17 @@ Let \( (X,d_X) \) and \( (Y,d_Y) \) be metric spaces. For \( (x_1,y_1), (x_2,y_2
 		                                   & \le d_1((x_{1},y_{1}),(x_{3},y_{3})) + d_{1}((x_{3},y_{3}),(x_{2},y_{2}))
 	\end{align*}
 
-	Thus \( d_1 \) is a metric on \( X \times X \)
+	Thus \( d_1 \) is a metric on \( X \times Y \)
 	\\
 
-	\( d_{2} \) is non-negative since \( \sqrt{a} > 0 \ \forall \ a \in \mathbb{R} \)
+	\( d_{2} \) is non-negative since \( \sqrt{a} \ge 0 \ \forall \ a \ge 0 \)
 
-	Similarly \( d_{2} = 0 \iff \) the square root is 0 \( \iff d_X \text{ and } d_y \) are zero \( \iff \) the pairs are the same
+	Similarly \( d_{2} = 0 \iff \) the square root is 0 \( \iff d_X \text{ and } d_Y \) are zero \( \iff \) the pairs are the same
 
 	Again due to the symmetry of \( d_X \text{ and } d_Y \) it is clear that \( d_2 \) is symmetric
 
 	\begin{lemma}
-		For \( a,b,c,d > 0 \), we have \( \sqrt{(a+b)^2 + (c+d)^2} \le \sqrt{a^2+c^2} + \sqrt{b^2+d^2} \)
+		For \( a,b,c,d \ge 0 \), we have \( \sqrt{(a+b)^2 + (c+d)^2} \le \sqrt{a^2+c^2} + \sqrt{b^2+d^2} \)
 
 		\begin{proof}
 			Since both sides are non-negative it is equivalent to prove the following
@@ -187,7 +187,7 @@ Let \( (X,d_X) \) and \( (Y,d_Y) \) be metric spaces. For \( (x_1,y_1), (x_2,y_2
 				a^2b^2+2abcd+c^2d^2 \le a^2b^2+a^2d^2+c^2b^2+c^2d^2
 			\]
 			\[
-				0 \le a^2d^2-2ad^3 +c^2b^2
+				0 \le a^2d^2-2abcd +c^2b^2
 			\]
 			\[
 				0 \le (ad-bc)^2
@@ -202,8 +202,8 @@ Let \( (X,d_X) \) and \( (Y,d_Y) \) be metric spaces. For \( (x_1,y_1), (x_2,y_2
 
 	\begin{align*}
 		d_{2}((x_{1},y_{1}), (x_{2},y_{2})) & = \sqrt{d_X(x_{1},x_{2})^2 + d_Y(y_{1},y_{2})^2}                                                    \\
-		                                    & \le \sqrt{(d_X(x_{1},x_{3}) + d_X(x_{3},x_{2}))^2 + (d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{1}))^2}        \\
-		                                    & \le \sqrt{d_X(x_{1},x_{3})^2 + d_Y(y_{1},y_{3})^2} + \sqrt{d_X(x_{3},x_{2})^2 + d_Y(y_{3},y_{1})^2} \\
+		                                    & \le \sqrt{(d_X(x_{1},x_{3}) + d_X(x_{3},x_{2}))^2 + (d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{2}))^2}        \\
+		                                    & \le \sqrt{d_X(x_{1},x_{3})^2 + d_Y(y_{1},y_{3})^2} + \sqrt{d_X(x_{3},x_{2})^2 + d_Y(y_{3},y_{2})^2} \\
 		                                    & \le d_{2}((x_{1},y_{1}),(x_{3},y_{3})) + d_{2}((x_{3},y_{3}),(x_{2},y_{2}))
 	\end{align*}
 	\\
@@ -215,32 +215,25 @@ Let \( (X,d_X) \) and \( (Y,d_Y) \) be metric spaces. For \( (x_1,y_1), (x_2,y_2
 	Again due to the symmetry of \( d_X \text{ and } d_Y \) it is clear that \( d_{\infty} \) is symmetric
 
 	\begin{lemma}
-		For all \( a,b,c \ge 0 \), we have \( \max\left\{ a+b, c \right\} \le \max\left\{ a,c \right\} + \max\left\{ b,c \right\}  \)
+		For all \( a,b,c,d \ge 0 \), we have \( \max\left\{ a+b, c + d \right\} \le \max\left\{ a,c \right\} + \max\left\{ b,d \right\}  \)
 	\end{lemma}
 	\begin{proof}
-		Case (i). \( a + b < c \)
-		\[
-			c \le \max\left\{ a,c \right\} + \max\left\{ b,c \right\} = 2c
-		\]
-		Since it will pick out \( c \) both times
+		Let \( M = \max\{a,c\} + \max\{b,d\} \)
 
-		Case (ii). \( a + b \ge c \)
-		\[
-			a + b \le \max\left\{ a,c \right\} + \max\left\{ b,c \right\}
-		\]
-		In any selection this holds since if both \( a \) and \( b \) are bigger than \( c \) you get \( a + b \le a+ b \), but if \( c \) is greater than one or both, evidently the sum on the right will be greater
+		Since \( a \le \max\{a,c\} \) and \( b \le \max\{b,d\} \), we have \( a + b \le M \)
+
+		Similarly \( c \le \max\{a,c\} \) and \( d \le \max\{b,d\} \) give \( c + d \le M \)
+
+		Then \( \max\{a+b, c+d\} \le M \).
 	\end{proof}
 
 	For the triangle inequality, we get
 	\begin{align*}
-		d_{\infty}((x_{1},y_{1}),(x_{2},y_{2})) & = \max\left\{ d_X(x_{1},x_{2}), d_Y(y_{1},y_{2}) \right\}                                                                                                                       \\
-		                                        & \le \max\left\{ d_X(x_{1},x_{3}) + d_X(x_{3},x_{2}), d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{2}) \right\}                                                                               \\
-		                                        & \le \max\left\{ d_X(x_{1},x_{3}), d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{2}) \right\} + \max\left\{ d_X(x_{3},x_{2}), d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{2}) \right\}                     \\
-		                                        & \le \max\left\{ d_X(x_{1},x_{3}), d_Y(y_{1},y_{3}) \right\} + \max\left\{ d_X(x_{1},x_{3}), d_Y(y_{3},y_{2}) \right\} + \max\left\{ d_X(x_{3},x_{2}), d_Y(y_{1},y_{3}) \right\} \\
-		                                        & \ldots + \max\left\{ d_X(x_{3},x_{2}), d_Y(y_{3},y_{2}) \right\}                                                                                                                \\
+		d_{\infty}((x_{1},y_{1}),(x_{2},y_{2})) & = \max\left\{ d_X(x_{1},x_{2}), d_Y(y_{1},y_{2}) \right\}                                                             \\
+		                                        & \le \max\left\{ d_X(x_{1},x_{3}) + d_X(x_{3},x_{2}), d_Y(y_{1},y_{3}) + d_Y(y_{3},y_{2}) \right\}                     \\
+		                                        & \le \max\left\{ d_X(x_{1},x_{3}), d_Y(y_{1},y_{3}) \right\} + \max\left\{ d_X(x_{3},x_{2}), d_Y(y_{3},y_{2}) \right\} \\
 		                                        & \le d_{\infty}((x_{1},y_{1}),(x_{3},y_{3})) + d_{\infty}((x_{3},y_{3}),(x_{2},y_{2}))
 	\end{align*}
-	\\
 
 	Thus each of the functions are metrics on \( (X \times Y) \)
 
@@ -254,7 +247,8 @@ Let \( (X,d_X) \) and \( (Y,d_Y) \) be metric spaces. For \( (x_1,y_1), (x_2,y_2
 		d_2((x_{1},y_{1}),(x_{2},y_{2})) \ge \sqrt{\alpha ^2 + 0^2} = \alpha = d_{\infty}((x_{1},y_{1}),(x_{2},y_{2}))
 	\end{equation}
 
-	Let \( d_1((x_{1},y_{1}),(x_{2},y_{2})) = a + b, \quad a,b \in \mathbb{R} \). Then \( d_2((x_{1},y_{1}),(x_{2},y_{2})) = \sqrt{a^2+b^2}  \)
+	Let \( d_1((x_{1},y_{1}),(x_{2},y_{2})) = a + b, \ a,b \ge 0 \)
+	Then \( d_2((x_{1},y_{1}),(x_{2},y_{2})) = \sqrt{a^2+b^2}  \)
 
 	Then
 	\[
@@ -279,33 +273,115 @@ Let \( (X,d_X) \) and \( (Y,d_Y) \) be metric spaces. For \( (x_1,y_1), (x_2,y_2
 
 	Let \( U \subset X \times Y \), \( U \) is open iff
 	\[
-		\forall \ x \in U \ \exists \ \epsilon_x \text{ s.t. } B_{\epsilon_x}(x) \subset U
+		\forall \ (x_{0},y_{0}) \in U \ \exists \ \epsilon \text{ s.t. } B_{\epsilon}(x_{0},y_{0}) \subset U
 	\]
 	To prove the open sets are the same under the three different metrics, we must prove that if a set is \( d_{\infty} \)-open then it is also \( d_{1} \)-open and then also \( d_{2} \)-open and finally once again to \( d_{\infty} \) completing the cycle.
-	\\
 
-	Assume \( U \) is \( d_{\infty} \)-open. i.e. \( \exists \ \epsilon_{\infty} \text{ s.t. } B_{\epsilon_{\infty}}(x_{0},y_{0}) \subset U\)
-
-	Choose \( \epsilon_{1} = \epsilon_{\infty} \)
-	Then
+	Let \( (x_{0},y_{0}) \in U \)
 	\[
 		B_{\epsilon_{\infty}}^{d_{\infty}}(x_{0},y_{0}) = \left\{ (x,y) \in X \times Y \mid \max\left\{ d_X(x,x_{0}), d_Y(y,y_{0}) \right\} < \epsilon_{\infty} \right\}
 	\]
 	\[
-		B_{\epsilon_{1}}^{d_1}(x_{0},y_{0}) \left\{ (x,y) \in X\times Y \mid d_X(x,x_{0}) + d_Y(y,y_{0}) < \epsilon_{1} = \epsilon_{\infty} \right\}
+		B_{\epsilon_{1}}^{d_1}(x_{0},y_{0}) = \left\{ (x,y) \in X\times Y \mid d_X(x,x_{0}) + d_Y(y,y_{0}) < \epsilon_{1}  \right\}
 	\]
-	If \( a \in B_{\epsilon_{1}}^{d_1} \Rightarrow a \in B_{\epsilon_{\infty}}^{d_{\infty}} \) since \( d_{\infty} \le d_1 \) (from part above) \( \Rightarrow B_{\epsilon_{1}}^{d_{1}} \subset B_{\epsilon_{\infty}}^{d_{\infty}} \subset U  \).
+	\[
+		B_{\epsilon_{2}}^{d_{2}}(x_{0},y_{0}) = \left\{ (x,y) \in X\times Y \mid \sqrt{d_x(x,x_{0})^2 + d_Y(y,y_{0})^2} < \epsilon_{2}  \right\}
+	\]
+	\\
+
+	Assume \( U \) is \( d_{\infty} \)-open. i.e. \( \exists \ \epsilon_{\infty} > 0 \text{ s.t. } B_{\epsilon_{\infty}}^{d_{\infty}}(x_{0},y_{0}) \subset U\)
+
+	Choose \( \epsilon_{1} = \epsilon_{\infty} \)
+
+	Then if \( (x,y) \in B_{\epsilon_{1}}^{d_1}(x_{0},y_{0}) \Rightarrow (x,y) \in B_{\epsilon_{\infty}}^{d_{\infty}}(x_{0},y_{0}) \) since \( d_{\infty} \le d_1 \) (from part above) \( \Rightarrow B_{\epsilon_{1}}^{d_{1}}(x_{0},y_{0}) \subset B_{\epsilon_{\infty}}^{d_{\infty}}(x_{0},y_{0}) \subset U  \).
 
 	Hence \( U \) is \( d_{1} \)-open
 	\\
 
-	Assume \( U \) is \( d_{1} \)-open. i.e. \( \exists \ \epsilon_1 \text{ s.t. } B_{\epsilon_{1}} \subset U \)
+	Assume \( U \) is \( d_{1} \)-open. i.e. \( \exists \ \epsilon_1 > 0 \text{ s.t. } B_{\epsilon_{1}}^{d_{1}}(x_{0},y_{0}) \subset U \)
 
-	Choose \( \epsilon_2 = \epsilon_{1} \)
+	Choose \( \epsilon_2 = \frac{1}{2}\epsilon_{1} \)
 
-	Again \( B_{\epsilon} \)
+	From the last part we have that \( d_1 \le 2d_{2} \)
 
+	So if \( (x,y) \in B_{\epsilon_{2}}^{d_{2}}(x_{0},y_{0}) \) we get
+	\[
+		\Rightarrow d_2((x,y),(x_{0},y_{0})) < \frac{1}{2} \epsilon_{1}
+	\]
+	\[
+		\Rightarrow d_{1}((x,y),(x_{0},y_{0})) \le 2d_{2}((x,y),(x_{0},y_{0})) < \epsilon_{1}
+	\]
+	So \( (x,y) \in B_{\epsilon_{1}}^{d_{1}}(x_{0},y_{0})\)
 
+	Hence \( B_{\epsilon_{2}}^{d_{2}}(x_{0},y_{0}) \subset U \), and thus \( U \) is \( d_2 \)-open
+	\\
+
+	Assume \( U \) is \( d_2 \)-open. i.e. \( \exists \ \epsilon_{2} > 0 \text{ s.t. } B_{\epsilon_{2}}^{d_{2}}(x_{0},y_{0}) \subset U \)
+
+	Choose \( \epsilon_{\infty} = \frac{1}{2}\epsilon_{2} \)
+
+	Again from the last part we have that \( d_2 \le 2d_{\infty} \)
+
+	So similar to the last time, if \( (x,y) \in  B_{\epsilon_{\infty}}^{d_{\infty}}(x_{0},y_{0}) \), we get
+	\[
+		d_{\infty} < \frac{1}{2} \epsilon_{2}
+	\]
+	\[
+		\Rightarrow d_2 \le 2d_{\infty} < \epsilon_{2}
+	\]
+
+	Then \( B_{\epsilon_{\infty}}^{d_{\infty}}(x_{0},y_{0}) \subset U \) and hence \( U \) is \( d_{\infty} \)-open, completing the cycle.
+\end{solution}
+
+\begin{solution}4.
+	\begin{lemma}
+		Let \( A \subset B, C \subset D \)
+
+		Then \( A\times C \subset B\times D \)
+
+		\begin{proof}
+			\begin{align*}
+				A \subset B & \iff a \in A \Rightarrow a \in B \\
+				C \subset D & \iff c \in C \Rightarrow c \in D
+			\end{align*}
+			From the properties of the Cartesian Product we get
+			\[
+				(x,y) \in  X\times Y \iff x \in X \text{ and } y \in Y
+			\]
+			Combining these we get
+			\[
+				(a,c) \in A \times C \Rightarrow (a,c) \in B \times D
+			\]
+			Therefore \( A \times C \subset B \times  D \)
+		\end{proof}
+	\end{lemma}
+
+	\( U \subset X \) open and \( V \subset Y \) open
+
+	Thus \( \forall \ x_{0} \in  U \ \exists \ \epsilon_x \text{ s.t. } B_{\epsilon_x}^{d_X}(x_{0}) \subset U \) and \( \forall \ y_{0} \in V \ \exists \ \epsilon_y \text{ s.t. } B_{\epsilon_y}^{d_Y}(y_{0}) \subset V \)
+
+	It suffices to prove that \( U \times V \subset X \times Y \) is \( d_i \)-open for some \( i = 1,2,\infty \) as a consequence of the last part. I will choose to do it for \( d_{\infty} \)
+	\\
+
+	From Lemma 5, we have that \( U \times V \subset X \times Y \)
+
+	\( U \times V \subset X \times Y \) is open iff
+	\[
+		\forall \ (x_{0},y_{0}) \in U \times V \ \exists \ \epsilon_{\infty} \text{ s.t. } B_{\epsilon_{\infty}}^{d_{\infty}}(x_{0},y_{0}) \subset U \times V
+	\]
+	\[
+		B_{{\epsilon_{\infty}}}^{d_{\infty}}(x_{0},y_{0}) = \left\{ (x,y) \in X \times Y \mid \max\left\{ d_X(x,x_{0}),d_Y(y,y_{0}) \right\} < \epsilon_{\infty} \right\}
+	\]
+	Choosing \( \epsilon_{\infty} = \min\left\{ \epsilon_x,\epsilon_y \right\}  \), we have that \( d_X(x,x_{0}) < \epsilon_x \) and \( d_Y(y,y_{0}) < \epsilon_y \)
+
+	Meaning if that \( (x,y) \in B_{\epsilon_{\infty}}^{d_{\infty}}(x_{0},y_{0}) \Rightarrow (x,y) \in B_{\epsilon_x}^{d_X}(x_{0}) \times B_{\epsilon_y}^{d_Y}(y_{0}) \)
+
+	So then \( B_{\epsilon_{\infty}}^{d_{\infty}}(x_{0},y_{0}) \subset B_{\epsilon_x}^{d_X}(x_{0}) \times B_{\epsilon_y}^{d_Y}(y_{0}) \subset U \times V \)
+	\\
+
+	Therefore \( U \times V \) is \( d_{\infty} \)-open
+
+	Hence it is \( d_i \)-open for \( i = 1,2,\infty \)
 
 \end{solution}
 
@@ -356,6 +432,20 @@ Show that \( (X,d) \) is a metric space
 
 \begin{solution}
 	Let \( x,y,z \in X \)
+
+	First I should check whether or not the metric is well-defined since it is not immeaditely obvious.
+
+	Each term in the series of partial sums of \( d(x,y) \) is non-negative since \( |x_j-y_j| \ge 0 \ \forall \ j \)
+
+	Also, since \( \frac{|x_j-y_j|}{1 + |x_j - y_j|} \le 1 \) for all \( j \), we get
+	\[
+		0 \le d(x,y) \le \sum_{j=1}^{\infty} \frac{1}{2^j}
+	\]
+
+	Since, \( \sum_{j=1}^{\infty} \frac{1}{2^j} \) converges, so its limit is an upper bound on the series of partial sums, which is also monotone since it is the sum of non-negative numbers.
+
+	Hence it is convergent and thus \( d(x,y) \) is well defined
+	\\
 
 	It is obvious that \( d(x,y) \) is non-negative since \( |x_j-y_j| \ge 0 \ \forall \ j \)
 
