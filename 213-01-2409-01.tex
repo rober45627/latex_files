@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{datetime2}
+\usepackage{template/cenvs}
+
+\title{\textbf{ODE Notes}}
+\author{Robert O'Connell}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\hrule
+
+\subsection*{Seperable D.E.}
+\[
+	\frac{\mathrm{dy}}{\mathrm{dx}} = f(x)g(y)
+\]
+\\
+
+\hrule
+
+\subsection*{Linear D.E.}
+\[
+	\sum_{i=1}^{n} a_i(x)y^i(x) = b(x)
+\]
+\subsubsection*{First order}
+\[
+	y'(x) + P(x)y = Q(x)
+\]
+
+Solved by
+\[
+	y(x) = \frac{1}{\mu(x)}\int \mu(x) Q(x) dx
+\]
+where \( \mu(x) = e^{\int P(x) dx} \)
+\\
+
+\hrule
+
+\subsection*{Bernoulli D.E.}
+\[
+	y'(x) = P(x)y(x) + Q(x)(y(x))^n
+\]
+For \( n = 0,1 \) this is seperable
+
+\( y=0 \) is always a solution
+
+\[
+	\frac{y'(x)}{(y(x))^n} = \frac{p(x)}{(y(x))^{n-1}} + Q(x)
+\]
+Let \( v(x) = \frac{1}{(y(x))^{n-1}} \). Then \( v'(x) = \frac{(1-m)y'(x)}{(y(x))^n} \)
+
+So we get
+\[
+	\frac{v'(x)}{1-n} = P(x)v(x) + Q(x)
+\]
+Which is a Linear D.E. in \( v(x) \) (solve then sub back to \( y(x) \))
+\\
+
+\hrule
+\subsubsection*{Homogeneous Functions}
+A function \( f(x,y) \) is said to be homogeneous of degree \( n \) if \( f(\lambda x, \lambda y) = \lambda^n f(x,y) \) for all \( \lambda \in \mathbb{R} \)
+\subsection*{Homogeneous D.E.}
+\[
+	\frac{\mathrm{dy}}{\mathrm{dx}} = \frac{f(x,y)}{g(x,y)}
+\]
+Where \( f,g \) are homogeneous of the same degree
+
+Thus
+\[
+	\frac{\mathrm{dy}}{\mathrm{dx}} = \frac{f(\lambda x, \lambda y)}{g(\lambda x, \lambda y)}
+\]
+
+Letting \( \lambda = \frac{1}{x} \), we make \( \frac{\mathrm{dy}}{\mathrm{dx}}  = F(\frac{y}{x})\), a function of \( \frac{y}{x} \)
+
+Let \( v = \frac{y}{x} \) then \( v + x \frac{\mathrm{dv}}{\mathrm{dx}} = \frac{\mathrm{dy}}{\mathrm{dx}}  = F(v) \)
+
+Which is seperable
+\[
+	\frac{\mathrm{dv}}{F(v) -v} = \frac{\mathrm{dx}}{x}
+\]
+
+
+
+\end{document}
+

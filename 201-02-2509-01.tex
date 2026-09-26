@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{datetime2}
+\usepackage{template/cenvs}
+
+\title{\textbf{Homework 2}}
+\author{Robert O'Connell}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{problem}
+Suppose that \( x,y \) are distinct points in a metric space \( (X,d) \) and let \( \epsilon = \frac{d(x,y)}{2} \)
+
+Prove that \( B_{\epsilon}(x) \) and \( B_{\epsilon}(y) \) are disjoint
+
+\begin{solution}
+	Assume \( \exists \ x_{0} \in B_{\epsilon}(x) \) and \( y_{0} \in B_{\epsilon}(y) \) such that \( x_{0} = y_{0} \)
+
+	Thus \( d(x_{0},x) = d(y_{0},y) = d(x_{0},y) = d(y_{0},x) < \frac{d(x,y)}{2} \) and \( d(x_{0},y_{0}) = 0 \)
+
+	Then using the triangle inequality
+	\begin{align*}
+		d(y_{0},x) + d(y,y_{0}) \le d(x_{0},y_{0}) + d(x_{0},x) & + d(y_{0},y)                                       \\
+		\frac{d(x,y)}{2} + \frac{d(x,y)}{2} \le d(x_{0},x)      & + d(y_{0},y) < \frac{d(x,y)}{2} + \frac{d(x,y)}{2}
+	\end{align*}
+	No such number \( d(x_{0},x) + d(y_{0},y) \) exists, a contradiction
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Sketch the open ball \( B_1^{d_{\infty}}((0,0)) \) in \( \mathbb{R}^2 \)
+\end{problem}
+
+\begin{problem}
+Prove that a subset of a metric space is open iff it is a union of open balls
+
+\begin{solution}
+	Let \( (X,d) \) be a metric space and \( U \subset X \)
+
+	(\( \Rightarrow \))
+
+	Assume \( U \) is open
+
+	Then \( \forall \ x \in U \ \exists \ \epsilon_x > 0  \) s.t. \( B_{\epsilon_x} \subset U \)
+
+	Then looking at \( \cup_{x \in U} B_{\epsilon_x}(x) \)
+
+	If \( u \in U \), then certainly \( u \in B_{\epsilon_u}(u) \), so \( u \in \cup_{x \in U}B_{\epsilon_x}(x) \)
+
+	If \( u \in \cup_{x \in U} B_{\epsilon_x}(x) \), which is a subset of \( U \) since \( U \) is open so \( u \in U \)
+
+	Thus \( U = \cup_{x \in U}B_{\epsilon_x}(x) \)
+	\\
+
+	(\( \Leftarrow \))
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Suppose that in a metric space \( X \) we have \( B_r(x) = B_s(y) \) for some \( x,y \in X \) and some positive real numbers \( r,s \)
+
+Is \( x= y \)? and is \( r=s \)?
+
+\begin{solution}
+	It is not true in general that \( x=y \) and \( r=s \)
+
+	Consider the metric space of \( (\mathbb{R}^n, d) \) for any \( n \), where \( d(x,y) = \begin{cases}
+		0 \text{ if } x=y \\
+		1 \text{ if } x \neq y
+	\end{cases} \)
+
+	Now for any \( r \geq 1 \) we have that \( B_r(x) = \mathbb{R}^n \) for all \( x \in \mathbb{R}^n \)
+
+	For \( n=1 \), we can take \( x = 1 \) and \( y =  2 \), \( r = 2 \) and \( s = 3 \), we have \( B_r(x) = B_s(y) = \mathbb{R} \) while \( x \neq y \) and \( r \neq s \)
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Which of the following sets are closed in \( \mathbb{R} \)?
+\begin{itemize}
+	\item \( [1,\infty) \)
+	\item \( \mathbb{R} \setminus \mathbb{Q} \)
+	\item \( \left\{ \frac{n}{n+1} \mid n \in \mathbb{N} \right\}  \)
+	\item \( \left\{ \frac{1}{n} \mid n \in \mathbb{N}, n \ge 2 \right\} \cup \left\{ 0,1,2 \right\}  \)
+\end{itemize}
+\end{problem}
+\end{document}
+

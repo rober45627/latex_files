@@ -1,7 +1,7 @@
 # Assignments
-Prob: Lab, Quiz
+Prob: Tutorial
 ODE: Tutorial
-AA: HW, Tutorial
+AA: Tutorial x2, HW
 MG: Tutorial?
 GT: 
 AS: 

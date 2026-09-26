@@ -43,3 +43,15 @@ R to enter
 ## Search
 / to enter Search
 n, N to move forward
+
+
+
+
+
+
+# Round 2
+
+ciw ... like diw but ends in insert mode 
+^, g_ first/last non blank
+*/# next/prev occurrence of word under cursor
+ge end of previous word
