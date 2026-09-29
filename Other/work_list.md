@@ -1,7 +1,7 @@
 # Assignments
 Prob: Tutorial
 ODE: Tutorial
-AA: Tutorial x2, HW
+AA: Tutorial
 MG: Tutorial?
 GT: Tutorial
 AS: ignore lectures look at keilthy notes (she emulates them horribly) 

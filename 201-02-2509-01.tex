@@ -148,7 +148,7 @@ Is \( x= y \)? and is \( r=s \)?
 		1 \text{ if } x \neq y
 	\end{cases} \)
 
-	Now for any \( r \geq 1 \) we have that \( B_r(x) = \mathbb{R}^n \) for all \( x \in \mathbb{R}^n \)
+	Now for any \( r > 1 \) we have that \( B_r(x) = \mathbb{R}^n \) for all \( x \in \mathbb{R}^n \)
 
 	For \( n=1 \), we can take \( x = 1 \) and \( y =  2 \), \( r = 2 \) and \( s = 3 \), we have \( B_r(x) = B_s(y) = \mathbb{R} \) while \( x \neq y \) and \( r \neq s \)
 \end{solution}
@@ -223,7 +223,7 @@ Which of the following sets are closed in \( \mathbb{R} \)?
 		\end{proof}
 	\end{lemma}
 
-	Assume for the sake of contradiction that \( \mathbb{R}\setminus \mathbb{Q} \) is closed then \( \mathbb{R} \ (\mathbb{R} \setminus \mathbb{Q} ) = \mathbb{Q} \) is open
+	Assume for the sake of contradiction that \( \mathbb{R}\setminus \mathbb{Q} \) is closed then \( \mathbb{R} \setminus (\mathbb{R} \setminus \mathbb{Q} ) = \mathbb{Q} \) is open
 
 	But we know that \( \mathbb{Q} \) is not open
 
@@ -240,27 +240,58 @@ Which of the following sets are closed in \( \mathbb{R} \)?
 	Hence \( \mathbb{R} \setminus \mathbb{Q} \) is not closed
 \end{solution}
 
+
 \begin{solution} 3.
 
-	If \( A = \left\{ 1 - \frac{1}{n+1} \mid n \in \mathbb{N} \right\} \) is closed, that means its complement with respect to \( \mathbb{R} \), \( \mathbb{R} \setminus A \) is open
+	If \( A = \left\{ 1 - \frac{1}{n+1} \mid n \in \mathbb{N} \right\}  \) is closed than \( \overline{A} = A \)
 
-	Let \( \epsilon > 0  \) and consider the ball \( B_{\epsilon}(1) \)
-	\[
-		B_{\epsilon}(1) = \left\{ x \in \mathbb{R} \mid |x-1| < \epsilon \right\}
-	\]
+	Clearly \( 1 \notin A \) since \( \frac{1}{n+1} \neq 0 \) for all \( n \in \mathbb{N} \)
 
-	% for any \( \epsilon > 0 \) we see that \( B_{\epsilon}(1) \cup A \neq \emptyset \)
+	But we can create a sequence \( x_n \) with \( x_n \in A \) for all \( n \in \mathbb{N} \), which converges to 1, \( \left\{ x_n = 1 - \frac{1}{n+1} | n \in \mathbb{N} \right\}  \). This obviously converges to 1, since \( \frac{1}{n+1} \to 0 \). Thus from the sequential characterization of the closure \( 1 \in \overline{A} \)
 
-	% Clearly \( 1 \in \mathbb{R} \setminus A \), since \( 0 \) is not attained by the function \( \frac{1}{n+1} \) meaning \( 1 \notin A \)
-	Since \( 0 \) is not attained by \( \frac{1}{n+1} \) for all \( n \in \mathbb{N} \), \( \Rightarrow 1 \notin A \Rightarrow 1 \in \mathbb{R} \setminus A \)
+	Since \( 1 \notin A \) and \( 1 \in \overline{A} \) this implies \( \overline{A} \neq A \), and hence \( A \) is not closed
 
-	Then choose \( x \in \mathbb{N} \) such that \( 1 - \frac{1}{x+1} < \epsilon \)
-
-	Then \( 1 - \frac{1}{x+1} \in B_{\epsilon}(1)  \) but also \( 1 - \frac{1}{x+1} \in A \), hence \( B_{\epsilon}(1) \cap A \neq \emptyset \)
-
-	So \( B_{\epsilon}(1) \not\subset \mathbb{R} \setminus A \), so the complement of \( A \) is not open, so \( A \) is not closed
 \end{solution}
 
+\begin{solution} 4.
+
+	First we will find the limit points of \( A = \left\{ \frac{1}{n} \mid n \in \mathbb{N} \right\} \cup \left\{ 0,1,2 \right\}  \)
+
+	It is clear from the definition of a limit point that the right hand side of the union has no limit points, since for \( \epsilon = \frac{1}{2} \) \( B_{\epsilon}(x)\setminus \left\{ x \right\}  \cap \{0,1,2\} = \emptyset \) for all \( x \in \left\{ 0,1,2 \right\}  \)
+
+	We can also see that \( 0 \) is a limit point of the left hand side, consider the sequence \( \left\{ x_n = \frac{1}{n} \right\}_{n=2}^{\infty}  \), this is clearly convergent to \( 0 \) and with each of the \( x_n \in A \) and \( x_n \neq 0 \) for all \( n \in \mathbb{N} \)
+
+	Consider any \( a < 0 \), every element of \( A \) is greater or equal to zero, so \( B_{\frac{|a|}{2}}(a) = \left( \frac{3a}{2}, \frac{a}{2} \right)  \) does not intersect with \( A \), so no \( a < 0 \) is a limit point
+
+	Now consider any \( a > 0 \). \( B_{\frac{a}{2}}(a) = \left( \frac{a}{2}, \frac{3a}{2} \right)  \), a point \( \frac{1}{n} \in A, n \in \mathbb{N} \) lies in the ball iff \( \frac{1}{n} > \frac{a}{2} \Rightarrow n < \frac{2}{a} \). Only a finite number of \( n \) can satisfy this, hence the ball contains a finite amount of elements in \( A \). Let \( \epsilon \) be the minimum of all of the distances between the points of \( a \) in \( B_{\frac{a}{2}}(a) \setminus \left\{ a \right\}  \) to \( a \). By construction, \( B_{\epsilon}(a) \setminus \left\{ a \right\}  \cap A = \emptyset \), so no \( a > 0 \) is a limit point.
+
+	Hence \( 0 \) is the only limit point of \( A \)
+
+	But \( 0 \in A \), so \( \overline{A} = A \cup A' = A  \), hence \( A \) is closed
+
+\end{solution}
+%
+% \begin{solution} 3.
+%
+% 	If \( A = \left\{ 1 - \frac{1}{n+1} \mid n \in \mathbb{N} \right\} \) is closed, that means its complement with respect to \( \mathbb{R} \), \( \mathbb{R} \setminus A \) is open
+%
+% 	Let \( \epsilon > 0  \) and consider the ball \( B_{\epsilon}(1) \)
+% 	\[
+% 		B_{\epsilon}(1) = \left\{ x \in \mathbb{R} \mid |x-1| < \epsilon \right\}
+% 	\]
+%
+% 	% for any \( \epsilon > 0 \) we see that \( B_{\epsilon}(1) \cup A \neq \emptyset \)
+%
+% 	% Clearly \( 1 \in \mathbb{R} \setminus A \), since \( 0 \) is not attained by the function \( \frac{1}{n+1} \) meaning \( 1 \notin A \)
+% 	Since \( 0 \) is not attained by \( \frac{1}{n+1} \) for all \( n \in \mathbb{N} \), \( \Rightarrow 1 \notin A \Rightarrow 1 \in \mathbb{R} \setminus A \)
+%
+% 	Then choose \( x \in \mathbb{N} \) such that \( 1 - \frac{1}{x+1} < \epsilon \)
+%
+% 	Then \( 1 - \frac{1}{x+1} \in B_{\epsilon}(1)  \) but also \( 1 - \frac{1}{x+1} \in A \), hence \( B_{\epsilon}(1) \cap A \neq \emptyset \)
+%
+% 	So \( B_{\epsilon}(1) \not\subset \mathbb{R} \setminus A \), so the complement of \( A \) is not open, so \( A \) is not closed
+% \end{solution}
+%
 
 
 
