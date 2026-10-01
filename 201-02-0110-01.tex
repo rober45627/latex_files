@@ -1,0 +1,118 @@
+\documentclass{article}
+\usepackage[a4paper, total={6.5in, 10in}]{geometry}
+\setlength{\parindent}{0pt}
+\usepackage[british]{babel}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{datetime2}
+\usepackage{template/cenvs}
+
+\title{\textbf{Homework 3}}
+\author{Robert O'Connell}
+\date{\today}
+
+\begin{document}
+\maketitle
+% 16,18,20,23
+
+\begin{problem}
+For a point \( x \) and a non-empty subset of a metric space \( (X,d) \), define \( d(x,A) = \inf\left\{ d(x,a) \mid a \in A \right\}  \)
+\begin{itemize}
+	\item Prove that \( d(x,A) = 0 \) iff \( x \in \overline{A} \)
+	\item Show that if \( y \) is another point in \( X \) then \( d(x,A) \le d(x,y) + d(y,A) \)
+	\item Prove that \( x \mapsto d(x,A) \) gives a continuous map from \( X \) to \( \mathbb{R} \)
+\end{itemize}
+
+\begin{solution} 1.
+
+	(\( \Rightarrow \))
+
+	Suppose we have \( x \) such that \( d(x,A) = \inf\left\{ d(x,a) \mid x \in A \right\} = 0 \)
+
+	Since the inf is zero we have that for all \( \epsilon > 0 \) there exists \( a \in A \) such that \( d(x,a) < \epsilon \)
+
+	Then \(x,a \in B_{\epsilon}(x) \) meaning \( B_{\epsilon}(x) \cap A \neq \emptyset \), then from the ball characterization of the closure of a set \( a \in \overline{A} \)
+	\\
+
+	(\( \Leftarrow \))
+
+	This case is just the reverse of the above
+
+	Suppose we have \( x \in \overline{A} \) then for all \( \epsilon > 0 \ B_{\epsilon}(x) \cap A \neq \emptyset \), i.e. for all \( \epsilon > 0 \ d(x,a) < \epsilon \), so the inf of \( \left\{ d(x,a) \mid x \in A \right\}  \) is zero, and hence \( d(x,A) = 0 \)
+
+\end{solution}
+
+\begin{solution} 2.
+
+	Let \( a \in A \) and \( x,y \in X \)
+
+	Then \( d(x,A) \le d(x,a) \) and by the triangle inequality \( d(x,a) \le d(x,y) + d(y,a) \)
+
+	Then \( d(x,A) \le d(x,y) + d(y,a) \), rearranging we get \( d(x,A) - d(x,y) \le d(y,a) \).
+
+	Hence \( d(x,A) - d(x,y) \) is a lower bound on \( d(y,a) \), then \( d(x,A) - d(x,y) \le d(y,A) \), since \( d(y,A) \) is the greatest lower bound.
+
+	Finally, we get \( d(x,A) \le d(x,y) + d(y,A) \)
+
+\end{solution}
+
+\begin{solution} 3.
+
+	Let \( f \colon X \to \mathbb{R} \colon f(x) = d(x,A)  \)
+
+	\( f \) is continuous iff for every \( \epsilon > 0  \) there exists a \( \delta > 0  \) such that \( d(x,y) < \delta \Rightarrow |d(x,A) - d(y,A)| < \epsilon \)
+
+	Choose \( \delta = \epsilon \)
+
+	Then from the last part we get
+	\[
+		d(x,A) - d(y,A) < \delta = \epsilon, \quad d(y,A) - d(x,A) \le d(x,y) < \delta = \epsilon
+	\]
+	So \( |d(x,A) - d(y,A)| < \epsilon \)
+
+	Hence \( f \) is continuous
+
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Prove that a finite subset of a metric space has no limit points
+
+\begin{solution}
+	Let \( (X,d) \) be a metric space and \( A \subset X \) a finite subset
+
+	Suppose there exists some limit point of \( A \), say \( x \)
+
+	Then there exists some sequence of \( \left\{ x_n \right\}  \) with \( x_n \in A \setminus \left\{ x \right\}  \) and \( x_n \to x \)
+
+	Then for all \( \epsilon > 0  \) there exists some \( N \in \mathbb{N} \) such that \( d(x_n, x) < \epsilon \) for all \( n \geq N \)
+
+	Note: if \( A \subset \left\{ x \right\}  \) then there doesn't exist any sequence as above and consequently there are no limit points
+	\\
+
+	Choose \( \epsilon_{0} = \min\left\{ d(a,x) \mid  a \in A\setminus \left\{ x \right\}  \right\}  \), since \( A \) is finite we have \( \epsilon \) as the minimum of a finite set of distance with each not being zero, hence \( \epsilon_{0} > 0 \)
+
+	Then there is some \( N \) such that \( d(x_n,x) < \epsilon_{0} \) for all \( n \ge N \), but also \( \epsilon_{0} \le d(x_n,x) \) since \( x_n \in A \setminus \left\{ x \right\}  \)
+
+	This is a contradiction, hence \( A \) has no limit points
+\end{solution}
+\end{problem}
+
+\begin{problem}
+Prove that a map \( f \colon  X \to Y \) of metric spaces is continuous iff for every subset \( B \subset Y \) we have the \( f^{-1}(\mathring{B}) \) is contained in the interior of \( f^{-1}(B) \)
+\end{problem}
+
+\begin{problem}
+For a subset \( A \) of a metric space \( X \), prove
+\begin{itemize}
+	\item \( \mathring{A} = A \setminus \partial A = \overline{A}\setminus \partial A \)
+	\item \( \overline{X \setminus A} = X \setminus \mathring{A} \)
+	\item \( \partial A = \overline{A} \cap \overline{X \setminus A} = \partial ( x \setminus A )  \)
+	\item \( \partial A \) is closed in \( X \)
+\end{itemize}
+\end{problem}
+\end{document}
+
