@@ -103,6 +103,19 @@ Prove that a finite subset of a metric space has no limit points
 
 \begin{problem}
 Prove that a map \( f \colon  X \to Y \) of metric spaces is continuous iff for every subset \( B \subset Y \) we have the \( f^{-1}(\mathring{B}) \) is contained in the interior of \( f^{-1}(B) \)
+
+\begin{solution}
+	(\( \Rightarrow \))
+	Assume \( f: X \to Y \) is continuous, the we have that the preimage of all open sets are open
+
+	For all \(  B \subset Y \), we have that \( \mathring{B} \) is open, hence \( f^{-1}(\mathring{B}) \) is open.
+
+	Also \( \mathring{B} \subset B \), meaning \( f^{-1}(\mathring{B}) \subset f^{-1}(B) \)
+
+	So now, \( f^{-1}(\mathring{B}) \) is a subset of the preimage of \( B \) and also that it is open
+
+	So it is an open subset of \( f^{-1}(B) \), from the defintion of the interior, \( \mathring{A} = \bigcup_{X \subset A \text{ X open }}X \), we have that \( f^{-1}(\mathring{B}) \) is contained within the interior of \( f^{-1}(B) \)
+\end{solution}
 \end{problem}
 
 \begin{problem}
